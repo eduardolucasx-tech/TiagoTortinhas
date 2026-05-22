@@ -1,4 +1,5 @@
-v10.1 — Login Gate Corrigido
+v10.2 — Firebase Config Preenchido
 
 Data da versão: 2026-05-22
-Status: Correção da tela obrigatória de login/configuração Firebase
+Status: Firebase config preenchido para deploy
+Base: Sr. Tortinhas Control

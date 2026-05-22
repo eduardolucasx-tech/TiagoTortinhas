@@ -1,5 +1,13 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.2 — Firebase Config Preenchido
+
+### Ajustado
+- `firebase-config.js` preenchido.
+- Login obrigatório com Google mantido.
+- Gate de configuração deve avançar para tela de login quando publicado na Vercel.
+
+
 ## v10.1 — Login Gate Corrigido
 
 ### Corrigido

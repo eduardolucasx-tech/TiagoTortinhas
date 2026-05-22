@@ -2,7 +2,7 @@
 
 **Sr. Tortinhas Control** é um app/PWA simples e direto para controle de vendas, caixa, financeiro, clientes, estoque, produção e relatórios de uma operação artesanal de tortinhas.
 
-> Versão atual: **v10.1 — Login Gate Corrigido**
+> Versão atual: **v10.2 — Firebase Config Preenchido**
 
 ---
 
@@ -323,3 +323,24 @@ Faça um hard refresh no navegador:
 - Mac: `Cmd + Shift + R`
 
 Se ainda aparecer versão antiga, vá em DevTools > Application > Service Workers > Unregister e recarregue.
+
+
+---
+
+## v10.2 — Firebase Config Preenchido
+
+### Ajuste
+
+- Arquivo `firebase-config.js` preenchido com os dados reais do projeto Firebase.
+- Mantido login obrigatório com Google.
+- Mantida sincronização via Firestore.
+
+### Depois de subir no GitHub/Vercel
+
+Teste este endereço:
+
+```txt
+https://srtortinhascontrol.vercel.app/firebase-config.js
+```
+
+Se aparecer o arquivo com os dados preenchidos, abra o app novamente. Ele deve mostrar a tela **Entrar com Google**.
