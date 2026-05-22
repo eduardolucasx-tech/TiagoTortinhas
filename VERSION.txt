@@ -1,5 +1,5 @@
-v9.8 — Relatório diário corrigido
+v9.9 — Firebase Google Sync
 
 Data da versão: 2026-05-22
-Status: Release final recomendada para GitHub/Deploy
+Status: Release com Firebase Google Sync
 Base: Sr. Tortinhas Control

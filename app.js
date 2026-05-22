@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v9_8_relatorio_diario_corrigido';
+const STORE_KEY = 'sr_tortinhas_control_v9_9_firebase_google_sync';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -24,6 +24,23 @@ let expenseDraft = emptyExpenseDraft();
 let accountDraft = emptyAccountDraft();
 let productDraft = emptyProductDraft();
 let productFormOpen = false;
+
+let cloudUser = null;
+let cloudReady = false;
+let cloudEnabled = false;
+let cloudUnsubscribe = null;
+let cloudSaveTimer = null;
+let applyingRemoteState = false;
+let lastCloudUpdatedAt = 0;
+let lastCloudUpdatedBy = '';
+const CLOUD_DEVICE_ID = localStorage.getItem('sr_tortinhas_device_id') || (() => {
+  const id = uid('device');
+  localStorage.setItem('sr_tortinhas_device_id', id);
+  return id;
+})();
+const CLOUD_DOC_COLLECTION = 'sr_tortinhas_users';
+const CLOUD_DOC_NAME = 'app_state';
+
 
 function emptyClientDraft(){ return { id:'', nome:'', telefone:'' }; }
 function emptyLotDraft(){ return { id:'', produto:'Maracujá', quantidade:10, data:today(), validade:addDays(today(),3) }; }
@@ -123,11 +140,187 @@ function load(){
   } catch(e){}
   return normalize(structuredClone(window.SEED_DATA || {}));
 }
-function save(){ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }
+function save(){
+  localStorage.setItem(STORE_KEY, JSON.stringify(state));
+  scheduleCloudSave();
+}
 function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(window.__toast); window.__toast=setTimeout(()=>t.classList.remove('show'),1800); }
 function setHeader(txt){ document.getElementById('headerHint').textContent = txt; }
-function setRoute(r){ route = r; render(); }
+function setRoute(r){ route = r; 
+window.loginGoogle = loginGoogle;
+window.logoutGoogle = logoutGoogle;
+window.forceCloudUpload = forceCloudUpload;
+window.forceCloudDownload = forceCloudDownload;
+
+initFirebaseSync();
+render(); }
 function renderNav(){ document.getElementById('nav').innerHTML = NAV.map(([id,ico,label]) => `<button class="${route===id?'active':''}" onclick="setRoute('${id}')"><span class="ico">${ico}</span><span>${label}</span></button>`).join(''); }
+
+function firebaseConfigured(){
+  const cfg = window.SR_TORTINHAS_FIREBASE_CONFIG;
+  return !!(cfg && cfg.apiKey && cfg.projectId && cfg.appId && !String(cfg.apiKey).includes('COLE_AQUI'));
+}
+function cloudStatusText(){
+  if(!firebaseConfigured()) return 'Firebase não configurado';
+  if(!cloudUser) return 'offline';
+  if(!cloudReady) return 'conectando...';
+  return 'sincronizado';
+}
+function cloudUserLabel(){
+  if(!cloudUser) return 'Entrar com Google';
+  return cloudUser.displayName || cloudUser.email || 'Conta Google';
+}
+function initFirebaseSync(){
+  if(!window.firebase || !firebaseConfigured()){
+    cloudEnabled = false;
+    return;
+  }
+  try{
+    if(!firebase.apps.length) firebase.initializeApp(window.SR_TORTINHAS_FIREBASE_CONFIG);
+    cloudEnabled = true;
+    firebase.auth().onAuthStateChanged(user => {
+      cloudUser = user || null;
+      cloudReady = false;
+      if(cloudUnsubscribe){ cloudUnsubscribe(); cloudUnsubscribe = null; }
+      if(cloudUser){
+        startCloudListener();
+      }
+      render();
+    });
+  }catch(err){
+    console.error('Firebase init error', err);
+    cloudEnabled = false;
+  }
+}
+function cloudDocRef(){
+  if(!cloudUser || !window.firebase) return null;
+  return firebase.firestore()
+    .collection(CLOUD_DOC_COLLECTION)
+    .doc(cloudUser.uid)
+    .collection('apps')
+    .doc(CLOUD_DOC_NAME);
+}
+function cloudSafeState(){
+  return JSON.parse(JSON.stringify(state || {}));
+}
+function startCloudListener(){
+  const ref = cloudDocRef();
+  if(!ref) return;
+  cloudReady = false;
+  cloudUnsubscribe = ref.onSnapshot(snapshot => {
+    const data = snapshot.exists ? snapshot.data() : null;
+    if(!data || !data.state){
+      pushCloudState(true);
+      cloudReady = true;
+      render();
+      return;
+    }
+    const remoteUpdatedAt = Number(data.updatedAt || 0);
+    const remoteBy = data.updatedBy || '';
+    lastCloudUpdatedAt = remoteUpdatedAt;
+    lastCloudUpdatedBy = remoteBy;
+    if(remoteBy === CLOUD_DEVICE_ID){
+      cloudReady = true;
+      render();
+      return;
+    }
+    applyingRemoteState = true;
+    try{
+      state = normalize(data.state);
+      localStorage.setItem(STORE_KEY, JSON.stringify(state));
+      cloudReady = true;
+      toast('Dados sincronizados da nuvem');
+      render();
+    }catch(err){
+      console.error('Erro ao aplicar dados da nuvem', err);
+      cloudReady = true;
+      render();
+    }finally{
+      applyingRemoteState = false;
+    }
+  }, err => {
+    console.error('Firestore sync error', err);
+    cloudReady = false;
+    toast('Erro na sincronização Firebase');
+    render();
+  });
+}
+function scheduleCloudSave(){
+  if(applyingRemoteState) return;
+  if(!cloudEnabled || !cloudUser || !cloudReady) return;
+  clearTimeout(cloudSaveTimer);
+  cloudSaveTimer = setTimeout(() => pushCloudState(false), 450);
+}
+function pushCloudState(force=false){
+  const ref = cloudDocRef();
+  if(!ref) return;
+  const now = Date.now();
+  if(!force && now - lastCloudUpdatedAt < 120 && lastCloudUpdatedBy && lastCloudUpdatedBy !== CLOUD_DEVICE_ID){
+    return;
+  }
+  lastCloudUpdatedAt = now;
+  lastCloudUpdatedBy = CLOUD_DEVICE_ID;
+  return ref.set({
+    app: 'sr_tortinhas_control',
+    version: 'v9.9',
+    updatedAt: now,
+    updatedBy: CLOUD_DEVICE_ID,
+    userEmail: cloudUser.email || '',
+    state: cloudSafeState()
+  }, { merge: true }).catch(err => {
+    console.error('Erro ao salvar na nuvem', err);
+    toast('Não foi possível salvar na nuvem');
+  });
+}
+function loginGoogle(){
+  if(!window.firebase || !firebaseConfigured()){
+    toast('Configure o Firebase antes de entrar');
+    return;
+  }
+  const provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup(provider).catch(err => {
+    console.error('Login Google error', err);
+    toast('Erro ao entrar com Google');
+  });
+}
+function logoutGoogle(){
+  if(window.firebase) firebase.auth().signOut();
+}
+function forceCloudUpload(){
+  if(!cloudUser){ toast('Entre com Google primeiro'); return; }
+  pushCloudState(true)?.then(()=>toast('Dados enviados para a nuvem'));
+}
+function forceCloudDownload(){
+  if(!cloudUser){ toast('Entre com Google primeiro'); return; }
+  if(cloudUnsubscribe){ cloudUnsubscribe(); cloudUnsubscribe = null; }
+  startCloudListener();
+  toast('Sincronização recarregada');
+}
+function firebaseLoginCard(){
+  const configured = firebaseConfigured();
+  return `<details class="accordion cloud-sync-drawer" open>
+    <summary>
+      <div>
+        <strong>Google e sincronização em tempo real</strong>
+        <small>${configured ? cloudStatusText() : 'configure firebase-config.js'}</small>
+      </div>
+    </summary>
+    <div class="cloud-sync-card">
+      <div class="cloud-status ${cloudUser ? 'online' : 'offline'}">
+        <div>
+          <strong>${escapeHtml(cloudUserLabel())}</strong>
+          <small>${cloudUser ? escapeHtml(cloudUser.email || 'conta conectada') : 'Conecte para sincronizar PC e celular'}</small>
+        </div>
+        <span>${configured ? (cloudUser ? 'online' : 'offline') : 'pendente'}</span>
+      </div>
+      <div class="cloud-actions">
+        ${cloudUser ? `<button type="button" class="ghost" onclick="forceCloudUpload()">Enviar dados locais</button><button type="button" class="ghost" onclick="forceCloudDownload()">Baixar da nuvem</button><button type="button" class="danger" onclick="logoutGoogle()">Sair</button>` : `<button type="button" class="big-action" onclick="loginGoogle()" ${configured?'':'disabled'}>Entrar com Google</button>`}
+      </div>
+      <p class="cloud-note">${configured ? 'Quando conectado, alterações salvas no PC e no celular atualizam a mesma base no Firestore.' : 'Cole a configuração do Firebase no arquivo firebase-config.js para liberar o login.'}</p>
+    </div>
+  </details>`;
+}
+
 function render(){
   renderNav();
   const app = document.getElementById('app');
@@ -1204,12 +1397,12 @@ function cobrancas(){
     <details class="accordion" style="margin-top:12px">
       <summary>Backup, dados e manual</summary>
       <div class="card" style="margin:0;border:0;border-radius:0;box-shadow:none">
-        ${appQuickManual()}
+        ${firebaseLoginCard()}${appQuickManual()}
         <div class="grid">
           <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v9.8 Relatório diário corrigido</small>
+        <small class="clean-note">Versão v9.9 Firebase Google Sync</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1484,7 +1677,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v9.8 Relatório diário corrigido</small>
+        <small class="clean-note">Versão v9.9 Firebase Google Sync</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -2627,4 +2820,5 @@ function setMonthlyView(monthKey, mode){
 }
 
 if('serviceWorker' in navigator && location.protocol !== 'file:'){ navigator.serviceWorker.register('service-worker.js').catch(()=>{}); }
+initFirebaseSync();
 render();

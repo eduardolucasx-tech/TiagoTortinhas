@@ -1,5 +1,20 @@
 # Changelog — Sr. Tortinhas Control
 
+## v9.9 — Firebase Google Sync
+
+### Adicionado
+- Login com Google via Firebase Authentication.
+- Sincronização em tempo real usando Cloud Firestore.
+- Cartão de controle de sincronização dentro de Backup, dados e manual.
+- Arquivos `firebase-config.js` e `firebase-config.example.js`.
+- Botões para enviar dados locais e baixar dados da nuvem.
+
+### Observação
+- O app continua funcionando localmente mesmo sem Firebase configurado.
+- Para ativar o sync, é necessário preencher `firebase-config.js` e configurar Authentication/Firestore no Firebase Console.
+
+
+
 ## v9.8 — Relatório diário corrigido
 
 ### Ajustes principais

@@ -6002,3 +6002,69 @@ body[data-route="estoque"] .help-tip-box{
   background:#fff !important;
   border-color:#d7e3bf !important;
 }
+
+
+/* v9.9 — Firebase Google Sync */
+.cloud-sync-drawer{
+  border-color:#cfe1b1 !important;
+  background:linear-gradient(180deg,#ffffff 0%,#f8fcf1 100%) !important;
+}
+.cloud-sync-card{
+  padding:12px;
+  display:grid;
+  gap:10px;
+}
+.cloud-status{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  background:#fff;
+  border:1px solid #d7e3bf;
+  border-radius:16px;
+  padding:12px;
+}
+.cloud-status strong{
+  display:block;
+  color:#4f682b;
+}
+.cloud-status small{
+  display:block;
+  margin-top:3px;
+  color:#6f8258;
+}
+.cloud-status span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  padding:4px 9px;
+  font-size:10px;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.cloud-status.online span{
+  background:#edf7dd;
+  color:#4f682b;
+}
+.cloud-status.offline span{
+  background:#fff4d8;
+  color:#8b6618;
+}
+.cloud-actions{
+  display:grid;
+  gap:8px;
+}
+.cloud-actions button[disabled]{
+  opacity:.55;
+  cursor:not-allowed;
+}
+.cloud-note{
+  margin:0;
+  color:#6f8258;
+  font-size:12px;
+  line-height:1.35;
+}
+.cloud-mini-status{
+  color:#6e7f3b;
+}

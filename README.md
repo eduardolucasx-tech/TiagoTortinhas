@@ -2,7 +2,7 @@
 
 **Sr. Tortinhas Control** é um app/PWA simples e direto para controle de vendas, caixa, financeiro, clientes, estoque, produção e relatórios de uma operação artesanal de tortinhas.
 
-> Versão atual: **v9.8 — Relatório diário corrigido**
+> Versão atual: **v9.9 — Firebase Google Sync**
 
 ---
 
@@ -234,3 +234,49 @@ Essa versão consolida:
 ## Observação
 
 Este app foi criado para uma operação artesanal e pessoal. A prioridade é ser simples, rápido e prático, evitando complexidade desnecessária.
+
+
+---
+
+## v9.9 — Firebase Google Sync
+
+Esta versão adiciona login com Google e sincronização em tempo real via Firebase Authentication + Cloud Firestore.
+
+### O que foi adicionado
+
+- Login com Google.
+- Cartão de sincronização dentro de **Backup, dados e manual**.
+- Upload dos dados locais para a nuvem.
+- Download/recarregamento dos dados da nuvem.
+- Sincronização automática em tempo real entre celular e computador quando ambos estiverem logados na mesma conta Google.
+- Base local continua funcionando mesmo sem Firebase configurado.
+
+### Arquivos novos
+
+```txt
+firebase-config.js
+firebase-config.example.js
+```
+
+### Configuração necessária no Firebase
+
+1. Criar projeto no Firebase.
+2. Adicionar app Web.
+3. Ativar Authentication > Google.
+4. Criar Cloud Firestore.
+5. Colar o objeto firebaseConfig no arquivo `firebase-config.js`.
+6. Subir novamente para Vercel/Netlify.
+
+### Regras recomendadas do Firestore
+
+```txt
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /sr_tortinhas_users/{userId}/apps/{docId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+}
+```
+
