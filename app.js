@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v9_9_firebase_google_sync';
+const STORE_KEY = 'sr_tortinhas_control_v10_0_google_login_obrigatorio';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -26,6 +26,7 @@ let productDraft = emptyProductDraft();
 let productFormOpen = false;
 
 let cloudUser = null;
+let authChecked = false;
 let cloudReady = false;
 let cloudEnabled = false;
 let cloudUnsubscribe = null;
@@ -179,6 +180,7 @@ function initFirebaseSync(){
     if(!firebase.apps.length) firebase.initializeApp(window.SR_TORTINHAS_FIREBASE_CONFIG);
     cloudEnabled = true;
     firebase.auth().onAuthStateChanged(user => {
+      authChecked = true;
       cloudUser = user || null;
       cloudReady = false;
       if(cloudUnsubscribe){ cloudUnsubscribe(); cloudUnsubscribe = null; }
@@ -279,12 +281,15 @@ function loginGoogle(){
   }
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).catch(err => {
-    console.error('Login Google error', err);
-    toast('Erro ao entrar com Google');
+    console.error('Login Google popup error', err);
+    firebase.auth().signInWithRedirect(provider).catch(err2 => {
+      console.error('Login Google redirect error', err2);
+      toast('Erro ao entrar com Google');
+    });
   });
 }
 function logoutGoogle(){
-  if(window.firebase) firebase.auth().signOut();
+  if(window.firebase) firebase.auth().signOut().then(()=>{ route='venda'; render(); });
 }
 function forceCloudUpload(){
   if(!cloudUser){ toast('Entre com Google primeiro'); return; }
@@ -321,9 +326,49 @@ function firebaseLoginCard(){
   </details>`;
 }
 
+
+function googleLoginGate(){
+  setHeader('Entrada com Google');
+  return `<div class="login-gate-screen">
+    <div class="login-gate-card">
+      <img src="logo.png" alt="Sr. Tortinhas Control" class="login-gate-logo">
+      <h1>Sr. Tortinhas Control</h1>
+      <p>Entre com sua conta Google para sincronizar os dados entre celular e computador.</p>
+      <button type="button" class="big-action login-google-main" onclick="loginGoogle()">Entrar com Google</button>
+      <small>Se for a primeira vez, depois de entrar toque em “Enviar dados locais” na área de Backup, dados e manual para subir a base atual.</small>
+    </div>
+  </div>`;
+}
+function firebaseLoadingGate(){
+  setHeader('Conectando');
+  return `<div class="login-gate-screen">
+    <div class="login-gate-card">
+      <img src="logo.png" alt="Sr. Tortinhas Control" class="login-gate-logo">
+      <h1>Conectando...</h1>
+      <p>Verificando sua conta Google e sincronização.</p>
+    </div>
+  </div>`;
+}
+
 function render(){
   renderNav();
   const app = document.getElementById('app');
+  if(firebaseConfigured() && !authChecked){
+    document.body.setAttribute('data-route', 'login');
+    app.setAttribute('data-route', 'login');
+    app.className = 'app-shell login-screen';
+    app.innerHTML = firebaseLoadingGate();
+    bind();
+    return;
+  }
+  if(firebaseConfigured() && !cloudUser){
+    document.body.setAttribute('data-route', 'login');
+    app.setAttribute('data-route', 'login');
+    app.className = 'app-shell login-screen';
+    app.innerHTML = googleLoginGate();
+    bind();
+    return;
+  }
   document.body.setAttribute('data-route', route);
   app.setAttribute('data-route', route);
   app.className = `app-shell ${route}-screen`;
@@ -1402,7 +1447,7 @@ function cobrancas(){
           <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v9.9 Firebase Google Sync</small>
+        <small class="clean-note">Versão v10.0 Google Login Obrigatório</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1677,7 +1722,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v9.9 Firebase Google Sync</small>
+        <small class="clean-note">Versão v10.0 Google Login Obrigatório</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
