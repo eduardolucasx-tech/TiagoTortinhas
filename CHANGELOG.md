@@ -1,5 +1,13 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.3 — Firebase API Key Corrigida
+
+### Corrigido
+- Chave `apiKey` do Firebase corrigida.
+- Erro esperado corrigido: `auth/api-key-not-valid`.
+- Favicon configurado com `logo.png`.
+
+
 ## v10.2 — Firebase Config Preenchido
 
 ### Ajustado

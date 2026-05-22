@@ -1,7 +1,7 @@
 // Sr. Tortinhas Control — Firebase config preenchido
 
 window.SR_TORTINHAS_FIREBASE_CONFIG = {
-  apiKey: "AIzaSyDH7mzGj5T0tjcNs5ZSU0JbnXmoOwEz0mY",
+  apiKey: "AIzaSyDH7mzGj5I0tjcNs5ZSU0JbnXmoOwEz0mY",
   authDomain: "srtortinhascontrol.firebaseapp.com",
   projectId: "srtortinhascontrol",
   storageBucket: "srtortinhascontrol.firebasestorage.app",
