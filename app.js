@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v10_7_chip_cores_sync';
+const STORE_KEY = 'sr_tortinhas_control_v10_8_chip_visivel_venda_fix';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -199,13 +199,16 @@ function syncChipTooltip(){
 function updateHeaderSyncChip(){
   const header = document.querySelector('.app-header');
   if(!header) return;
-  let chip = header.querySelector('.header-sync-chip');
+  const host = header.querySelector('.brand-meta') || header;
+  let chip = host.querySelector('.header-sync-chip');
   if(!chip){
     chip = document.createElement('button');
     chip.type = 'button';
     chip.className = 'header-sync-chip';
     chip.setAttribute('aria-label', 'Conta e sincronização');
-    chip.addEventListener('click', () => {
+    chip.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      ev.stopPropagation();
       if(route !== 'financeiro'){
         route = 'financeiro';
         render();
@@ -216,13 +219,14 @@ function updateHeaderSyncChip(){
         syncDrawer?.scrollIntoView({ behavior:'smooth', block:'center' });
       }, 60);
     });
-    header.appendChild(chip);
+    host.appendChild(chip);
   }
   const status = syncChipStatusLabel();
   const photo = syncChipPhoto();
   const initial = escapeHtml(syncChipInitial());
   const name = escapeHtml(syncChipName());
   const modeClass = syncChipModeClass();
+  const modeLabel = (modeClass === 'is-cloud') ? 'Google • Nuvem' : (modeClass === 'is-pending') ? 'Google • Salvando' : (modeClass === 'is-error') ? 'Google • Erro' : 'Somente local';
   chip.className = `header-sync-chip ${modeClass}`;
   chip.title = syncChipTooltip();
   chip.innerHTML = `
@@ -231,11 +235,12 @@ function updateHeaderSyncChip(){
     </span>
     <span class="header-sync-chip__text">
       <strong>${name}</strong>
-      <small>${status}</small>
+      <small>${modeLabel}</small>
     </span>
-    <span class="header-sync-chip__dot"></span>
+    <span class="header-sync-chip__dot" aria-hidden="true"></span>
   `;
 }
+
 
 function firebaseConfigured(){
   const cfg = window.SR_TORTINHAS_FIREBASE_CONFIG;
@@ -708,7 +713,11 @@ function productCards(){
     const p = prod.nome;
     const x = sold[p] || 0;
     const y = stock[p]?.disp || 0;
-    return `<button type="button" class="product-pick ${productClass(p)}" onclick="addProductQuick('${p}')"><span class="plus">+</span><b>${escapeHtml(p)}</b><small>${brl(productPrice(p))}</small><span class="xy">${x}/${y}</span><em>vendido/disponível</em></button>`;
+    const selectedQty = saleDraft.itens.find(it => it.produto === p)?.quantidade || 0;
+    const activeClass = selectedQty > 0 ? 'active selected' : '';
+    const bubbleClass = selectedQty > 0 ? 'plus count' : 'plus';
+    const bubbleLabel = selectedQty > 0 ? String(selectedQty) : '+';
+    return `<button type="button" aria-pressed="${selectedQty > 0 ? 'true' : 'false'}" class="product-pick ${productClass(p)} ${activeClass}" onclick="addProductQuick('${p}')"><span class="${bubbleClass}">${bubbleLabel}</span><b>${escapeHtml(p)}</b><small>${brl(productPrice(p))}</small><span class="xy">${x}/${y}</span><em>vendido/disponível</em></button>`;
   }).join('');
 }
 function currentTicketItems(){
@@ -1562,7 +1571,7 @@ function cobrancas(){
           <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.7 Chip com cores de sync</small>
+        <small class="clean-note">Versão v10.8 Conta visível e venda ajustada</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1837,7 +1846,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.7 Chip com cores de sync</small>
+        <small class="clean-note">Versão v10.8 Conta visível e venda ajustada</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
