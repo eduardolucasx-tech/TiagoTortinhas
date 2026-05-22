@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v10_8_5_mobile_first';
+const STORE_KEY = 'sr_tortinhas_control_v10_8_6_chip_avatar_status';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -226,20 +226,22 @@ function updateHeaderSyncChip(){
   }
   const photo = syncChipPhoto();
   const initial = escapeHtml(syncChipInitial());
-  const name = escapeHtml(syncChipName());
   const modeClass = syncChipModeClass();
-  const modeLabel = (modeClass === 'is-cloud') ? 'Google • Nuvem' : (modeClass === 'is-pending') ? 'Google • Salvando' : (modeClass === 'is-error') ? 'Google • Erro' : 'Somente local';
+  const modeLabel = (modeClass === 'is-cloud')
+    ? 'Nuvem ok'
+    : (modeClass === 'is-pending')
+      ? 'Salvando'
+      : (modeClass === 'is-error')
+        ? 'Erro'
+        : 'Local';
   chip.className = `header-sync-chip ${modeClass}`;
   chip.title = syncChipTooltip();
   chip.innerHTML = `
     <span class="header-sync-chip__avatar">
-      ${photo ? `<img src="${photo}" alt="${name}">` : `<span>${initial}</span>`}
+      ${photo ? `<img src="${photo}" alt="Conta">` : `<span>${initial}</span>`}
     </span>
-    <span class="header-sync-chip__text">
-      <strong>${name}</strong>
-      <small>${modeLabel}</small>
-    </span>
-    <span class="header-sync-chip__dot" aria-hidden="true"></span>
+    <span class="header-sync-chip__status-ball" aria-hidden="true"></span>
+    <span class="sr-only">${modeLabel}</span>
   `;
 }
 
@@ -1576,7 +1578,7 @@ function cobrancas(){
           <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.5 Mobile first</small>
+        <small class="clean-note">Versão v10.8.6 Chip avatar status</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1851,7 +1853,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.5 Mobile first</small>
+        <small class="clean-note">Versão v10.8.6 Chip avatar status</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">

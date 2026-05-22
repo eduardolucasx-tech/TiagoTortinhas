@@ -1,6 +1,6 @@
-v10.8.5 — Mobile first
+v10.8.6 — Chip avatar e status
 
 Data da versão: 2026-05-22
-Status: Refino mobile first de layout e espaçamento
-Base: v10.8.4 — Botões de venda apertados
+Status: Chip de conta minimalista no cabeçalho
+Base: v10.8.5 — Mobile first
 Observação: mantida a linha v10.8.x.

@@ -1,5 +1,13 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.8.6 — Chip avatar e status
+
+### Melhorado
+- Chip de conta compactado no cabeçalho.
+- Removido nome da conta no topo.
+- Status agora aparece por cor: verde, amarelo, vermelho e azul.
+
+
 ## v10.8.5 — Mobile first
 
 ### Melhorado

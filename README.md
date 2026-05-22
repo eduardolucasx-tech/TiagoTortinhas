@@ -2,7 +2,7 @@
 
 **Sr. Tortinhas Control** é um app/PWA simples e direto para controle de vendas, caixa, financeiro, clientes, estoque, produção e relatórios de uma operação artesanal de tortinhas.
 
-> Versão atual: **v10.8.5 — Mobile first**
+> Versão atual: **v10.8.6 — Chip avatar e status**
 
 ---
 
@@ -501,3 +501,20 @@ O chip continua exibindo nome e foto da conta Google quando conectado.
 - Espaçamentos, botões e inputs refinados primeiro para celular.
 - Grid dos sabores otimizado em **2 colunas no mobile** e escalado para **3 colunas em telas maiores**.
 - Ticket, cards e navegação inferior ficaram mais proporcionais para uso com o polegar.
+
+
+---
+
+## v10.8.6 — Chip avatar e status
+
+### Ajuste no cabeçalho
+
+- Removido o nome da conta Google do cabeçalho.
+- O cabeçalho agora mostra **somente a foto** da conta.
+- Adicionado um **balãozinho de status**:
+  - **Verde** = nuvem ok
+  - **Amarelo** = local / atenção
+  - **Vermelho** = erro
+  - **Azul** = salvando / conectando
+
+Isso deixa o topo bem mais limpo e mais mobile first.
