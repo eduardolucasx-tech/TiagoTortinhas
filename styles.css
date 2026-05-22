@@ -1,0 +1,6004 @@
+:root{
+  --bg:#f8f5ef;
+  --bg-soft:#fcfbf8;
+  --card:#ffffff;
+  --ink:#423a33;
+  --ink-soft:#7b7068;
+  --line:#e8ddd2;
+  --brand:#8fa54c;
+  --brand-dark:#6e7f3b;
+  --brand-text:#4b4c2d;
+  --maracuja:#f1c94b;
+  --maracuja-soft:#fff5cf;
+  --limao:#b9d75f;
+  --limao-soft:#eef7cd;
+  --chocolate:#b88656;
+  --chocolate-soft:#f2e1d1;
+  --ok:#4f8b5b;
+  --warn:#d39a2a;
+  --danger:#c56b5e;
+  --white:#ffffff;
+  --radius:18px;
+  --shadow:0 10px 24px rgba(82,63,46,.07);
+  --navH:76px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+body{padding-bottom:calc(var(--navH) + env(safe-area-inset-bottom))}
+img{max-width:100%;display:block}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+
+.app-header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(248,245,239,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand-logo{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:#fff;object-fit:contain;padding:3px;box-shadow:0 2px 10px rgba(112,94,77,.04)}
+.app-header strong{display:block;font-size:16px;font-weight:800;letter-spacing:-.02em}
+.app-header small{display:block;margin-top:2px;color:var(--ink-soft)}
+
+.app-shell{max-width:760px;margin:0 auto;padding:16px 14px 22px}
+.screen-title{margin:0 0 12px;font-size:28px;letter-spacing:-.03em}
+.sub{margin:0 0 14px;color:var(--ink-soft);font-size:13px;line-height:1.45}
+.card,.item,.pill-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.card{padding:14px;margin-bottom:12px}.item{padding:14px}.item + .item{margin-top:8px}.soft{background:var(--bg-soft);box-shadow:none}
+.label,label span{display:block;margin:0 0 6px;color:var(--ink-soft);font-size:12px;font-weight:700}
+input,select,textarea{width:100%;min-height:48px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--ink);outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--brand-dark);box-shadow:0 0 0 3px rgba(110,127,59,.12)}
+textarea{min-height:92px;resize:vertical}
+.row{display:flex;align-items:center;gap:10px}.between{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.grid{display:grid;gap:10px}.grid2{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:repeat(3,1fr)}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 2px 10px}.section-head h2{margin:0;font-size:15px}.section-head span{font-size:12px;color:var(--ink-soft)}
+
+button{border:0;border-radius:14px;min-height:46px;padding:11px 14px;background:var(--brand-dark);color:#fff;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none}
+.ghost{background:#fff;color:var(--brand-text);border:1px solid var(--line)}
+.ok{background:var(--ok)}
+.danger{background:#fff;color:#a55a4e;border:1px solid #edc8c2}
+.mini{min-height:34px;padding:8px 10px;border-radius:12px;font-size:12px}
+.big-action{width:100%;min-height:54px;font-size:16px;border-radius:16px;background:var(--brand-dark)}
+.full{width:100%}
+.upload-btn{min-height:46px;padding:11px 14px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:700}
+
+.product-picks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.product-pick{border:1px solid var(--line);border-radius:16px;padding:12px 10px;text-align:left;color:var(--ink);min-height:96px;background:#fff;display:flex;flex-direction:column;justify-content:center;position:relative}
+.product-pick b{display:block;font-size:13px;margin-bottom:3px;line-height:1.1}
+.product-pick small{display:block;color:var(--ink-soft);font-size:12px}
+.product-pick .xy{display:block;font-size:26px;font-weight:800;letter-spacing:-.04em;margin-top:5px}
+.product-pick em{display:block;font-style:normal;color:var(--ink-soft);font-size:10px;margin-top:2px}
+.product-pick.maracuja{background:var(--maracuja-soft)}
+.product-pick.limao{background:var(--limao-soft)}
+.product-pick.chocolate{background:var(--chocolate-soft)}
+.product-pick.maracuja.active{border-color:#d2a819;box-shadow:inset 0 0 0 1px #d2a819}
+.product-pick.limao.active{border-color:#7da11d;box-shadow:inset 0 0 0 1px #7da11d}
+.product-pick.chocolate.active{border-color:#9a6840;box-shadow:inset 0 0 0 1px #9a6840}
+.top-stock .product-pick{min-height:108px}
+.compact-stock{padding:10px}
+
+.qty{display:grid;grid-template-columns:52px 1fr 52px;gap:8px;align-items:center}
+.qty button{padding:0;font-size:24px;border-radius:14px;background:var(--brand-dark)}
+.qty input{text-align:center;font-size:24px;font-weight:800;padding:10px 8px}
+.smallqty{grid-template-columns:44px 1fr 44px}
+.smallqty input{font-size:20px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{min-height:40px;padding:10px 13px;border-radius:999px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:700}.chip.active{background:var(--brand-dark);border-color:var(--brand-dark);color:#fff}.chip.okchip.active{background:var(--ok);border-color:var(--ok)}
+.inline-field{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}.small-link{min-height:48px;padding-inline:12px;white-space:nowrap}
+
+.ticket-box{margin-top:12px;padding:12px;border:1px dashed var(--line);border-radius:16px;background:var(--bg-soft)}
+.ticket-line{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;background:#fff;border:1px solid var(--line)}
+.ticket-line + .ticket-line{margin-top:8px}
+.ticket-line.maracuja{border-left:4px solid var(--maracuja)}
+.ticket-line.limao{border-left:4px solid var(--limao)}
+.ticket-line.chocolate{border-left:4px solid var(--chocolate)}
+.ticket-line small{display:block;color:var(--ink-soft);margin-top:2px}
+.line-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.empty-inline{text-align:center;color:var(--ink-soft);padding:12px 8px}
+.action-row{display:grid;grid-template-columns:1fr 1.4fr;gap:8px;margin-top:12px}
+
+.total-box{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-radius:18px;background:linear-gradient(135deg,#72853d,#91a54d);color:#fff}.total-box span{color:#eef2df;font-size:12px}.total-box b{font-size:30px;letter-spacing:-.04em}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.kpi{padding:12px;border-radius:16px;border:1px solid var(--line);background:#fff}.kpi small{display:block;font-size:11px;color:var(--ink-soft);font-weight:700;text-transform:uppercase;letter-spacing:.04em}.kpi b{display:block;margin-top:6px;font-size:22px;letter-spacing:-.03em}.kpi.wide{grid-column:span 2}
+.pill-box{padding:10px}.stock-mini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stock-pill{padding:12px;border-radius:16px;border:1px solid var(--line);text-align:center}.stock-pill strong{display:block;font-size:12px}.stock-pill b{display:block;margin:4px 0;font-size:24px}.stock-pill small{display:block;color:var(--ink-soft);font-size:10px;line-height:1.25}.stock-pill.maracuja{background:var(--maracuja-soft)}.stock-pill.limao{background:var(--limao-soft)}.stock-pill.chocolate{background:var(--chocolate-soft)}
+
+.price{font-size:18px;font-weight:800;letter-spacing:-.03em}
+.tag{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800}.tag.pago{background:#edf8ef;color:#3f7e4b}.tag.em_aberto{background:#fff4dd;color:#9a752d}.tag.cancelado{background:#fde9e6;color:#a35345}.tag.parcial{background:#e8f0fb;color:#436c9a}.tag.total{background:#f7f3ea;color:var(--brand-text)}.tag.setor{background:#ecf2db;color:#6c7e2d}
+.drawer{padding-top:10px;margin-top:10px;border-top:1px dashed var(--line)}.empty{text-align:center;color:var(--ink-soft);padding:22px 8px}.list{display:grid;gap:8px}.sale-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.timeline{display:grid;gap:8px;margin-top:10px}.timeline-row{padding:10px 12px;border-radius:14px;background:var(--bg-soft);border:1px solid var(--line)}.timeline-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.timeline small{display:block;color:var(--ink-soft);line-height:1.35}
+
+.open-line{display:block;margin-top:8px;color:var(--ink-soft);font-size:12px}
+.finance-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.finance-card{border:1px solid var(--line);border-radius:18px;padding:14px;background:#fff;box-shadow:var(--shadow)}
+.finance-card small{display:block;color:var(--ink-soft);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.finance-card b{display:block;margin:8px 0 4px;font-size:24px;letter-spacing:-.04em}
+.finance-card span{display:block;color:var(--ink-soft);font-size:12px;line-height:1.35}
+.finance-card.entrada{background:#eef8ef;border-color:#cfdfd1}
+.finance-card.expectativa{background:#fff5dc;border-color:#ead39f}
+.finance-card.gasto{background:#fdecea;border-color:#ecc6c1}
+.finance-card.estoque{background:#edf4dc;border-color:#d1dfae}
+.finance-summary{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.finance-summary div{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:12px}
+.finance-summary span{display:block;font-size:12px;color:var(--ink-soft)}
+.finance-summary b{display:block;margin-top:5px;font-size:19px}
+
+.client-summary{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}.client-metrics{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.accordion{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden;box-shadow:var(--shadow)}.accordion summary{list-style:none;cursor:pointer;padding:14px;font-weight:700}.accordion summary::-webkit-details-marker{display:none}.accordion[open] summary{border-bottom:1px solid var(--line)}
+
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;z-index:30;height:calc(var(--navH) + env(safe-area-inset-bottom));padding:8px 8px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:6px;background:rgba(255,255,255,.94);border-top:1px solid var(--line);backdrop-filter:blur(14px)}
+.bottom-nav button{min-height:56px;padding:7px 2px;border-radius:16px;background:transparent;color:var(--ink-soft);display:grid;gap:2px;border:0;font-size:11px;font-weight:700}.bottom-nav .ico{font-size:17px;line-height:1}.bottom-nav button.active{background:#f0f3e4;color:var(--brand-text)}
+#toast{position:fixed;left:12px;right:12px;bottom:calc(var(--navH) + 10px + env(safe-area-inset-bottom));z-index:40;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none;background:var(--brand-text);color:#fff;padding:13px 14px;border-radius:16px;text-align:center;font-weight:700;box-shadow:var(--shadow)}#toast.show{opacity:1;transform:translateY(0)}
+
+@media (min-width:760px){.app-shell{padding-top:22px}.bottom-nav{max-width:760px;left:50%;transform:translateX(-50%);border:1px solid var(--line);border-bottom:0;border-radius:22px 22px 0 0}}
+@media (max-width:430px){.action-row{grid-template-columns:1fr}.inline-field{grid-template-columns:1fr}.line-actions{width:100%}.ticket-line{flex-direction:column;align-items:flex-start}.ticket-line .line-actions{justify-content:space-between}}
+@media (max-width:390px){.grid2,.grid3,.kpis,.stock-mini,.product-picks,.finance-grid,.finance-summary{grid-template-columns:1fr}.kpi.wide{grid-column:auto}}
+
+/* v1.8 — Venda estilo caixa */
+.quick-products{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}
+.quick-products .product-pick{min-height:120px;padding:12px;border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+.quick-products .product-pick .plus{position:absolute;right:10px;top:8px;width:26px;height:26px;border-radius:999px;display:grid;place-items:center;background:rgba(255,255,255,.78);font-size:20px;font-weight:900;color:var(--ink)}
+.quick-products .product-pick b{font-size:14px}
+.quick-products .product-pick .xy{font-size:30px;margin-top:7px}
+.checkout-card{padding:12px;margin-bottom:10px}
+.section-head.compact{margin:0 2px 10px}.section-head.compact h2{font-size:16px}.section-head.compact button{margin-top:-4px}
+.clean-ticket{margin-top:0;padding:0;border:0;background:transparent}
+.clean-ticket .empty-inline{background:var(--bg-soft);border:1px dashed var(--line);border-radius:16px}
+.ticket-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.ticket-controls > b{min-width:26px;text-align:center;font-size:20px}.ticket-controls .line-total{font-weight:900;margin:0 4px;color:var(--ink)}
+.date-quiet{margin-top:8px;min-height:42px;background:var(--bg-soft);color:var(--ink-soft)}
+.checkout-actions{position:sticky;bottom:calc(var(--navH) + 8px + env(safe-area-inset-bottom));z-index:8;background:rgba(248,245,239,.92);padding:8px;border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(12px);box-shadow:var(--shadow)}
+.checkout-actions .big-action{min-height:52px}
+
+@media (max-width:390px){
+  .quick-products{grid-template-columns:1fr 1fr}
+  .quick-products .product-pick.chocolate{grid-column:1/-1;min-height:86px}
+}
+
+
+/* v1.9 — A cobrar em gavetas por cliente */
+.charge-list{gap:10px}
+.client-charge{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+.client-charge summary{list-style:none;cursor:pointer;padding:14px}
+.client-charge summary::-webkit-details-marker{display:none}
+.client-charge[open] summary{border-bottom:1px solid var(--line)}
+.client-charge-summary{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.client-charge-summary strong{display:block;font-size:16px}
+.client-charge-summary small{display:block;margin-top:4px;color:var(--ink-soft)}
+.client-charge-total{text-align:right}
+.client-charge-total b{display:block;font-size:20px;letter-spacing:-.04em}
+.client-charge-total span{display:block;font-size:11px;color:var(--ink-soft);margin-top:2px}
+.client-charge-body{padding:12px;background:var(--bg-soft)}
+.charge-quick-actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-bottom:12px}
+.charge-section + .charge-section{margin-top:12px}
+.section-head.compact{margin:0 0 8px}
+.charge-ticket-list{display:grid;gap:8px}
+.charge-ticket{border:1px solid var(--line);border-radius:16px;background:#fff;padding:12px}
+.charge-ticket.em_aberto,.charge-ticket.parcial{border-left:4px solid var(--warn)}
+.charge-ticket.pago{border-left:4px solid var(--ok);opacity:.92}
+.charge-ticket.cancelado{border-left:4px solid var(--danger);opacity:.7}
+.charge-ticket-main{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.charge-ticket-main strong{display:block;line-height:1.25}
+.charge-ticket-main small{display:block;color:var(--ink-soft);margin-top:3px;line-height:1.3}
+.charge-ticket-value{text-align:right;min-width:86px}
+.charge-ticket-value b{display:block;font-size:18px;letter-spacing:-.03em}
+.charge-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap;margin-top:10px}
+.charge-section.paid > details{border:1px dashed var(--line);border-radius:14px;background:#fff;padding:0}
+.charge-section.paid > details > summary{list-style:none;cursor:pointer;padding:12px;font-weight:800;color:var(--ink)}
+.charge-section.paid > details > summary::-webkit-details-marker{display:none}
+.charge-section.paid .charge-ticket-list{padding:0 12px 12px}
+
+@media(max-width:430px){
+  .client-charge-summary{align-items:flex-start}
+  .charge-ticket-main{align-items:flex-start}
+  .charge-actions{justify-content:stretch}
+  .charge-actions button{flex:1 1 auto}
+}
+
+
+/* v2.0 financeiro simplificado */
+.finance-hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:12px;
+}
+.finance-hero > div{
+  background:linear-gradient(135deg,#fff,#f4f1e8);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:14px;
+  box-shadow:var(--shadow);
+}
+.finance-hero small,
+.drawer-total span,
+.ticket-mini small,
+.mini-kpis small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.finance-hero b{
+  display:block;
+  margin:8px 0 4px;
+  font-size:26px;
+  letter-spacing:-.05em;
+}
+.finance-hero span{
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.period-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  align-items:start;
+}
+.report-drawer{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.report-drawer summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+.report-drawer summary::-webkit-details-marker{display:none}
+.report-drawer summary strong{
+  display:block;
+  font-size:15px;
+}
+.report-drawer summary small{
+  display:block;
+  margin-top:4px;
+  color:var(--ink-soft);
+  font-size:12px;
+  text-transform:none;
+  letter-spacing:0;
+}
+.drawer-total{text-align:right;min-width:92px}
+.drawer-total b{
+  display:block;
+  font-size:18px;
+  letter-spacing:-.04em;
+}
+.drawer-content{
+  border-top:1px dashed var(--line);
+  padding:12px;
+}
+.mini-kpis{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:10px;
+}
+.mini-kpis > div{
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.mini-kpis b{
+  display:block;
+  margin-top:4px;
+  font-size:16px;
+  letter-spacing:-.03em;
+}
+.compact-list{gap:6px}
+.ticket-mini{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:10px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.ticket-mini strong{
+  display:block;
+  font-size:13px;
+}
+.ticket-mini small{
+  margin-top:3px;
+  text-transform:none;
+  letter-spacing:0;
+  line-height:1.35;
+}
+.ticket-mini b{
+  display:block;
+  font-size:15px;
+  letter-spacing:-.03em;
+}
+.finance-grid.clean .finance-card span{
+  min-height:auto;
+}
+@media (max-width:680px){
+  .period-grid{grid-template-columns:1fr}
+}
+@media (max-width:430px){
+  .finance-hero{grid-template-columns:1fr}
+}
+
+/* v2.1 estoque limpo */
+.stock-dashboard{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-bottom:12px;
+}
+.stock-main-card{
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:14px;
+  background:#fff;
+  box-shadow:var(--shadow);
+}
+.stock-main-card.maracuja{background:linear-gradient(135deg,#fff,#fff4c7)}
+.stock-main-card.limao{background:linear-gradient(135deg,#fff,#eef8c9)}
+.stock-main-card.chocolate{background:linear-gradient(135deg,#fff,#f2ddc9)}
+.stock-main-card strong{display:block;font-size:14px}
+.stock-main-card b{display:block;margin-top:8px;font-size:30px;letter-spacing:-.06em}
+.stock-main-card small{display:block;color:var(--ink-soft);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.stock-main-card em{display:block;margin-top:8px;font-style:normal;color:var(--ink-soft);font-size:12px;line-height:1.25}
+.stock-alert,.lot-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:24px;
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:10px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.stock-alert.ok,.lot-badge.ok{background:#eaf6df;color:#557a2d}
+.stock-alert.warn,.lot-badge.warn{background:#fff0c7;color:#9b6f13}
+.stock-alert.danger,.lot-badge.danger{background:#ffe2dc;color:#9d473b}
+.lot-badge.neutral{background:#efefef;color:#777}
+.lot-drawer{
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:#fff;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.lot-drawer + .lot-drawer{margin-top:8px}
+.lot-drawer summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px;
+}
+.lot-drawer summary::-webkit-details-marker{display:none}
+.lot-drawer summary strong{display:block;font-size:15px}
+.lot-drawer summary small{display:block;margin-top:4px;color:var(--ink-soft);font-size:12px}
+.lot-drawer.warn{border-color:#ead39f}
+.lot-drawer.danger{border-color:#efc4bc}
+.lot-body{border-top:1px dashed var(--line);padding:12px}
+.lot-kpis{margin-bottom:10px}
+@media (max-width:680px){
+  .stock-dashboard{grid-template-columns:1fr}
+}
+
+/* v2.2 estoque rastreável */
+.compact-head{margin-top:12px;margin-bottom:8px}
+.lot-sales{display:grid;gap:8px}
+.lot-sale-row{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.lot-sale-row strong{display:block;font-size:13px}
+.lot-sale-row small{display:block;color:var(--ink-soft);font-size:12px;margin-top:3px;line-height:1.35}
+.lot-sale-row b{display:block;font-size:15px;letter-spacing:-.03em;margin-bottom:4px}
+@media(max-width:430px){.lot-sale-row{flex-direction:column}.lot-sale-row>div:last-child{text-align:left!important}}
+
+
+/* v2.3 estoque negativo */
+.stock-main-card.negative{
+  border-color:#e3aaa2;
+  box-shadow:0 10px 24px rgba(197,107,94,.11);
+}
+.negative-drawer{
+  border-color:#e3aaa2 !important;
+  background:#fff7f5;
+}
+.negative-drawer summary{
+  background:#fff7f5;
+}
+.stock-alert.danger{
+  background:#fde9e6;
+  color:#a35345;
+}
+
+
+/* v2.4 estoque unificado por sabor */
+.stock-dashboard.unified{
+  display:grid;
+  gap:10px;
+}
+.product-stock-drawer{
+  display:block;
+  padding:0;
+  overflow:hidden;
+}
+.product-stock-drawer summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px;
+}
+.product-stock-drawer summary::-webkit-details-marker{display:none}
+.product-summary-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.product-summary-top strong{
+  display:block;
+  font-size:14px;
+}
+.product-summary-top b{
+  display:block;
+  margin-top:14px;
+  font-size:28px;
+  letter-spacing:-.05em;
+}
+.product-summary-top small,
+.product-summary-top em{
+  display:block;
+}
+.product-summary-top small{
+  color:var(--ink);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+.product-summary-top em{
+  color:var(--ink-soft);
+  font-size:12px;
+  font-style:normal;
+  margin-top:6px;
+}
+.product-stock-body{
+  border-top:1px dashed var(--line);
+  padding:12px;
+}
+.mini-lots{
+  display:grid;
+  gap:6px;
+}
+.mini-lot{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.mini-lot strong{
+  display:block;
+}
+.mini-lot small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.negative-sale{
+  background:#fff7f5;
+  border-color:#e3aaa2;
+}
+
+
+/* v2.5 financeiro mensal limpo */
+.finance-main-card{
+  background:linear-gradient(135deg,#fff,#f5f1e8);
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:16px;
+  box-shadow:var(--shadow);
+  margin-bottom:10px;
+}
+.finance-main-card small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.finance-main-card b{
+  display:block;
+  margin:8px 0 5px;
+  font-size:34px;
+  letter-spacing:-.06em;
+}
+.finance-main-card span{
+  display:block;
+  color:var(--ink-soft);
+  font-size:12px;
+  line-height:1.4;
+}
+.finance-today-card{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:13px 14px;
+  box-shadow:var(--shadow);
+}
+.finance-today-card strong{
+  display:block;
+}
+.finance-today-card small,
+.finance-today-card span{
+  display:block;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.finance-today-card b{
+  display:block;
+  font-size:20px;
+  letter-spacing:-.04em;
+}
+.month-list{
+  display:grid;
+  gap:8px;
+}
+.month-drawer{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.month-drawer summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+.month-drawer summary::-webkit-details-marker{display:none}
+.month-drawer summary strong{
+  display:block;
+  text-transform:capitalize;
+}
+.month-drawer summary small{
+  display:block;
+  margin-top:4px;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.month-total{
+  text-align:right;
+  min-width:96px;
+}
+.month-total b{
+  display:block;
+  font-size:18px;
+  letter-spacing:-.04em;
+}
+.month-total span{
+  color:var(--ink-soft);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+.month-kpis{
+  grid-template-columns:repeat(3,1fr);
+}
+.inner-drawer{
+  margin-top:10px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  background:#fff;
+}
+.inner-drawer summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px;
+  font-weight:800;
+}
+.inner-drawer summary::-webkit-details-marker{display:none}
+.inner-drawer .compact-list{
+  padding:0 10px 10px;
+}
+@media(max-width:390px){
+  .month-kpis{grid-template-columns:1fr 1fr}
+}
+
+
+/* v2.6 clientes em gaveta + logo nova */
+.client-drawer{padding:0;overflow:hidden}
+.client-drawer-summary{list-style:none;cursor:pointer;padding:14px}
+.client-drawer-summary::-webkit-details-marker{display:none}
+.client-drawer-summary::marker{display:none}
+.client-drawer[open] .client-drawer-summary{border-bottom:1px dashed var(--line)}
+.client-drawer-body{padding:12px 14px 14px;margin-top:0;border-top:0}
+.client-drawer-body p{margin:0 0 8px;color:var(--ink)}
+.client-drawer-body p:last-of-type{margin-bottom:12px}
+
+
+/* v2.7 busca elegante em clientes */
+.client-search-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:10px;
+  margin:12px 0;
+  box-shadow:var(--shadow);
+}
+.search-wrap{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:8px;
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:0 8px;
+}
+.search-wrap:focus-within{
+  border-color:var(--brand-dark);
+  box-shadow:0 0 0 3px rgba(110,127,59,.10);
+  background:#fff;
+}
+.search-wrap input{
+  border:0;
+  background:transparent;
+  box-shadow:none;
+  min-height:46px;
+  padding:10px 4px;
+}
+.search-wrap input:focus{
+  border:0;
+  box-shadow:none;
+}
+.search-icon{
+  color:var(--ink-soft);
+  font-weight:900;
+  font-size:20px;
+  line-height:1;
+  padding-left:4px;
+}
+.search-clear{
+  min-height:34px;
+  width:34px;
+  padding:0;
+  border-radius:50%;
+  background:#fff;
+  color:var(--ink-soft);
+  border:1px solid var(--line);
+  font-size:22px;
+  line-height:1;
+}
+.client-search-card small{
+  display:block;
+  margin:8px 4px 0;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+
+
+/* v2.8 histórico e cobranças dentro de clientes */
+.client-history{
+  margin-top:14px;
+  border-top:1px dashed var(--line);
+  padding-top:12px;
+}
+.client-history-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:12px;
+}
+.client-history-summary > div{
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.client-history-summary small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.client-history-summary b{
+  display:block;
+  margin-top:4px;
+  font-size:18px;
+}
+.client-ticket-list{
+  display:grid;
+  gap:8px;
+}
+.client-ticket{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.client-ticket.em_aberto,
+.client-ticket.parcial{
+  border-color:#ead39f;
+  background:#fffaf0;
+}
+.client-ticket.pago{
+  border-color:#cfdfd1;
+  background:#f5fbf5;
+}
+.client-ticket.cancelado{
+  border-color:#edc8c2;
+  background:#fff7f5;
+}
+.client-ticket-top{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  align-items:flex-start;
+}
+.client-ticket-top strong{
+  display:block;
+}
+.client-ticket-top small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:12px;
+  margin-top:2px;
+}
+.client-ticket-top b{
+  display:block;
+  font-size:16px;
+  letter-spacing:-.03em;
+}
+.client-ticket-actions{
+  display:flex;
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:10px;
+}
+.client-paid-drawer{
+  margin-top:10px;
+}
+@media(max-width:390px){
+  .client-history-summary{grid-template-columns:1fr}
+  .client-ticket-top{flex-direction:column}
+  .client-ticket-top > div:last-child{text-align:left!important}
+}
+
+
+/* v3.0 dinheiro unificado */
+.money-drawer{
+  margin-bottom:12px;
+}
+.money-drawer > summary{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.money-drawer > summary strong{
+  display:block;
+}
+.money-drawer > summary small{
+  display:block;
+  margin-top:4px;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.money-summary-value{
+  text-align:right;
+  min-width:104px;
+}
+.money-summary-value b{
+  display:block;
+  font-size:20px;
+  letter-spacing:-.04em;
+}
+.money-summary-value span{
+  display:block;
+  color:var(--ink-soft);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+}
+.checkout-card input#saleClient::placeholder{
+  color:#9b9188;
+}
+
+
+/* v3.2 visões mensais */
+.monthly-switch{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:0;
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:4px;
+  margin:10px 10px 12px;
+  overflow:hidden;
+}
+.monthly-switch input{
+  display:none;
+}
+.monthly-switch label{
+  position:relative;
+  z-index:2;
+  min-height:36px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:800;
+  color:var(--ink-soft);
+  cursor:pointer;
+}
+.monthly-switch span{
+  position:absolute;
+  z-index:1;
+  top:4px;
+  bottom:4px;
+  left:4px;
+  width:calc((100% - 8px) / 3);
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:999px;
+  box-shadow:var(--shadow);
+  transition:.2s ease;
+}
+.monthly-switch input:nth-of-type(1):checked ~ span{transform:translateX(0)}
+.monthly-switch input:nth-of-type(2):checked ~ span{transform:translateX(100%)}
+.monthly-switch input:nth-of-type(3):checked ~ span{transform:translateX(200%)}
+.monthly-switch input:checked + label{
+  color:var(--brand-text);
+}
+.monthly-view-panel{
+  padding:0 10px 10px;
+}
+.monthly-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.monthly-row strong{
+  display:block;
+}
+.monthly-row small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:12px;
+  margin-top:3px;
+}
+.monthly-row b{
+  display:block;
+  font-size:16px;
+  letter-spacing:-.03em;
+}
+
+
+/* v3.3 financeiro reorganizado */
+.finance-day-drawer{
+  margin-bottom:12px;
+}
+.today-kpis{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:10px;
+}
+.today-kpis > div{
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.today-kpis small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.today-kpis b{
+  display:block;
+  margin-top:4px;
+  font-size:16px;
+  letter-spacing:-.03em;
+}
+.compact-finance-card{
+  margin-bottom:12px;
+}
+.compact-finance-card b{
+  font-size:30px;
+}
+@media(max-width:390px){
+  .today-kpis{grid-template-columns:1fr}
+}
+
+
+/* v3.4 controle de gastos no financeiro */
+.expense-control{
+  margin-top:12px;
+}
+.expense-control > summary{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.expense-control > summary strong{
+  display:block;
+}
+.expense-control > summary small{
+  display:block;
+  margin-top:4px;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.expense-accordion{
+  margin-bottom:12px;
+  box-shadow:none;
+}
+.expense-cats{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+}
+.expense-cats > div{
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.expense-cats small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.expense-cats b{
+  display:block;
+  margin-top:4px;
+  font-size:16px;
+}
+.expense-list{
+  display:grid;
+  gap:8px;
+}
+.expense-row{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.expense-row strong{
+  display:block;
+}
+.expense-row small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:12px;
+  margin-top:2px;
+}
+.expense-row b{
+  display:block;
+  margin-bottom:6px;
+  font-size:16px;
+  letter-spacing:-.03em;
+}
+@media(max-width:390px){
+  .expense-cats{grid-template-columns:1fr}
+  .expense-row{flex-direction:column}
+  .expense-row > div:last-child{text-align:left!important}
+}
+
+
+/* v3.5 layout financeiro + venda avulsa */
+.active-mini{background:var(--brand-dark)!important;color:#fff!important;border:1px solid var(--brand-dark)!important}
+.avulsa-box{padding:12px 14px;border-radius:14px;border:1px dashed var(--line);background:var(--bg-soft)}
+.avulsa-box strong{display:block;font-size:14px}
+.avulsa-box small{display:block;color:var(--ink-soft);margin-top:4px;font-size:12px}
+.finance-area{margin-bottom:16px;padding:12px;border-radius:22px;border:1px solid var(--line)}
+.finance-area-title{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin:0 2px 10px}
+.finance-area-title strong{display:block;font-size:14px;letter-spacing:-.01em}
+.finance-area-title span{display:block;color:var(--ink-soft);font-size:12px;margin-top:2px}
+.sales-area{background:#faf8f2}
+.receive-area{background:#f8fbf4}
+.expense-area{background:#fff7f5}
+.history-area{background:#f8f8fb}
+.sales-drawer,.result-card{border-color:#ead8b8}
+.receive-drawer{border-color:#cddfb8}
+.expense-drawer{border-color:#ebc4be}
+.sales-drawer > summary .money-summary-value b,.result-card b{color:#6c5328}
+.receive-drawer > summary .money-summary-value b{color:#56722c}
+.expense-drawer > summary .money-summary-value b{color:#9d5146}
+.history-area .month-drawer{border-color:#dadcf0}
+.finance-area .finance-main-card,.finance-area .money-drawer,.finance-area .expense-control,.finance-area .finance-day-drawer{margin-bottom:0}
+.finance-area:last-of-type{margin-bottom:12px}
+
+
+/* v3.6 reforma visual geral */
+:root{
+  --radius:20px;
+  --shadow:0 10px 26px rgba(72,55,42,.075);
+  --shadow-soft:0 6px 18px rgba(72,55,42,.045);
+}
+.app-header{
+  cursor:pointer;
+  transition:background .18s ease, transform .18s ease;
+}
+.app-header:active{
+  transform:scale(.995);
+}
+.brand-logo{
+  width:48px;
+  height:48px;
+  padding:2px;
+  border:2px solid rgba(255,255,255,.8);
+  box-shadow:0 4px 16px rgba(72,55,42,.10);
+}
+.app-header strong{
+  font-size:15.5px;
+}
+.app-header small{
+  font-size:12px;
+}
+.screen-title{
+  font-size:30px;
+  margin-bottom:14px;
+}
+.card,
+.item,
+.pill-box,
+.accordion,
+.month-drawer,
+.client-drawer,
+.product-stock-drawer{
+  box-shadow:var(--shadow-soft);
+}
+.checkout-card{
+  border-radius:22px;
+  padding:15px;
+}
+.quick-products{
+  gap:10px;
+  margin-bottom:12px;
+}
+.quick-product{
+  min-height:88px;
+  border-radius:20px;
+  box-shadow:var(--shadow-soft);
+}
+.quick-product b{
+  font-size:14px;
+}
+.clean-ticket{
+  background:linear-gradient(180deg,#fff,#fdfaf5);
+}
+.total-box{
+  margin-top:12px;
+  border-radius:20px;
+}
+.checkout-actions{
+  position:sticky;
+  bottom:calc(var(--navH) + 10px);
+  z-index:8;
+  background:rgba(248,245,239,.88);
+  backdrop-filter:blur(12px);
+  padding:8px;
+  border-radius:20px;
+  border:1px solid var(--line);
+}
+.avulsa-box{
+  background:linear-gradient(135deg,#fff,#f5f1e8);
+}
+.finance-area{
+  margin-bottom:16px;
+  padding:13px;
+  border-radius:24px;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+}
+.finance-area-title{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:10px;
+  margin:0 2px 12px;
+}
+.finance-area-title strong,
+.history-title h2{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.finance-area-title strong{
+  font-size:14px;
+}
+.finance-area-title span{
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.area-icon{
+  width:26px;
+  height:26px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.74);
+  font-size:14px;
+  box-shadow:0 2px 8px rgba(72,55,42,.05);
+}
+.sales-area{
+  background:linear-gradient(180deg,#fffaf1,#f8f3e8);
+  border-color:#ead8b8;
+}
+.receive-area{
+  background:linear-gradient(180deg,#fbfff8,#f1f8e9);
+  border-color:#cddfb8;
+}
+.expense-area{
+  background:linear-gradient(180deg,#fffafa,#fff0ee);
+  border-color:#ebc4be;
+}
+.history-area{
+  background:linear-gradient(180deg,#fbfbff,#f3f4fa);
+  border-color:#dadcf0;
+}
+.finance-area .accordion,
+.finance-area .finance-main-card,
+.finance-area .month-drawer{
+  box-shadow:none;
+}
+.finance-day-drawer > summary,
+.money-drawer > summary,
+.expense-control > summary,
+.month-drawer > summary{
+  padding:15px;
+}
+.money-summary-value b,
+.month-total b{
+  font-size:19px;
+}
+.today-kpis,
+.expense-cats,
+.mini-kpis{
+  gap:10px;
+}
+.today-kpis > div,
+.expense-cats > div,
+.mini-kpis > div{
+  border-radius:16px;
+  background:#fff;
+}
+.charge-ticket,
+.ticket-mini,
+.monthly-row,
+.expense-row{
+  border-radius:16px;
+  box-shadow:0 2px 10px rgba(72,55,42,.03);
+}
+.charge-actions,
+.client-ticket-actions{
+  gap:7px;
+}
+.bottom-nav{
+  box-shadow:0 -6px 22px rgba(72,55,42,.07);
+}
+.bottom-nav button{
+  border-radius:18px;
+}
+.bottom-nav button.active{
+  box-shadow:inset 0 0 0 1px rgba(110,127,59,.08);
+}
+@media(max-width:430px){
+  .screen-title{font-size:28px}
+  .finance-area{padding:10px}
+  .checkout-actions{bottom:calc(var(--navH) + 8px)}
+}
+
+/* v3.7 contas dentro do financeiro + receitas */
+.accounts-area{background:linear-gradient(180deg,#f9fbff,#eef4ff);border-color:#cbd9f0}
+.account-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.account-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:12px;box-shadow:var(--shadow-soft)}
+.account-card small{display:block;color:var(--ink-soft);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.account-card b{display:block;margin-top:6px;font-size:22px;letter-spacing:-.04em}
+.account-card span{display:block;margin-top:2px;color:var(--ink-soft);font-size:11px}
+.account-moves{display:grid;gap:8px}
+.account-move{display:flex;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px}
+.account-move.saida{background:#fff7f5;border-color:#edc8c2}
+.account-move strong{display:block}.account-move small{display:block;color:var(--ink-soft);font-size:12px;margin-top:2px}.account-move b{display:block;margin-bottom:6px}
+.recipes-block{margin:12px 0}
+.recipe-drawer{box-shadow:none}
+.recipe-kpis{grid-template-columns:repeat(3,1fr)}
+.recipe-ingredients{display:grid;gap:8px}
+.recipe-ingredients>div{display:flex;justify-content:space-between;gap:12px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px}
+.recipe-ingredients b{white-space:nowrap}
+@media(max-width:430px){.account-grid,.recipe-kpis{grid-template-columns:1fr}.account-move{flex-direction:column}.account-move>div:last-child{text-align:left!important}}
+
+
+/* v3.9 criação de ficha técnica */
+.recipe-form{
+  margin-bottom:12px;
+}
+.recipe-ing-list{
+  display:grid;
+  gap:8px;
+}
+.recipe-ing-row{
+  display:grid;
+  grid-template-columns:1fr 110px auto;
+  gap:8px;
+  align-items:end;
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:10px;
+}
+.recipe-ing-row button{
+  min-width:38px;
+  padding-left:0;
+  padding-right:0;
+}
+@media(max-width:430px){
+  .recipe-ing-row{
+    grid-template-columns:1fr;
+  }
+  .recipe-ing-row button{
+    width:100%;
+  }
+}
+
+
+/* v4.0 limpeza geral */
+.client-charge-body .charge-section.paid{
+  display:none;
+}
+.clean-note{
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.receive-area .client-charge-summary small::after{
+  content:" • foco em cobrança";
+  color:var(--ink-soft);
+}
+.expense-control:not([open]),
+.month-drawer:not([open]),
+.recipes-block:not([open]){
+  box-shadow:var(--shadow-soft);
+}
+.finance-area .section-head.history-title{
+  margin-top:0;
+}
+.history-area .month-list{
+  gap:8px;
+}
+.accounts-area details summary,
+.expense-area details summary,
+.history-area details summary{
+  min-height:48px;
+}
+.recipes-block{
+  margin-top:12px;
+}
+
+
+/* v4.1 pagamentos em gaveta + ficha técnica */
+.accounts-area.compact-area{
+  padding:0;
+  overflow:hidden;
+}
+.payments-drawer{
+  margin:0;
+  border:0;
+  box-shadow:none;
+  background:transparent;
+}
+.payments-drawer > summary{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px;
+}
+.payments-drawer > summary .finance-area-title{
+  margin:0;
+}
+.clean-title{
+  display:block;
+}
+.clean-title strong{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.clean-title span{
+  display:block;
+  margin-top:4px;
+}
+.payments-drawer[open] > summary{
+  border-bottom:1px dashed var(--line);
+}
+.recipes-block > summary{
+  font-weight:800;
+}
+.recipe-form[open]{
+  border-color:#d8c6a9;
+}
+
+
+/* v4.2 limpeza com links */
+.quick-links{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:-4px 0 12px;
+}
+.quick-links .mini{
+  background:#fff;
+}
+.mini-link-row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px dashed var(--line);
+}
+.charge-ticket.read-only .charge-actions{
+  display:none;
+}
+.charge-ticket.read-only{
+  background:#fff;
+}
+.client-charge .charge-quick-actions{
+  flex-wrap:wrap;
+}
+.product-stock-body > .mini-link-row{
+  justify-content:flex-start;
+}
+@media(max-width:430px){
+  .mini-link-row{justify-content:flex-start}
+}
+
+
+/* v4.4 histórico de gastos */
+.expense-history{
+  margin-top:12px;
+  border-color:#ebc4be;
+}
+.expense-history > summary{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+}
+.expense-history > summary strong{
+  display:block;
+}
+.expense-history > summary small{
+  display:block;
+  margin-top:4px;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.expense-month-drawer{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+}
+.expense-month-drawer summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+.expense-month-drawer summary::-webkit-details-marker{display:none}
+.expense-month-drawer summary strong{
+  display:block;
+  text-transform:capitalize;
+}
+.expense-month-drawer summary small{
+  display:block;
+  margin-top:4px;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.expense-month-drawer .drawer-content{
+  border-top:1px dashed var(--line);
+  padding:12px;
+}
+.compact-cats{
+  margin-bottom:12px;
+}
+
+
+/* v4.5 financeiro enxuto */
+.quick-links{
+  display:none!important;
+}
+.expense-area .expense-history{
+  margin-top:12px;
+  border-color:var(--line);
+  box-shadow:none;
+}
+.expense-current-list{
+  margin-top:12px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+}
+.expense-current-list summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px;
+  font-weight:800;
+}
+.expense-current-list summary::-webkit-details-marker{
+  display:none;
+}
+.expense-current-list .expense-list{
+  padding:0 10px 10px;
+}
+.compact-history > summary{
+  min-height:48px;
+}
+.compact-history .expense-month-drawer{
+  box-shadow:none;
+}
+.expense-area .expense-control{
+  margin-bottom:0;
+}
+.finance-area-title span{
+  text-align:right;
+}
+.finance-area{
+  margin-bottom:14px;
+}
+
+
+/* v4.6 otimização e segurança */
+.finance-top-summary{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin:-4px 0 12px;
+}
+.finance-top-summary > div{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:13px;
+  box-shadow:var(--shadow-soft);
+}
+.finance-top-summary small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.finance-top-summary b{
+  display:block;
+  margin-top:6px;
+  font-size:23px;
+  letter-spacing:-.05em;
+}
+.finance-top-summary span{
+  display:block;
+  margin-top:2px;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.recipe-note{
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+  margin:10px 0;
+}
+.recipe-note strong{
+  display:block;
+  font-size:12px;
+}
+.recipe-note small{
+  display:block;
+  margin-top:4px;
+  color:var(--ink-soft);
+  line-height:1.4;
+}
+.clean-note{
+  display:block;
+  color:var(--ink-soft);
+  font-size:12px;
+  line-height:1.4;
+  text-align:center;
+}
+.expense-row .mini,
+.account-move .mini{
+  margin-left:4px;
+}
+@media(max-width:430px){
+  .finance-top-summary{grid-template-columns:1fr}
+}
+
+
+/* v4.7 remove resumo duplicado do financeiro */
+.finance-top-summary{
+  display:none!important;
+}
+
+
+/* v4.8 relatórios */
+.reports-area{
+  background:linear-gradient(180deg,#fbfbff,#f0f2fb);
+  border-color:#dadcf0;
+}
+.reports-drawer{
+  margin:0;
+  border:0;
+  background:transparent;
+  box-shadow:none;
+}
+.reports-drawer > summary{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding:14px;
+}
+.report-actions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:12px;
+}
+.report-month-drawer{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+}
+.report-month-drawer summary{
+  list-style:none;
+  cursor:pointer;
+  padding:14px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+.report-month-drawer summary::-webkit-details-marker{
+  display:none;
+}
+.report-month-drawer summary strong{
+  display:block;
+  text-transform:capitalize;
+}
+.report-month-drawer summary small{
+  display:block;
+  margin-top:4px;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.report-month-drawer .drawer-content{
+  border-top:1px dashed var(--line);
+  padding:12px;
+}
+@media(max-width:430px){
+  .report-actions{grid-template-columns:1fr}
+}
+
+
+/* v4.9 produtos editáveis */
+.products-block{
+  margin:12px 0;
+}
+.product-admin-list{
+  display:grid;
+  gap:8px;
+}
+.product-admin-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.product-admin-row.inactive{
+  opacity:.68;
+  background:#f7f5f1;
+}
+.product-admin-row strong{
+  display:block;
+}
+.product-admin-row small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:12px;
+  margin-top:2px;
+}
+.product-admin-row .mini{
+  margin-left:4px;
+}
+.custom-product{
+  background:linear-gradient(135deg,#f7f3ff,#f1f7ff)!important;
+  border-color:#d8d8ea!important;
+}
+@media(max-width:430px){
+  .product-admin-row{
+    flex-direction:column;
+  }
+  .product-admin-row > div:last-child{
+    text-align:left!important;
+  }
+}
+
+
+/* v5.0 controle de produto sem estoque */
+.product-pick.out-stock{
+  opacity:.78;
+  border-style:dashed;
+}
+.product-pick.out-stock .xy{
+  background:#fff1ef;
+  color:#9d5146;
+}
+.product-admin-row small{
+  line-height:1.35;
+}
+
+
+/* v5.1 mostrar botão na venda */
+.product-pick.out-stock{
+  opacity:1;
+  border-style:solid;
+}
+
+
+/* v5.2 relatórios e estoque mais limpos */
+.stock-guide{
+  background:#fff;
+  border:1px solid var(--line);
+  color:var(--ink-soft);
+  border-radius:16px;
+  padding:10px 12px;
+  font-size:12px;
+  margin:-4px 0 12px;
+  box-shadow:var(--shadow-soft);
+}
+.clean-report-kpis,
+.clean-stock-kpis{
+  grid-template-columns:repeat(3,1fr);
+}
+.compact-report-actions{
+  grid-template-columns:1fr!important;
+}
+.reports-area .inner-drawer{
+  margin-top:10px;
+}
+.product-stock-body .inner-drawer{
+  margin-top:12px;
+}
+.product-stock-body .section-head.compact-head{
+  margin-top:12px;
+}
+@media(max-width:430px){
+  .clean-report-kpis,
+  .clean-stock-kpis{grid-template-columns:1fr}
+}
+
+
+/* v5.3 organização final */
+.history-area{
+  display:none!important;
+}
+.products-block > summary,
+.recipes-block > summary{
+  font-weight:900;
+}
+.clean-client-summary .client-metrics{
+  margin-top:6px;
+}
+.stock-guide{
+  line-height:1.35;
+}
+.reports-area .section-head.compact h2::after{
+  content:"";
+}
+.product-stock-body .inner-drawer summary{
+  font-weight:900;
+}
+.client-drawer-summary .price{
+  font-size:18px;
+}
+
+
+/* v6.0 final operacional */
+.final-guide{
+  margin-top:12px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+}
+.final-guide summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px;
+  font-weight:900;
+}
+.final-guide summary::-webkit-details-marker{display:none}
+.final-guide-list{
+  display:grid;
+  gap:8px;
+  padding:0 12px 12px;
+}
+.final-guide-list span{
+  display:block;
+  background:var(--bg-soft);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:9px 10px;
+  color:var(--ink-soft);
+  font-size:12px;
+  line-height:1.35;
+}
+
+
+/* v6.3 relatórios mais limpos */
+.report-primary-action{
+  margin-bottom:10px;
+}
+.report-primary-action button{
+  width:100%;
+}
+.report-tools{
+  margin-bottom:12px;
+}
+.report-section-title{
+  margin-top:4px;
+}
+.report-simple-summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:10px;
+}
+.report-simple-summary > div{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.report-simple-summary small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.report-simple-summary b{
+  display:block;
+  margin-top:4px;
+  font-size:16px;
+  letter-spacing:-.03em;
+}
+.report-detail-drawer{
+  margin-top:10px;
+}
+.report-month-actions{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px dashed var(--line);
+}
+.report-empty-month{
+  text-align:center;
+  padding:14px;
+}
+.clean-report-month:not([open]) .drawer-content{
+  display:none;
+}
+@media(max-width:430px){
+  .report-simple-summary{grid-template-columns:1fr}
+  .report-month-actions{justify-content:flex-start}
+}
+
+
+/* v6.4 relatório de vendas resumido e completo */
+.executive-report{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px;
+  margin-bottom:10px;
+}
+.report-metric{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.report-metric small,
+.report-highlights small{
+  display:block;
+  color:var(--ink-soft);
+  font-size:10.5px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.report-metric b{
+  display:block;
+  margin-top:4px;
+  font-size:17px;
+  letter-spacing:-.03em;
+}
+.report-metric span{
+  display:block;
+  margin-top:2px;
+  color:var(--ink-soft);
+  font-size:11.5px;
+}
+.report-highlights{
+  display:grid;
+  gap:8px;
+  margin:10px 0;
+}
+.report-highlights > div{
+  background:linear-gradient(180deg,#fff,#fdfaf5);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:10px;
+}
+.report-highlights b{
+  display:block;
+  margin-top:4px;
+  font-size:14px;
+  line-height:1.25;
+}
+@media(max-width:430px){
+  .executive-report{grid-template-columns:1fr 1fr}
+}
+
+
+/* v6.5 relatório sem duplicidade visual */
+.report-highlights.single-highlight{
+  grid-template-columns:1fr;
+}
+.report-detail-drawer > summary{
+  font-weight:900;
+}
+
+
+/* v6.6 relatórios completos e clientes clean */
+.full-report{
+  grid-template-columns:repeat(2,1fr);
+}
+.full-report .report-metric b{
+  font-size:16px;
+  line-height:1.18;
+}
+.clean-client-card .client-drawer-summary{
+  padding:13px 14px;
+}
+.clean-client-summary small{
+  display:block;
+  margin-top:4px;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.clean-client-body{
+  padding-top:10px;
+}
+.client-quick-data{
+  display:grid;
+  gap:6px;
+  margin-bottom:10px;
+  color:var(--ink-soft);
+  font-size:13px;
+}
+.client-clean-actions{
+  justify-content:flex-end;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:10px;
+  padding-bottom:10px;
+  border-bottom:1px dashed var(--line);
+}
+.client-history-clean{
+  margin-top:0;
+  padding-top:0;
+  border-top:0;
+}
+.client-history-clean .inner-drawer{
+  margin-top:8px;
+}
+.client-history-clean .inner-drawer summary{
+  font-weight:900;
+}
+.client-history-summary{
+  display:none!important;
+}
+.report-month-actions{
+  justify-content:flex-start;
+}
+@media(max-width:430px){
+  .full-report{grid-template-columns:1fr 1fr}
+}
+
+
+/* v6.7 relatório como controle mensal */
+.monthly-control-summary{
+  grid-template-columns:repeat(2,1fr);
+}
+.monthly-control-block{
+  margin-top:10px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  background:#fff;
+}
+.monthly-control-block > summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px;
+}
+.monthly-control-block > summary::-webkit-details-marker{display:none}
+.monthly-control-block > summary strong{
+  display:block;
+  font-size:15px;
+}
+.monthly-control-block > summary small{
+  display:block;
+  color:var(--ink-soft);
+  margin-top:3px;
+  font-size:12px;
+}
+.monthly-control-block > .list,
+.monthly-control-block > .empty-inline,
+.monthly-control-block > .client-sales-month{
+  padding:0 10px 10px;
+}
+.control-row{
+  box-shadow:none;
+}
+.client-sales-month{
+  margin:0 10px 10px;
+}
+.client-sales-month summary{
+  font-size:14px;
+}
+.control-report-month .report-month-actions{
+  margin-top:12px;
+}
+@media(max-width:430px){
+  .monthly-control-summary{grid-template-columns:1fr 1fr}
+}
+
+
+/* v6.9 relatório corrigido por dia e cliente */
+.day-report-row{
+  padding:0;
+  display:block;
+  overflow:hidden;
+}
+.day-report-row > summary{
+  list-style:none;
+  cursor:pointer;
+  padding:10px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+}
+.day-report-row > summary::-webkit-details-marker{display:none}
+.day-sales-detail{
+  border-top:1px dashed var(--line);
+  padding:10px;
+  background:var(--bg-soft);
+}
+.day-client-drawer{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  overflow:hidden;
+  margin-bottom:8px;
+}
+.day-client-drawer > summary{
+  list-style:none;
+  cursor:pointer;
+  padding:10px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+}
+.day-client-drawer > summary::-webkit-details-marker{display:none}
+.client-report-row{
+  width:100%;
+  border:1px solid var(--line);
+  cursor:pointer;
+  text-align:left;
+  font:inherit;
+}
+.client-report-row:hover{
+  filter:brightness(.98);
+}
+
+
+/* v7.1 UI Boutique — loja de tortinhas com frutas naturais */
+:root{
+  --bg:#fbf6ee;
+  --bg-soft:#fffaf2;
+  --card:#fffdf9;
+  --ink:#4c3426;
+  --ink-soft:#8b7162;
+  --line:#ecdcc9;
+  --brand:#d8a63a;
+  --brand-dark:#8f5c40;
+  --brand-text:#6c4731;
+  --maracuja:#f4c94d;
+  --maracuja-soft:#fff3bf;
+  --limao:#bcd766;
+  --limao-soft:#eef8cb;
+  --chocolate:#b97d4e;
+  --chocolate-soft:#f3ddca;
+  --ok:#5d9157;
+  --warn:#d6992d;
+  --danger:#ca6d60;
+  --radius:22px;
+  --shadow:0 18px 40px rgba(110,72,49,.09);
+  --shadow-soft:0 8px 22px rgba(110,72,49,.07);
+}
+html,body{
+  background:
+    radial-gradient(circle at top left, rgba(244,201,77,.18), transparent 26%),
+    radial-gradient(circle at top right, rgba(188,215,102,.16), transparent 22%),
+    radial-gradient(circle at 50% 100%, rgba(185,125,78,.10), transparent 26%),
+    var(--bg);
+  color:var(--ink);
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255,255,255,.55), transparent 12%),
+    radial-gradient(circle at 88% 20%, rgba(255,255,255,.45), transparent 10%),
+    radial-gradient(circle at 20% 78%, rgba(255,255,255,.32), transparent 11%);
+  opacity:.9;
+}
+.app-header{
+  background:linear-gradient(180deg, rgba(255,251,246,.96), rgba(252,245,235,.93));
+  border-bottom:1px solid rgba(236,220,201,.9);
+  box-shadow:0 8px 26px rgba(111,75,51,.05);
+}
+.brand-logo{
+  width:54px;
+  height:54px;
+  padding:3px;
+  border:2px solid rgba(255,255,255,.88);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.88), rgba(255,251,244,.95)),
+    #fff;
+  box-shadow:0 10px 26px rgba(111,75,51,.10);
+}
+.app-header strong{
+  font-size:17px;
+  color:#5a3d2d;
+}
+.app-header small{
+  color:#967765;
+  font-size:12px;
+}
+.app-shell{
+  max-width:780px;
+  padding:18px 14px 26px;
+}
+.screen-title{
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:33px;
+  letter-spacing:-.04em;
+  color:#5a3b2a;
+  margin-bottom:14px;
+}
+.sub{
+  color:#957b69;
+  font-size:13px;
+}
+
+.card,.item,.pill-box,.accordion,.month-drawer,.client-drawer,.product-stock-drawer,.report-month-drawer,.client-charge,.lot-drawer{
+  background:rgba(255,253,249,.96);
+  border:1px solid rgba(236,220,201,.92);
+  box-shadow:var(--shadow-soft);
+}
+.card,.item,.pill-box{
+  border-radius:24px;
+}
+.section-head h2,
+.finance-area-title strong,
+.report-month-drawer summary strong,
+.client-summary strong,
+.product-stock-drawer strong,
+.lot-drawer summary strong{
+  color:#5b3d2c;
+}
+
+input,select,textarea{
+  background:#fffdf9;
+  border:1px solid #ead7c2;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#c78d56;
+  box-shadow:0 0 0 3px rgba(199,141,86,.13);
+}
+
+button{
+  background:linear-gradient(180deg,#a96f4f,#8f5c40);
+  box-shadow:0 10px 18px rgba(143,92,64,.16);
+}
+button:hover{
+  filter:brightness(1.02);
+}
+.ghost{
+  background:linear-gradient(180deg,#fffdf9,#fbf5ec);
+  color:#754f38;
+  border:1px solid #ead7c2;
+  box-shadow:none;
+}
+.ok{
+  background:linear-gradient(180deg,#6aa165,#5b8f57);
+}
+.danger{
+  background:linear-gradient(180deg,#fffaf9,#fff1ee);
+  color:#b15f53;
+  border:1px solid #efcbc5;
+}
+.big-action{
+  background:linear-gradient(180deg,#a66e4e,#86553c);
+  box-shadow:0 14px 22px rgba(134,85,60,.18);
+}
+.chip{
+  background:#fffdf8;
+  border-color:#ead8c4;
+  color:#6f4d39;
+}
+.chip.active{
+  background:linear-gradient(180deg,#9f6849,#89563c);
+  border-color:#89563c;
+}
+.chip.okchip.active{
+  background:linear-gradient(180deg,#6aa165,#578753);
+  border-color:#578753;
+}
+
+.quick-products{
+  gap:12px;
+}
+.quick-products .product-pick{
+  min-height:128px;
+  padding:14px 12px;
+  border-radius:24px;
+  box-shadow:0 16px 26px rgba(101,72,51,.10);
+}
+.product-pick{
+  border:1px solid rgba(236,220,201,.94);
+  color:#5d4030;
+}
+.product-pick .plus{
+  background:rgba(255,255,255,.72);
+  color:#754d36;
+  box-shadow:0 5px 12px rgba(117,77,54,.12);
+}
+.product-pick b{
+  font-size:14px;
+  color:#5d3f2f;
+}
+.product-pick small,
+.product-pick em{
+  color:#8f7463;
+}
+.product-pick .xy{
+  color:#523628;
+}
+.product-pick.maracuja{
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,.75), transparent 28%),
+    linear-gradient(180deg,#fff8d8,#fff0b3);
+}
+.product-pick.limao{
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,.75), transparent 28%),
+    linear-gradient(180deg,#f6fbdc,#e8f5be);
+}
+.product-pick.chocolate{
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,.75), transparent 28%),
+    linear-gradient(180deg,#f9e8da,#f1d7c0);
+}
+.product-pick.custom-product{
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,.75), transparent 28%),
+    linear-gradient(180deg,#fff6f2,#f8ece3)!important;
+  border-color:#ead9cb!important;
+}
+
+.checkout-card,
+.ticket-box,
+.money-drawer,
+.finance-main-card,
+.finance-day-drawer,
+.expense-control,
+.report-month-drawer{
+  border-radius:24px;
+}
+.checkout-actions{
+  background:rgba(255,249,241,.93);
+  border:1px solid #ead7c2;
+  box-shadow:0 12px 28px rgba(95,70,50,.10);
+}
+
+.finance-area{
+  border-radius:26px;
+  border:1px solid rgba(234,215,194,.95);
+  padding:14px;
+  box-shadow:var(--shadow-soft);
+}
+.sales-area{
+  background:linear-gradient(180deg,#fffaf0,#fff7eb);
+}
+.receive-area{
+  background:linear-gradient(180deg,#fbfff5,#f5fbeb);
+}
+.expense-area{
+  background:linear-gradient(180deg,#fffaf8,#fff4f1);
+}
+.reports-area{
+  background:linear-gradient(180deg,#fffdf8,#fdf7ef);
+  border-color:#ecdcc9;
+}
+.finance-area-title span,
+.money-summary-value span{
+  color:#9a7a66;
+}
+.money-summary-value b,
+.price,
+.client-ticket b,
+.kpi b,
+.report-metric b{
+  color:#5b3a2a;
+}
+
+.kpi,.today-kpis>div,.finance-summary>div,.report-metric,.monthly-row,.expense-cats>div,.product-admin-row{
+  background:linear-gradient(180deg,#fffefc,#fffaf4);
+  border:1px solid #ebdac7;
+}
+.report-metric span,
+.monthly-row small,
+.kpi small,
+.today-kpis small{
+  color:#987d6b;
+}
+.executive-report,
+.monthly-control-summary{
+  gap:10px;
+}
+.monthly-control-block{
+  background:rgba(255,254,251,.98);
+  border:1px solid #ecdcca;
+  border-radius:20px;
+}
+.monthly-control-block > summary{
+  background:linear-gradient(180deg,#fffdf9,#fcf6ee);
+}
+.report-month-actions{
+  gap:8px;
+}
+.report-month-actions .mini{
+  background:linear-gradient(180deg,#fffdf9,#fbf4eb);
+  color:#7b533a;
+  border:1px solid #ead6c2;
+  box-shadow:none;
+}
+
+.client-drawer,
+.client-charge,
+.clean-client-card{
+  border-radius:24px;
+}
+.client-drawer-summary,
+.client-charge summary,
+.lot-drawer summary,
+.report-month-drawer summary,
+.product-stock-drawer > summary{
+  background:linear-gradient(180deg,#fffdf9,#fcf6ee);
+}
+.clean-client-summary .price{
+  color:#613e2c;
+}
+.client-quick-data{
+  color:#8e7463;
+  background:linear-gradient(180deg,#fffdfa,#fff7f1);
+  border:1px solid #ebdac7;
+  border-radius:18px;
+  padding:10px 12px;
+}
+.client-ticket,
+.ticket-readonly,
+.ticket-line{
+  border-color:#ebdac7;
+}
+.client-ticket{
+  background:linear-gradient(180deg,#fffefc,#fff9f3);
+}
+.client-ticket .tag,
+.tag{
+  border-radius:999px;
+  font-weight:800;
+}
+.tag.total{background:#fff0cd;color:#8a6218}
+.tag.pago{background:#eaf6e1;color:#4e7f45}
+.tag.em_aberto,.tag.parcial{background:#fff3d8;color:#9a6f1c}
+.tag.cancelado{background:#ffe6e2;color:#a95649}
+
+.stock-guide{
+  background:linear-gradient(180deg,#fffefc,#fff7f0);
+  border:1px solid #ebdac7;
+  color:#8d7362;
+}
+.stock-main-card{
+  border-radius:24px;
+  box-shadow:0 12px 24px rgba(101,72,51,.08);
+}
+.stock-main-card.maracuja{
+  background:linear-gradient(140deg,#fffef8,#fff4c6 85%);
+}
+.stock-main-card.limao{
+  background:linear-gradient(140deg,#fffef9,#edf8cc 85%);
+}
+.stock-main-card.chocolate{
+  background:linear-gradient(140deg,#fffdf9,#f4dfcf 85%);
+}
+.stock-alert.ok,.lot-badge.ok{
+  background:#ebf7de;
+  color:#5f8443;
+}
+.stock-alert.warn,.lot-badge.warn{
+  background:#fff2cc;
+  color:#9e721c;
+}
+.stock-alert.danger,.lot-badge.danger{
+  background:#ffe6e0;
+  color:#a55447;
+}
+
+.bottom-nav{
+  left:10px;
+  right:10px;
+  bottom:10px;
+  height:auto;
+  padding:8px;
+  background:rgba(255,252,247,.94);
+  border:1px solid rgba(236,220,201,.95);
+  border-radius:26px;
+  box-shadow:0 16px 28px rgba(96,68,49,.12);
+}
+.bottom-nav button{
+  min-height:58px;
+  border-radius:18px;
+  color:#8d7262;
+}
+.bottom-nav button.active{
+  background:linear-gradient(180deg,#fff3d4,#f6e6bc);
+  color:#6f4b33;
+}
+.bottom-nav .ico{
+  font-size:18px;
+}
+#toast{
+  background:linear-gradient(180deg,#77503a,#5e3f2f);
+  box-shadow:0 14px 24px rgba(92,63,47,.24);
+}
+
+@media (min-width:760px){
+  .bottom-nav{
+    max-width:760px;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:12px;
+  }
+}
+@media (max-width:430px){
+  .quick-products{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .quick-products .product-pick.chocolate,
+  .quick-products .product-pick.custom-product{
+    grid-column:1/-1;
+    min-height:96px;
+  }
+}
+
+
+/* v7.2 UI Premium Sans — sem serifa, mais premium e doceria artesanal */
+:root{
+  --bg:#fbf6ee;
+  --bg-soft:#fff9f2;
+  --card:#fffdfa;
+  --ink:#4e3425;
+  --ink-soft:#8e7362;
+  --line:#ecdccc;
+  --brand:#d5a13b;
+  --brand-dark:#8d5b3f;
+  --brand-text:#6a4632;
+  --shadow:0 20px 42px rgba(104,70,47,.09);
+  --shadow-soft:0 10px 24px rgba(104,70,47,.07);
+  --radius:24px;
+}
+
+/* tipografia 100% sem serifa */
+html,body,button,input,select,textarea{
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+.screen-title,
+.section-head h2,
+.finance-area-title strong,
+.report-month-drawer summary strong,
+.client-summary strong,
+.product-stock-drawer strong,
+.lot-drawer summary strong,
+.app-header strong{
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+/* aparência geral mais clean e premium */
+body{
+  background:
+    radial-gradient(circle at 0% 0%, rgba(244,201,77,.14), transparent 25%),
+    radial-gradient(circle at 100% 0%, rgba(188,215,102,.12), transparent 23%),
+    radial-gradient(circle at 50% 100%, rgba(185,125,78,.08), transparent 24%),
+    linear-gradient(180deg, #fdf8f2 0%, #fbf5ed 100%);
+}
+body::before{
+  opacity:.75;
+}
+
+.app-header{
+  background:
+    linear-gradient(180deg, rgba(255,252,247,.98), rgba(252,245,237,.95));
+  box-shadow:0 10px 28px rgba(104,70,47,.06);
+}
+.brand-logo{
+  border-radius:18px;
+}
+.app-header strong{
+  font-size:16.5px;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+.app-header small{
+  font-size:12px;
+  color:#9a7a68;
+}
+
+.screen-title{
+  font-size:31px;
+  font-weight:900;
+  letter-spacing:-.05em;
+  color:#5a3928;
+  margin-bottom:12px;
+}
+.sub{
+  font-size:13px;
+  color:#9a7b69;
+}
+
+.card,.item,.pill-box,.accordion,.month-drawer,.client-drawer,.product-stock-drawer,.report-month-drawer,.client-charge,.lot-drawer{
+  border-radius:26px;
+  border:1px solid rgba(236,220,204,.96);
+  background:
+    linear-gradient(180deg, rgba(255,254,251,.98), rgba(255,251,246,.97));
+  box-shadow:var(--shadow-soft);
+}
+
+.section-head{
+  margin:16px 2px 10px;
+}
+.section-head h2{
+  font-size:15px;
+  font-weight:800;
+  letter-spacing:-.01em;
+}
+.section-head span{
+  color:#9a7c6b;
+  font-size:11.5px;
+}
+
+/* inputs */
+input,select,textarea{
+  min-height:50px;
+  border-radius:16px;
+  background:#fffdfa;
+  border:1px solid #ead8c4;
+}
+input::placeholder, textarea::placeholder{
+  color:#b19686;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#cb935a;
+  box-shadow:0 0 0 3px rgba(203,147,90,.12);
+}
+
+/* botões */
+button{
+  border-radius:16px;
+  font-weight:800;
+  letter-spacing:-.01em;
+  background:linear-gradient(180deg,#a56c4d,#8c593e);
+}
+.big-action{
+  border-radius:18px;
+}
+.ghost{
+  background:linear-gradient(180deg,#fffefb,#fcf5ec);
+  color:#744f39;
+  border:1px solid #ead7c2;
+}
+.mini{
+  min-height:36px;
+  border-radius:12px;
+}
+.danger{
+  color:#b15b50;
+}
+
+/* venda / produtos */
+.quick-products{
+  gap:12px;
+}
+.quick-products .product-pick{
+  border-radius:24px;
+  min-height:126px;
+  padding:14px 12px;
+}
+.product-pick{
+  overflow:hidden;
+}
+.product-pick b{
+  font-size:14px;
+  font-weight:800;
+}
+.product-pick .xy{
+  font-size:28px;
+  font-weight:900;
+}
+.product-pick em{
+  font-size:10px;
+  letter-spacing:.01em;
+}
+.product-pick .plus{
+  width:28px;
+  height:28px;
+  border-radius:12px;
+}
+.product-pick.maracuja{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0)),
+    linear-gradient(135deg,#fff8db,#ffeeb0);
+}
+.product-pick.limao{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0)),
+    linear-gradient(135deg,#f6fcdf,#e8f5bf);
+}
+.product-pick.chocolate{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.50), rgba(255,255,255,0)),
+    linear-gradient(135deg,#faeade,#f0d4bd);
+}
+.product-pick.custom-product{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,0)),
+    linear-gradient(135deg,#fff8f2,#f7ece3) !important;
+}
+
+/* ticket e checkout */
+.checkout-card{
+  padding:16px;
+}
+.checkout-actions{
+  border-radius:20px;
+  background:rgba(255,250,243,.95);
+}
+
+/* financeiro */
+.finance-area{
+  padding:14px;
+  border-radius:28px;
+}
+.finance-area-title strong{
+  font-size:15px;
+  font-weight:800;
+}
+.finance-area-title span,
+.money-summary-value span{
+  color:#9a7a68;
+}
+.sales-area{
+  background:linear-gradient(180deg,#fffaf2,#fff6ea);
+}
+.receive-area{
+  background:linear-gradient(180deg,#fbfff6,#f4faeb);
+}
+.expense-area{
+  background:linear-gradient(180deg,#fffaf8,#fff3f0);
+}
+.reports-area{
+  background:linear-gradient(180deg,#fffdf9,#fcf5ed);
+}
+
+/* métricas e relatório */
+.kpi,.today-kpis>div,.finance-summary>div,.report-metric,.monthly-row,.expense-cats>div,.product-admin-row{
+  border-radius:18px;
+  background:linear-gradient(180deg,#fffefc,#fff8f2);
+}
+.kpi b,.report-metric b,.monthly-row b{
+  font-weight:900;
+}
+.report-month-drawer summary,
+.client-drawer-summary,
+.client-charge summary,
+.lot-drawer summary,
+.product-stock-drawer > summary,
+.monthly-control-block > summary{
+  background:linear-gradient(180deg,#fffefb,#fdf6ee);
+}
+.monthly-control-block{
+  border-radius:22px;
+}
+.monthly-control-block > summary strong{
+  font-size:14px;
+  font-weight:800;
+}
+.monthly-control-block > summary small{
+  color:#987a68;
+}
+
+/* clientes */
+.clean-client-card{
+  border-radius:24px;
+}
+.clean-client-summary strong{
+  font-size:16px;
+  font-weight:800;
+}
+.clean-client-summary .price{
+  font-size:22px;
+  font-weight:900;
+}
+.client-quick-data{
+  border-radius:18px;
+  line-height:1.4;
+}
+.client-ticket{
+  border-radius:18px;
+}
+.client-ticket-top strong{
+  font-size:14px;
+  font-weight:800;
+}
+
+/* estoque */
+.stock-main-card{
+  border-radius:24px;
+}
+.stock-main-card b{
+  font-weight:900;
+}
+.product-admin-row{
+  padding:12px;
+}
+.product-admin-row strong{
+  font-weight:800;
+}
+.stock-guide{
+  border-radius:18px;
+  font-size:12px;
+}
+
+/* navegação inferior */
+.bottom-nav{
+  background:rgba(255,252,247,.96);
+  border-radius:28px;
+  box-shadow:0 18px 30px rgba(96,68,49,.14);
+}
+.bottom-nav button{
+  border-radius:18px;
+  min-height:60px;
+  font-size:11px;
+  font-weight:800;
+}
+.bottom-nav button.active{
+  background:linear-gradient(180deg,#fff3d8,#f5e2b8);
+}
+.bottom-nav .ico{
+  font-size:18px;
+}
+
+/* toast */
+#toast{
+  border-radius:18px;
+}
+
+@media (max-width:430px){
+  .screen-title{
+    font-size:28px;
+  }
+}
+
+
+/* v7.3 — refinamento fino de UI */
+:root{
+  --radius-xl:30px;
+  --radius-lg:22px;
+  --radius-md:18px;
+  --radius-sm:14px;
+  --shadow-premium:0 24px 50px rgba(103,68,47,.10);
+  --shadow-soft-premium:0 12px 28px rgba(103,68,47,.08);
+  --shadow-micro:0 6px 16px rgba(103,68,47,.06);
+}
+
+/* shell e ritmo geral */
+.app-shell{
+  padding:20px 14px 30px;
+}
+.screen{
+  gap:14px;
+}
+.screen-title{
+  margin:2px 2px 14px;
+  line-height:1;
+}
+.sub{
+  margin-top:-6px;
+  margin-bottom:8px;
+}
+
+/* header com mais acabamento */
+.app-header{
+  backdrop-filter:saturate(1.06) blur(10px);
+}
+.brand-logo{
+  box-shadow:0 12px 24px rgba(103,68,47,.10);
+}
+.app-header strong{
+  letter-spacing:-.025em;
+}
+.app-header small{
+  letter-spacing:.01em;
+}
+
+/* cards com mais consistência */
+.card,.item,.pill-box,.accordion,.month-drawer,.client-drawer,.product-stock-drawer,.report-month-drawer,.client-charge,.lot-drawer{
+  border-radius:var(--radius-xl);
+  box-shadow:var(--shadow-soft-premium);
+}
+.card,.item,.client-drawer,.report-month-drawer,.product-stock-drawer,.client-charge,.lot-drawer{
+  position:relative;
+  overflow:hidden;
+}
+.card::before,.item::before,.client-drawer::before,.report-month-drawer::before,.product-stock-drawer::before,.client-charge::before,.lot-drawer::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:1px;
+  background:linear-gradient(90deg, rgba(255,255,255,.55), rgba(255,255,255,0));
+  pointer-events:none;
+}
+
+/* títulos e seções */
+.section-head{
+  margin:18px 4px 12px;
+}
+.section-head h2,
+.finance-area-title strong{
+  font-size:15px;
+  line-height:1.15;
+}
+.section-head.compact{
+  margin-top:12px;
+}
+.clean-title,
+.section-head,
+.finance-area-title{
+  align-items:center;
+}
+.area-icon{
+  filter:saturate(.85);
+}
+
+/* inputs e forms */
+label span{
+  font-weight:700;
+  color:#7d614f;
+  font-size:12px;
+  letter-spacing:.01em;
+}
+input,select,textarea{
+  padding-inline:14px;
+  font-size:15px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.8), 0 1px 0 rgba(255,255,255,.5);
+}
+select{
+  background-image:linear-gradient(45deg, transparent 50%, #9e7f6a 50%),linear-gradient(135deg, #9e7f6a 50%, transparent 50%);
+  background-position:calc(100% - 20px) calc(50% - 2px),calc(100% - 14px) calc(50% - 2px);
+  background-size:6px 6px,6px 6px;
+  background-repeat:no-repeat;
+}
+textarea{
+  min-height:96px;
+}
+
+/* botões */
+button{
+  transition:transform .12s ease, filter .12s ease, box-shadow .12s ease;
+}
+button:active{
+  transform:translateY(1px) scale(.995);
+}
+button.big-action{
+  min-height:54px;
+  letter-spacing:-.01em;
+}
+.ghost{
+  box-shadow:var(--shadow-micro);
+}
+.mini{
+  padding-inline:12px;
+}
+.danger.ghost,.ghost.danger{
+  background:linear-gradient(180deg,#fff9f8,#fff1ef);
+}
+
+/* chips/tags */
+.tag,.chip{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.45);
+}
+.tag{
+  padding:4px 10px;
+}
+.tag.total{
+  background:linear-gradient(180deg,#fff4d6,#ffe7a8);
+}
+.tag.pago{
+  background:linear-gradient(180deg,#eff8e8,#ddf0d1);
+}
+.tag.em_aberto,.tag.parcial{
+  background:linear-gradient(180deg,#fff6df,#ffe8ba);
+}
+.tag.cancelado{
+  background:linear-gradient(180deg,#fff0ed,#ffdcd5);
+}
+
+/* cards da venda */
+.quick-products{
+  margin-top:4px;
+}
+.quick-products .product-pick{
+  box-shadow:var(--shadow-premium);
+}
+.product-pick{
+  border-radius:26px;
+}
+.product-pick::after{
+  content:"";
+  position:absolute;
+  right:-18px;
+  top:-18px;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:rgba(255,255,255,.24);
+}
+.product-pick small{
+  font-weight:700;
+}
+.product-pick .xy{
+  line-height:1;
+}
+.checkout-card,
+.checkout-actions,
+.ticket-box{
+  border-radius:24px;
+}
+.checkout-actions{
+  padding:12px;
+  box-shadow:var(--shadow-micro);
+}
+
+/* financeiro */
+.finance-area{
+  border-radius:28px;
+  padding:15px;
+  box-shadow:var(--shadow-soft-premium);
+}
+.finance-area .kpi,
+.finance-area .report-metric,
+.finance-area .monthly-row{
+  border-radius:20px;
+}
+.report-month-drawer summary,
+.monthly-control-block > summary{
+  padding:14px;
+}
+.executive-report,.monthly-control-summary{
+  gap:10px;
+}
+.report-metric small,
+.kpi small{
+  letter-spacing:.04em;
+}
+.report-metric b{
+  font-size:18px;
+}
+.report-month-actions{
+  padding-top:12px;
+  border-top:1px dashed #ecd8c3;
+}
+.monthly-control-block{
+  box-shadow:var(--shadow-micro);
+}
+.monthly-control-block > summary{
+  border-bottom:1px solid rgba(236,220,204,.55);
+}
+.monthly-control-block[open] > summary{
+  background:linear-gradient(180deg,#fffdf9,#fbf3ea);
+}
+
+/* clientes */
+.clean-client-card{
+  box-shadow:var(--shadow-soft-premium);
+}
+.clean-client-summary{
+  align-items:flex-start;
+}
+.clean-client-summary strong{
+  line-height:1.12;
+}
+.clean-client-summary .price{
+  line-height:1;
+}
+.client-quick-data{
+  box-shadow:var(--shadow-micro);
+}
+.client-clean-actions{
+  gap:8px;
+}
+.client-ticket{
+  box-shadow:var(--shadow-micro);
+}
+
+/* estoque */
+.stock-guide{
+  box-shadow:var(--shadow-micro);
+}
+.stock-main-card{
+  border-radius:26px;
+}
+.stock-main-card > summary{
+  padding:14px;
+}
+.product-admin-row{
+  border-radius:18px;
+  box-shadow:var(--shadow-micro);
+}
+.product-admin-list{
+  gap:10px;
+}
+
+/* gavetas internas */
+.inner-drawer{
+  border-radius:18px;
+  overflow:hidden;
+}
+.inner-drawer > summary{
+  padding:12px 14px;
+  background:linear-gradient(180deg,#fffefc,#fcf6ee);
+}
+.inner-drawer[open] > summary{
+  border-bottom:1px solid rgba(236,220,204,.5);
+}
+
+/* nav inferior */
+.bottom-nav{
+  padding:8px;
+  gap:6px;
+}
+.bottom-nav button{
+  position:relative;
+  overflow:hidden;
+}
+.bottom-nav button.active::before{
+  content:"";
+  position:absolute;
+  top:7px;
+  left:50%;
+  transform:translateX(-50%);
+  width:28px;
+  height:4px;
+  border-radius:999px;
+  background:#c89140;
+  opacity:.9;
+}
+.bottom-nav button .ico{
+  margin-bottom:3px;
+}
+.bottom-nav button span:last-child{
+  font-size:11px;
+  letter-spacing:.01em;
+}
+
+/* toast */
+#toast{
+  padding:12px 14px;
+  font-weight:700;
+}
+
+/* micro ajustes responsivos */
+@media (min-width:720px){
+  .app-shell{
+    padding-top:24px;
+  }
+  .quick-products{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+@media (max-width:430px){
+  .screen-title{
+    font-size:27px;
+  }
+  .finance-area,
+  .card,
+  .item{
+    border-radius:24px;
+  }
+  .product-pick .xy{
+    font-size:26px;
+  }
+}
+
+
+/* v7.4 — microdetalhes por aba */
+:root{
+  --tab-venda:#fff6e6;
+  --tab-fin:#fff8f1;
+  --tab-estoque:#f8fbef;
+  --tab-clientes:#fff9f5;
+}
+
+/* cabeçalhos mais polidos */
+.app-header{
+  border-bottom-left-radius:22px;
+  border-bottom-right-radius:22px;
+}
+.app-header .row{
+  gap:12px;
+}
+
+/* títulos */
+.screen-title{
+  font-size:28px;
+  font-weight:900;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.screen-title::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:linear-gradient(90deg, rgba(213,161,59,.24), rgba(213,161,59,0));
+  margin-left:4px;
+}
+
+/* ícones mais discretos e premium */
+.area-icon{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:20px;
+  height:20px;
+  border-radius:999px;
+  background:rgba(255,255,255,.68);
+  color:#8d5b3f;
+  font-size:11px;
+  margin-right:6px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 2px 6px rgba(103,68,47,.06);
+}
+
+/* acabamento dos blocos principais */
+.screen > .card:first-of-type,
+.screen > .accordion:first-of-type,
+.screen > .finance-area:first-of-type{
+  margin-top:2px;
+}
+
+.venda-screen .screen-title,
+[data-route="venda"] .screen-title{
+  color:#6a452f;
+}
+.financeiro-screen .screen-title,
+[data-route="financeiro"] .screen-title{
+  color:#6b4831;
+}
+.estoque-screen .screen-title,
+[data-route="estoque"] .screen-title{
+  color:#5c4930;
+}
+.clientes-screen .screen-title,
+[data-route="clientes"] .screen-title{
+  color:#674233;
+}
+
+/* Venda */
+.quick-products .product-pick{
+  border-width:1.5px;
+}
+.product-pick .plus{
+  border:1px solid rgba(255,255,255,.55);
+}
+.checkout-card .section-head{
+  margin-top:8px;
+}
+.checkout-actions{
+  gap:10px;
+}
+.checkout-actions .row{
+  gap:8px;
+}
+
+/* Financeiro */
+.finance-area{
+  position:relative;
+}
+.finance-area::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.42);
+}
+.finance-area-title{
+  margin-bottom:6px;
+}
+.finance-area-title strong{
+  letter-spacing:-.01em;
+}
+.report-metric,
+.monthly-row,
+.kpi{
+  box-shadow:0 4px 12px rgba(103,68,47,.05);
+}
+.monthly-control-block > summary{
+  padding-block:13px;
+}
+.report-month-actions .mini{
+  min-height:40px;
+}
+
+/* Estoque */
+.stock-guide{
+  border-left:4px solid rgba(213,161,59,.55);
+}
+.stock-main-card > summary{
+  align-items:flex-start;
+}
+.stock-main-card .mini-kpis > div{
+  border-radius:16px;
+}
+.product-admin-row{
+  align-items:center;
+}
+.product-admin-row > div:last-child{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+/* Clientes */
+.clean-client-summary{
+  gap:10px;
+}
+.clean-client-summary .price{
+  letter-spacing:-.03em;
+}
+.client-quick-data{
+  display:grid;
+  gap:7px;
+}
+.client-ticket-top{
+  gap:8px;
+}
+.client-ticket-line{
+  border-radius:14px;
+}
+.client-clean-actions .mini{
+  min-width:100px;
+}
+
+/* navegação inferior */
+.bottom-nav{
+  padding:9px;
+}
+.bottom-nav button{
+  gap:4px;
+}
+.bottom-nav button .ico{
+  opacity:.92;
+}
+.bottom-nav button.active{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55);
+}
+.bottom-nav button.active span:last-child{
+  color:#6f4b33;
+}
+
+/* detalhes e gavetas */
+details[open] > summary{
+  position:relative;
+}
+details[open] > summary::after{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg, rgba(236,220,204,.7), rgba(236,220,204,0));
+}
+
+/* microcontrastes */
+small, .sub, .client-quick-data, .report-metric span, .monthly-row small{
+  color:#917664;
+}
+.price, .money-summary-value b, .month-total b{
+  letter-spacing:-.04em;
+}
+
+/* responsivo fino */
+@media (max-width:430px){
+  .screen-title{
+    font-size:26px;
+  }
+  .area-icon{
+    width:18px;
+    height:18px;
+    font-size:10px;
+  }
+  .product-admin-row > div:last-child{
+    justify-content:flex-start;
+  }
+  .client-clean-actions .mini{
+    min-width:0;
+    flex:1;
+  }
+}
+
+
+/* v7.5 — supra-sumo do design */
+:root{
+  --cream-0:#fffdf9;
+  --cream-1:#fff8f0;
+  --cream-2:#fdf2e7;
+  --brown-1:#5e3b28;
+  --brown-2:#7b5339;
+  --gold-1:#d7a447;
+  --gold-2:#f1c76a;
+  --olive-1:#8aa056;
+  --olive-2:#b7cb77;
+  --cocoa-1:#b87949;
+  --cocoa-2:#d7a37d;
+  --shadow-xl:0 28px 60px rgba(96,65,45,.12);
+  --shadow-lg:0 18px 40px rgba(96,65,45,.10);
+  --shadow-md:0 10px 24px rgba(96,65,45,.08);
+  --shadow-sm:0 4px 14px rgba(96,65,45,.06);
+  --line-soft:rgba(233,216,199,.88);
+}
+
+/* fundo com atmosfera mais sofisticada */
+html,body{
+  background:
+    radial-gradient(circle at 0% 0%, rgba(241,199,106,.18), transparent 23%),
+    radial-gradient(circle at 100% 0%, rgba(183,203,119,.14), transparent 22%),
+    radial-gradient(circle at 50% 100%, rgba(215,163,125,.12), transparent 24%),
+    linear-gradient(180deg,#fffdf9 0%, #fbf4ea 46%, #f9f1e6 100%);
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 18%),
+    linear-gradient(0deg, rgba(255,255,255,.10), rgba(255,255,255,0) 16%);
+  opacity:.7;
+}
+
+/* header premium */
+.app-header{
+  background:
+    linear-gradient(180deg, rgba(255,253,249,.98), rgba(252,244,235,.95));
+  border-bottom:1px solid rgba(233,216,199,.92);
+  box-shadow:0 14px 34px rgba(96,65,45,.07);
+}
+.brand-logo{
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.92);
+  background:
+    radial-gradient(circle at 32% 30%, rgba(255,255,255,.95), rgba(255,250,243,.95)),
+    #fff;
+}
+.app-header strong{
+  color:var(--brown-1);
+}
+.app-header small{
+  color:#a28069;
+}
+
+/* títulos e shell */
+.app-shell{
+  padding:22px 14px 32px;
+}
+.screen-title{
+  font-size:29px;
+  font-weight:900;
+  color:var(--brown-1);
+  margin-bottom:16px;
+}
+.screen-title::after{
+  height:2px;
+  background:linear-gradient(90deg, rgba(215,164,71,.36), rgba(215,164,71,0));
+}
+.sub{
+  font-size:12.5px;
+  color:#9d7d69;
+}
+
+/* cards centrais */
+.card,.item,.pill-box,.accordion,.month-drawer,.client-drawer,.product-stock-drawer,.report-month-drawer,.client-charge,.lot-drawer,.finance-area{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,250,244,.96));
+  border:1px solid var(--line-soft);
+  box-shadow:var(--shadow-md);
+}
+.card,.item,.pill-box,.finance-area{
+  border-radius:28px;
+}
+.accordion,.month-drawer,.client-drawer,.product-stock-drawer,.report-month-drawer,.client-charge,.lot-drawer{
+  border-radius:26px;
+}
+.card::after,.item::after,.finance-area::before,.product-stock-drawer::after,.report-month-drawer::after,.client-drawer::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border-radius:inherit;
+  background:linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,0) 18%);
+  opacity:.9;
+}
+.card,.item,.finance-area,.product-stock-drawer,.report-month-drawer,.client-drawer{
+  position:relative;
+  overflow:hidden;
+}
+
+/* hierarquia */
+.section-head h2,
+.finance-area-title strong,
+.report-month-drawer summary strong,
+.client-summary strong,
+.product-stock-drawer strong,
+.lot-drawer summary strong{
+  color:var(--brown-1);
+  font-weight:850;
+}
+.section-head span,
+.finance-area-title span,
+.money-summary-value span,
+small,
+.report-metric span,
+.monthly-row small{
+  color:#987866;
+}
+
+/* inputs mais luxuosos */
+input,select,textarea{
+  background:linear-gradient(180deg,#fffefb,#fff9f2);
+  border:1px solid #ead8c3;
+  border-radius:16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.85), 0 1px 0 rgba(255,255,255,.4);
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#cf9558;
+  box-shadow:0 0 0 4px rgba(207,149,88,.11);
+}
+
+/* botões */
+button{
+  border-radius:16px;
+  border:none;
+  background:
+    linear-gradient(180deg, #ab7150, #8f5d41);
+  box-shadow:0 12px 22px rgba(143,93,65,.18);
+}
+button.big-action{
+  min-height:56px;
+  border-radius:18px;
+  background:linear-gradient(180deg,#ae7452,#8d5a40);
+}
+button.ghost{
+  background:linear-gradient(180deg,#fffefb,#fbf4ec);
+  border:1px solid #ead8c3;
+  color:#7a5239;
+  box-shadow:var(--shadow-sm);
+}
+button.ok{
+  background:linear-gradient(180deg,#6ea467,#5b8f56);
+}
+button.mini{
+  border-radius:13px;
+}
+button:hover{
+  filter:brightness(1.02);
+}
+button:active{
+  transform:translateY(1px);
+}
+
+/* badges */
+.tag,.chip{
+  border:1px solid rgba(0,0,0,.03);
+}
+.tag.total{
+  background:linear-gradient(180deg,#fff6dc,#ffe8a7);
+  color:#89611a;
+}
+.tag.pago{
+  background:linear-gradient(180deg,#eff9e8,#dff0d3);
+  color:#4d7a46;
+}
+.tag.em_aberto,.tag.parcial{
+  background:linear-gradient(180deg,#fff7e1,#ffe9bf);
+  color:#93681b;
+}
+.tag.cancelado{
+  background:linear-gradient(180deg,#fff0ec,#ffdcd4);
+  color:#a7584b;
+}
+
+/* venda mais bonita e prática */
+.quick-products{
+  gap:12px;
+}
+.product-pick{
+  border-radius:28px;
+  min-height:132px;
+  box-shadow:var(--shadow-xl);
+  position:relative;
+  isolation:isolate;
+}
+.product-pick::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at top right, rgba(255,255,255,.58), transparent 26%),
+    radial-gradient(circle at 20% 90%, rgba(255,255,255,.18), transparent 22%);
+  z-index:-1;
+}
+.product-pick::after{
+  width:78px;
+  height:78px;
+  right:-16px;
+  top:-16px;
+  background:rgba(255,255,255,.24);
+}
+.product-pick.maracuja{
+  background:linear-gradient(135deg,#fffadf 0%, #ffefb3 100%);
+}
+.product-pick.limao{
+  background:linear-gradient(135deg,#f8fddf 0%, #e6f4bd 100%);
+}
+.product-pick.chocolate{
+  background:linear-gradient(135deg,#fceddf 0%, #efd1b8 100%);
+}
+.product-pick.custom-product{
+  background:linear-gradient(135deg,#fff8f3 0%, #f7ebe1 100%)!important;
+}
+.product-pick .plus{
+  background:rgba(255,255,255,.76);
+  border:1px solid rgba(255,255,255,.5);
+}
+.product-pick b{
+  font-size:14px;
+  color:#5d3d2c;
+}
+.product-pick .xy{
+  font-size:30px;
+  color:#513527;
+}
+
+/* checkout */
+.checkout-card{
+  background:linear-gradient(180deg,#fffdf9,#fff7ef);
+}
+.checkout-actions{
+  border-radius:22px;
+  background:linear-gradient(180deg,rgba(255,252,246,.98), rgba(255,247,238,.96));
+  border:1px solid #ead8c3;
+}
+
+/* financeiro executivo */
+.finance-area{
+  box-shadow:var(--shadow-lg);
+  padding:15px;
+}
+.finance-area.sales-area{
+  background:linear-gradient(180deg,#fffaf2,#fff4e7);
+}
+.finance-area.receive-area{
+  background:linear-gradient(180deg,#fbfff6,#f4faea);
+}
+.finance-area.expense-area{
+  background:linear-gradient(180deg,#fffaf8,#fff4f1);
+}
+.finance-area.reports-area{
+  background:linear-gradient(180deg,#fffef9,#fcf5ec);
+}
+.kpi,.today-kpis>div,.finance-summary>div,.report-metric,.monthly-row,.expense-cats>div,.product-admin-row,.client-quick-data{
+  background:linear-gradient(180deg,#fffefc,#fff9f2);
+  border:1px solid #ecd9c6;
+  box-shadow:var(--shadow-sm);
+  border-radius:18px;
+}
+.report-metric b,.kpi b,.month-total b,.price{
+  color:#5d3b2a;
+}
+.monthly-control-block{
+  border-radius:22px;
+  border:1px solid #ead8c3;
+  background:linear-gradient(180deg,#fffefb,#fff8f1);
+}
+.monthly-control-block > summary{
+  background:linear-gradient(180deg,#fffefb,#fdf6ee);
+}
+
+/* clientes clean premium */
+.clean-client-card{
+  box-shadow:var(--shadow-md);
+}
+.clean-client-summary .price{
+  color:#5d3a29;
+  font-size:22px;
+}
+.client-quick-data{
+  background:linear-gradient(180deg,#fffefb,#fff8f1);
+}
+.client-ticket{
+  background:linear-gradient(180deg,#fffefc,#fff9f4);
+  border:1px solid #ebd9c6;
+  box-shadow:var(--shadow-sm);
+  border-radius:18px;
+}
+.client-ticket-line{
+  background:rgba(255,255,255,.45);
+}
+
+/* estoque mais boutique */
+.stock-guide{
+  background:linear-gradient(180deg,#fffefb,#fff7f0);
+  border-left:4px solid rgba(215,164,71,.65);
+}
+.stock-main-card{
+  border-radius:26px;
+  box-shadow:var(--shadow-lg);
+}
+.stock-main-card.maracuja{
+  background:linear-gradient(145deg,#fffef8,#fff3ca 88%);
+}
+.stock-main-card.limao{
+  background:linear-gradient(145deg,#fffef9,#eef7d2 88%);
+}
+.stock-main-card.chocolate{
+  background:linear-gradient(145deg,#fffdf9,#f5dfd0 88%);
+}
+.product-admin-row{
+  padding:12px;
+}
+.stock-alert.ok{
+  background:linear-gradient(180deg,#eef8e4,#ddf0ce);
+}
+.stock-alert.warn{
+  background:linear-gradient(180deg,#fff5d8,#ffeab7);
+}
+.stock-alert.danger{
+  background:linear-gradient(180deg,#fff1ed,#ffdcd4);
+}
+
+/* gavetas internas e relatórios */
+.inner-drawer{
+  border-radius:18px;
+  border:1px solid #ecd9c7;
+  background:linear-gradient(180deg,#fffefb,#fff9f2);
+}
+.inner-drawer > summary{
+  background:linear-gradient(180deg,#fffefb,#fcf5ed);
+}
+.report-month-actions{
+  justify-content:flex-start;
+  border-top:1px dashed #ecd9c6;
+  padding-top:12px;
+}
+
+/* navegação inferior muito polida */
+.bottom-nav{
+  background:rgba(255,252,248,.96);
+  border:1px solid rgba(233,216,199,.95);
+  box-shadow:0 18px 34px rgba(96,65,45,.14);
+  border-radius:30px;
+  padding:9px;
+}
+.bottom-nav button{
+  border-radius:18px;
+  background:transparent;
+  box-shadow:none;
+  color:#8d7262;
+}
+.bottom-nav button.active{
+  background:linear-gradient(180deg,#fff4db,#f5e2b8);
+  color:#704b34;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55), 0 4px 12px rgba(112,75,52,.08);
+}
+.bottom-nav button.active::before{
+  background:#ca9343;
+}
+.bottom-nav .ico{
+  font-size:18px;
+}
+
+/* toast */
+#toast{
+  background:linear-gradient(180deg,#704b34,#5b3d2c);
+  color:#fff;
+  box-shadow:0 16px 28px rgba(91,61,44,.26);
+}
+
+/* refinamento responsivo */
+@media (max-width:430px){
+  .screen-title{font-size:25px}
+  .product-pick{min-height:118px}
+  .product-pick .xy{font-size:27px}
+}
+
+
+/* v7.6 — mais dinâmica entre as cores */
+:root{
+  --accent-sale:#d18d34;
+  --accent-sale-soft:#fff0cf;
+  --accent-receive:#7ea84b;
+  --accent-receive-soft:#edf7db;
+  --accent-pay:#8b6ac9;
+  --accent-pay-soft:#f0eaff;
+  --accent-expense:#c97064;
+  --accent-expense-soft:#fff0ed;
+  --accent-report:#5d88c3;
+  --accent-report-soft:#edf4ff;
+  --accent-stock:#93b15d;
+  --accent-stock-soft:#f0f8df;
+  --accent-client:#d38a57;
+  --accent-client-soft:#fff3eb;
+}
+
+/* separação por áreas com mais personalidade */
+.sales-area{
+  background:
+    linear-gradient(180deg, rgba(255,248,235,.98), rgba(255,241,219,.96)) !important;
+  border-color:rgba(232,193,129,.75) !important;
+}
+.sales-area .finance-area-title strong,
+.sales-area .money-summary-value b{
+  color:#8d5a1d !important;
+}
+
+.receive-area{
+  background:
+    linear-gradient(180deg, rgba(248,253,241,.98), rgba(236,247,214,.97)) !important;
+  border-color:rgba(162,197,96,.72) !important;
+}
+.receive-area .finance-area-title strong,
+.receive-area .money-summary-value b{
+  color:#5d7f30 !important;
+}
+
+.expense-area{
+  background:
+    linear-gradient(180deg, rgba(255,249,247,.98), rgba(255,237,233,.97)) !important;
+  border-color:rgba(214,139,129,.70) !important;
+}
+.expense-area .finance-area-title strong,
+.expense-area .money-summary-value b{
+  color:#9f574d !important;
+}
+
+.reports-area{
+  background:
+    linear-gradient(180deg, rgba(248,251,255,.98), rgba(235,243,255,.97)) !important;
+  border-color:rgba(121,161,213,.72) !important;
+}
+.reports-area .finance-area-title strong,
+.reports-area .money-summary-value b{
+  color:#486eac !important;
+}
+
+/* se houver bloco de pagamentos com finance-area */
+.finance-area .area-icon{
+  background:rgba(255,255,255,.76);
+}
+.sales-area .area-icon{
+  color:#9b6822;
+}
+.receive-area .area-icon{
+  color:#648734;
+}
+.expense-area .area-icon{
+  color:#ac5d52;
+}
+.reports-area .area-icon{
+  color:#547ab6;
+}
+
+/* acento visual superior em cada bloco */
+.finance-area::before,
+.card.section-accent::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  top:0;
+  height:4px;
+  border-radius:0 0 999px 999px;
+  opacity:.95;
+}
+.sales-area::before{ background:linear-gradient(90deg,#efc15d,#d18d34); }
+.receive-area::before{ background:linear-gradient(90deg,#b9d96f,#7ea84b); }
+.expense-area::before{ background:linear-gradient(90deg,#e5a196,#c97064); }
+.reports-area::before{ background:linear-gradient(90deg,#9fc0ee,#5d88c3); }
+
+/* pagamentos e dados do app mais diferenciados */
+.money-drawer,
+.payment-area,
+.payments-area{
+  background:
+    linear-gradient(180deg, rgba(249,246,255,.98), rgba(239,233,255,.97)) !important;
+  border-color:rgba(170,145,221,.70) !important;
+}
+.money-drawer .area-icon,
+.payment-area .area-icon,
+.payments-area .area-icon{
+  color:#8060bd !important;
+}
+.money-drawer::before,
+.payment-area::before,
+.payments-area::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  top:0;
+  height:4px;
+  border-radius:0 0 999px 999px;
+  background:linear-gradient(90deg,#b39be3,#8b6ac9);
+}
+details.data-drawer,
+.data-app-area,
+.app-data-card{
+  background:
+    linear-gradient(180deg, rgba(255,251,246,.98), rgba(255,245,236,.98)) !important;
+  border-color:rgba(220,187,156,.70) !important;
+}
+
+/* resumo geral e cards internos com mais variação */
+.kpi,
+.today-kpis>div,
+.finance-summary>div,
+.report-metric,
+.monthly-row,
+.expense-cats>div,
+.product-admin-row,
+.client-quick-data{
+  background:linear-gradient(180deg,#fffefc,#fffaf5) !important;
+}
+.sales-area .kpi,
+.sales-area .report-metric,
+.sales-area .monthly-row{
+  background:linear-gradient(180deg,#fffdf8,#fff7ea) !important;
+}
+.receive-area .kpi,
+.receive-area .report-metric,
+.receive-area .monthly-row{
+  background:linear-gradient(180deg,#fcfff9,#f5fbe9) !important;
+}
+.expense-area .kpi,
+.expense-area .report-metric,
+.expense-area .monthly-row{
+  background:linear-gradient(180deg,#fffdfc,#fff5f2) !important;
+}
+.reports-area .kpi,
+.reports-area .report-metric,
+.reports-area .monthly-row{
+  background:linear-gradient(180deg,#fcfeff,#f4f8ff) !important;
+}
+
+/* venda ainda mais viva */
+.quick-products .product-pick.maracuja{
+  border-color:rgba(220,173,66,.72) !important;
+}
+.quick-products .product-pick.limao{
+  border-color:rgba(160,193,93,.72) !important;
+}
+.quick-products .product-pick.chocolate{
+  border-color:rgba(186,129,84,.72) !important;
+}
+
+/* estoque mais verde/natural */
+.stock-guide{
+  background:linear-gradient(180deg,#fbfff5,#f2f8e4) !important;
+  border-color:rgba(170,198,111,.72) !important;
+}
+.stock-guide{
+  border-left-color:#9bbb61 !important;
+}
+.stock-main-card{
+  border-width:1.5px;
+}
+.stock-main-card.maracuja{
+  border-color:rgba(220,173,66,.68) !important;
+}
+.stock-main-card.limao{
+  border-color:rgba(160,193,93,.68) !important;
+}
+.stock-main-card.chocolate{
+  border-color:rgba(186,129,84,.68) !important;
+}
+
+/* clientes com identidade própria */
+.clean-client-card,
+.client-charge{
+  background:
+    linear-gradient(180deg, rgba(255,251,248,.98), rgba(255,243,234,.97)) !important;
+  border-color:rgba(220,168,128,.72) !important;
+}
+.clean-client-summary strong,
+.clean-client-summary .price{
+  color:#7b4d2f !important;
+}
+.client-quick-data{
+  background:linear-gradient(180deg,#fffefc,#fff7f0) !important;
+}
+
+/* navegação inferior mais viva quando ativa */
+.bottom-nav button.active{
+  background:linear-gradient(180deg,#fff0cf,#f4ddb0) !important;
+}
+.bottom-nav button.active::before{
+  background:#d39a3f !important;
+}
+
+/* pequenas cores em títulos internos */
+.monthly-control-block > summary strong{
+  color:#5f412f;
+}
+.reports-area .monthly-control-block > summary{
+  background:linear-gradient(180deg,#fdfefe,#f2f7ff) !important;
+}
+.receive-area .monthly-control-block > summary{
+  background:linear-gradient(180deg,#fefff9,#f5fbe9) !important;
+}
+.expense-area .monthly-control-block > summary{
+  background:linear-gradient(180deg,#fffefd,#fff3ef) !important;
+}
+
+/* responsivo */
+@media (max-width:430px){
+  .finance-area::before{
+    left:12px;
+    right:12px;
+  }
+}
+
+
+/* v7.7 — dinâmica de cores em todas as abas */
+
+/* clima por tela/aba */
+.venda-screen .screen-title,
+[data-route="venda"] .screen-title{
+  color:#8b5a1f !important;
+}
+.financeiro-screen .screen-title,
+[data-route="financeiro"] .screen-title{
+  color:#4e73ad !important;
+}
+.estoque-screen .screen-title,
+[data-route="estoque"] .screen-title{
+  color:#6f8f3b !important;
+}
+.clientes-screen .screen-title,
+[data-route="clientes"] .screen-title{
+  color:#a15d35 !important;
+}
+
+/* linhas de destaque nos títulos de tela */
+.venda-screen .screen-title::after,
+[data-route="venda"] .screen-title::after{
+  background:linear-gradient(90deg, rgba(209,141,52,.42), rgba(209,141,52,0)) !important;
+}
+.financeiro-screen .screen-title::after,
+[data-route="financeiro"] .screen-title::after{
+  background:linear-gradient(90deg, rgba(93,136,195,.42), rgba(93,136,195,0)) !important;
+}
+.estoque-screen .screen-title::after,
+[data-route="estoque"] .screen-title::after{
+  background:linear-gradient(90deg, rgba(126,168,75,.42), rgba(126,168,75,0)) !important;
+}
+.clientes-screen .screen-title::after,
+[data-route="clientes"] .screen-title::after{
+  background:linear-gradient(90deg, rgba(211,138,87,.42), rgba(211,138,87,0)) !important;
+}
+
+/* fundos sutis por aba para não ficar tudo na mesma família */
+.venda-screen .card,
+.venda-screen .item,
+.venda-screen .accordion,
+[data-route="venda"] .card,
+[data-route="venda"] .item,
+[data-route="venda"] .accordion{
+  background:linear-gradient(180deg, rgba(255,254,250,.98), rgba(255,247,236,.97)) !important;
+  border-color:rgba(232,194,131,.66) !important;
+}
+.estoque-screen .card,
+.estoque-screen .item,
+.estoque-screen .accordion,
+[data-route="estoque"] .card,
+[data-route="estoque"] .item,
+[data-route="estoque"] .accordion{
+  background:linear-gradient(180deg, rgba(253,255,249,.98), rgba(244,250,234,.97)) !important;
+  border-color:rgba(169,198,108,.66) !important;
+}
+.clientes-screen .card,
+.clientes-screen .item,
+.clientes-screen .accordion,
+[data-route="clientes"] .card,
+[data-route="clientes"] .item,
+[data-route="clientes"] .accordion{
+  background:linear-gradient(180deg, rgba(255,253,250,.98), rgba(255,245,236,.97)) !important;
+  border-color:rgba(221,176,140,.66) !important;
+}
+
+/* aba venda: caixas e checkout ainda mais quentes */
+.venda-screen .checkout-card,
+[data-route="venda"] .checkout-card{
+  background:linear-gradient(180deg,#fffdf8,#fff4e7) !important;
+  border-color:rgba(233,193,128,.7) !important;
+}
+.venda-screen .checkout-actions,
+[data-route="venda"] .checkout-actions{
+  background:linear-gradient(180deg, rgba(255,252,246,.98), rgba(255,244,230,.97)) !important;
+  border-color:rgba(233,193,128,.66) !important;
+}
+.venda-screen input,
+.venda-screen select,
+[data-route="venda"] input,
+[data-route="venda"] select{
+  border-color:#e6d0b2;
+}
+.venda-screen input:focus,
+.venda-screen select:focus,
+[data-route="venda"] input:focus,
+[data-route="venda"] select:focus{
+  border-color:#cf9558;
+}
+
+/* estoque: identidade verde/natural em blocos e formulários */
+.estoque-screen .stock-guide,
+[data-route="estoque"] .stock-guide{
+  background:linear-gradient(180deg,#fcfff8,#f1f8e2) !important;
+  border-color:rgba(162,195,95,.72) !important;
+  color:#6d8340 !important;
+}
+.estoque-screen .product-admin-row,
+.estoque-screen .lot-drawer,
+.estoque-screen .product-stock-drawer,
+[data-route="estoque"] .product-admin-row,
+[data-route="estoque"] .lot-drawer,
+[data-route="estoque"] .product-stock-drawer{
+  border-color:rgba(165,196,102,.7) !important;
+}
+.estoque-screen .product-admin-row,
+[data-route="estoque"] .product-admin-row{
+  background:linear-gradient(180deg,#fefffb,#f3fae8) !important;
+}
+.estoque-screen input,
+.estoque-screen select,
+[data-route="estoque"] input,
+[data-route="estoque"] select{
+  background:linear-gradient(180deg,#fffefc,#f7fbef) !important;
+  border-color:#d6e3bc !important;
+}
+.estoque-screen input:focus,
+.estoque-screen select:focus,
+[data-route="estoque"] input:focus,
+[data-route="estoque"] select:focus{
+  border-color:#98b85e !important;
+  box-shadow:0 0 0 4px rgba(152,184,94,.10) !important;
+}
+.estoque-screen .section-head h2,
+[data-route="estoque"] .section-head h2{
+  color:#68843d !important;
+}
+
+/* clientes: pêssego/caramelo mais evidente */
+.clientes-screen .clean-client-card,
+.clientes-screen .client-charge,
+[data-route="clientes"] .clean-client-card,
+[data-route="clientes"] .client-charge{
+  background:linear-gradient(180deg, rgba(255,252,249,.98), rgba(255,242,231,.97)) !important;
+  border-color:rgba(223,173,133,.74) !important;
+}
+.clientes-screen .client-quick-data,
+[data-route="clientes"] .client-quick-data{
+  background:linear-gradient(180deg,#fffefc,#fff6ee) !important;
+  border-color:rgba(228,186,152,.68) !important;
+}
+.clientes-screen .client-ticket,
+[data-route="clientes"] .client-ticket{
+  background:linear-gradient(180deg,#fffefc,#fff8f2) !important;
+  border-color:rgba(228,186,152,.64) !important;
+}
+.clientes-screen input,
+.clientes-screen select,
+[data-route="clientes"] input,
+[data-route="clientes"] select{
+  background:linear-gradient(180deg,#fffefc,#fff8f2) !important;
+  border-color:#ead1bd !important;
+}
+.clientes-screen input:focus,
+.clientes-screen select:focus,
+[data-route="clientes"] input:focus,
+[data-route="clientes"] select:focus{
+  border-color:#d38a57 !important;
+  box-shadow:0 0 0 4px rgba(211,138,87,.10) !important;
+}
+.clientes-screen .section-head h2,
+[data-route="clientes"] .section-head h2{
+  color:#8a5737 !important;
+}
+
+/* financeiro: reforço para manter diferente das outras */
+.financeiro-screen .finance-area,
+[data-route="financeiro"] .finance-area{
+  box-shadow:0 16px 30px rgba(81,112,153,.09) !important;
+}
+
+/* cabeçalhos das gavetas por aba */
+.venda-screen details > summary,
+[data-route="venda"] details > summary{
+  background-image:linear-gradient(180deg,#fffefb,#fcf4e9) !important;
+}
+.estoque-screen details > summary,
+[data-route="estoque"] details > summary{
+  background-image:linear-gradient(180deg,#fffefb,#f3f9ea) !important;
+}
+.clientes-screen details > summary,
+[data-route="clientes"] details > summary{
+  background-image:linear-gradient(180deg,#fffefb,#fdf3ea) !important;
+}
+
+/* navegação inferior com identidade mais clara entre botões */
+.bottom-nav button:nth-child(1).active{
+  background:linear-gradient(180deg,#fff0cf,#f3ddb0) !important;
+}
+.bottom-nav button:nth-child(2).active{
+  background:linear-gradient(180deg,#eef4ff,#dbe8ff) !important;
+}
+.bottom-nav button:nth-child(3).active{
+  background:linear-gradient(180deg,#f3fae4,#e0edc3) !important;
+}
+.bottom-nav button:nth-child(4).active{
+  background:linear-gradient(180deg,#fff3ea,#f6dfcf) !important;
+}
+
+/* responsivo */
+@media (max-width:430px){
+  .venda-screen .card,
+  .estoque-screen .card,
+  .clientes-screen .card,
+  [data-route="venda"] .card,
+  [data-route="estoque"] .card,
+  [data-route="clientes"] .card{
+    border-radius:24px;
+  }
+}
+
+
+/* v7.8 — cores do estoque obedecendo ao caixa */
+:root{
+  --flavor-maracuja-bg:#fff8db;
+  --flavor-maracuja-bg-2:#ffeeb0;
+  --flavor-maracuja-line:#dcad42;
+  --flavor-maracuja-text:#8a6118;
+
+  --flavor-limao-bg:#f6fcdf;
+  --flavor-limao-bg-2:#e8f5bf;
+  --flavor-limao-line:#a0c15d;
+  --flavor-limao-text:#648132;
+
+  --flavor-chocolate-bg:#faeade;
+  --flavor-chocolate-bg-2:#f0d4bd;
+  --flavor-chocolate-line:#ba8154;
+  --flavor-chocolate-text:#7a4b2f;
+}
+
+/* produto no caixa segue sendo referência */
+.quick-products .product-pick.maracuja{
+  background:linear-gradient(135deg,var(--flavor-maracuja-bg) 0%, var(--flavor-maracuja-bg-2) 100%) !important;
+  border-color:rgba(220,173,66,.82) !important;
+}
+.quick-products .product-pick.limao{
+  background:linear-gradient(135deg,var(--flavor-limao-bg) 0%, var(--flavor-limao-bg-2) 100%) !important;
+  border-color:rgba(160,193,93,.82) !important;
+}
+.quick-products .product-pick.chocolate{
+  background:linear-gradient(135deg,var(--flavor-chocolate-bg) 0%, var(--flavor-chocolate-bg-2) 100%) !important;
+  border-color:rgba(186,129,84,.82) !important;
+}
+
+/* estoque usa exatamente a mesma família cromática do caixa */
+.estoque-screen .stock-main-card.maracuja,
+[data-route="estoque"] .stock-main-card.maracuja{
+  background:linear-gradient(145deg,var(--flavor-maracuja-bg) 0%, var(--flavor-maracuja-bg-2) 100%) !important;
+  border-color:rgba(220,173,66,.82) !important;
+}
+.estoque-screen .stock-main-card.limao,
+[data-route="estoque"] .stock-main-card.limao{
+  background:linear-gradient(145deg,var(--flavor-limao-bg) 0%, var(--flavor-limao-bg-2) 100%) !important;
+  border-color:rgba(160,193,93,.82) !important;
+}
+.estoque-screen .stock-main-card.chocolate,
+[data-route="estoque"] .stock-main-card.chocolate{
+  background:linear-gradient(145deg,var(--flavor-chocolate-bg) 0%, var(--flavor-chocolate-bg-2) 100%) !important;
+  border-color:rgba(186,129,84,.82) !important;
+}
+
+/* textos por sabor no estoque */
+.estoque-screen .stock-main-card.maracuja strong,
+.estoque-screen .stock-main-card.maracuja b,
+[data-route="estoque"] .stock-main-card.maracuja strong,
+[data-route="estoque"] .stock-main-card.maracuja b{
+  color:var(--flavor-maracuja-text) !important;
+}
+.estoque-screen .stock-main-card.limao strong,
+.estoque-screen .stock-main-card.limao b,
+[data-route="estoque"] .stock-main-card.limao strong,
+[data-route="estoque"] .stock-main-card.limao b{
+  color:var(--flavor-limao-text) !important;
+}
+.estoque-screen .stock-main-card.chocolate strong,
+.estoque-screen .stock-main-card.chocolate b,
+[data-route="estoque"] .stock-main-card.chocolate strong,
+[data-route="estoque"] .stock-main-card.chocolate b{
+  color:var(--flavor-chocolate-text) !important;
+}
+
+/* badges de status neutros porém coerentes */
+.estoque-screen .stock-main-card .stock-alert,
+[data-route="estoque"] .stock-main-card .stock-alert{
+  background:rgba(255,248,243,.78) !important;
+  border:1px solid rgba(202,169,145,.40) !important;
+}
+.estoque-screen .stock-main-card.maracuja .stock-alert,
+[data-route="estoque"] .stock-main-card.maracuja .stock-alert{
+  color:var(--flavor-maracuja-text) !important;
+}
+.estoque-screen .stock-main-card.limao .stock-alert,
+[data-route="estoque"] .stock-main-card.limao .stock-alert{
+  color:var(--flavor-limao-text) !important;
+}
+.estoque-screen .stock-main-card.chocolate .stock-alert,
+[data-route="estoque"] .stock-main-card.chocolate .stock-alert{
+  color:var(--flavor-chocolate-text) !important;
+}
+
+/* histórico/lotes também respeita a família do sabor */
+.estoque-screen .lot-drawer.maracuja,
+[data-route="estoque"] .lot-drawer.maracuja{
+  background:linear-gradient(180deg,#fffef8,#fff6de) !important;
+  border-color:rgba(220,173,66,.62) !important;
+}
+.estoque-screen .lot-drawer.limao,
+[data-route="estoque"] .lot-drawer.limao{
+  background:linear-gradient(180deg,#fefff9,#f1f8df) !important;
+  border-color:rgba(160,193,93,.62) !important;
+}
+.estoque-screen .lot-drawer.chocolate,
+[data-route="estoque"] .lot-drawer.chocolate{
+  background:linear-gradient(180deg,#fffefc,#f8e9dc) !important;
+  border-color:rgba(186,129,84,.62) !important;
+}
+
+/* pequenos cards internos do estoque */
+.estoque-screen .stock-main-card .mini-kpis > div,
+[data-route="estoque"] .stock-main-card .mini-kpis > div{
+  background:rgba(255,255,255,.50) !important;
+  border-color:rgba(255,255,255,.45) !important;
+}
+
+/* guia de estoque continua verde por ser contextual, mas menos distante dos sabores */
+.estoque-screen .stock-guide,
+[data-route="estoque"] .stock-guide{
+  background:linear-gradient(180deg,#fcfff8,#f3f8e8) !important;
+}
+
+/* responsivo */
+@media (max-width:430px){
+  .estoque-screen .stock-main-card,
+  [data-route="estoque"] .stock-main-card{
+    border-radius:24px;
+  }
+}
+
+
+/* v7.9 — correção real de rota + estoque obedecendo ao caixa + venda verde */
+
+/* Venda agora puxa para o verde, não marrom */
+body[data-route="venda"] .screen-title{
+  color:#68843d !important;
+}
+body[data-route="venda"] .screen-title::after{
+  background:linear-gradient(90deg, rgba(126,168,75,.42), rgba(126,168,75,0)) !important;
+}
+body[data-route="venda"] .checkout-card{
+  background:linear-gradient(180deg,#fefff9,#f4faea) !important;
+  border-color:rgba(160,193,93,.72) !important;
+}
+body[data-route="venda"] .checkout-actions{
+  background:linear-gradient(180deg, rgba(254,255,250,.98), rgba(244,250,234,.97)) !important;
+  border-color:rgba(160,193,93,.66) !important;
+}
+body[data-route="venda"] .total-box b,
+body[data-route="venda"] .section-head h2{
+  color:#5f7f33 !important;
+}
+body[data-route="venda"] #saleForm button.big-action,
+body[data-route="venda"] #saleForm button.chip.active,
+body[data-route="venda"] #saleForm .okchip.active,
+body[data-route="venda"] #saleForm .active-mini{
+  background:linear-gradient(180deg,#7faa4a,#64883c) !important;
+  color:#fff !important;
+  border-color:#64883c !important;
+  box-shadow:0 12px 22px rgba(100,136,60,.18) !important;
+}
+body[data-route="venda"] #saleForm input:focus,
+body[data-route="venda"] #saleForm select:focus{
+  border-color:#98b85e !important;
+  box-shadow:0 0 0 4px rgba(152,184,94,.10) !important;
+}
+
+/* Cores de sabor do estoque iguais ao caixa */
+.product-pick.maracuja,
+.stock-main-card.maracuja{
+  background:linear-gradient(135deg,#fff8db 0%, #ffeeb0 100%) !important;
+  border-color:rgba(220,173,66,.82) !important;
+}
+.product-pick.limao,
+.stock-main-card.limao{
+  background:linear-gradient(135deg,#f6fcdf 0%, #e8f5bf 100%) !important;
+  border-color:rgba(160,193,93,.82) !important;
+}
+.product-pick.chocolate,
+.stock-main-card.chocolate{
+  background:linear-gradient(135deg,#faeade 0%, #f0d4bd 100%) !important;
+  border-color:rgba(186,129,84,.82) !important;
+}
+
+/* Textos e números do estoque por sabor */
+.stock-main-card.maracuja strong,
+.stock-main-card.maracuja b{
+  color:#8a6118 !important;
+}
+.stock-main-card.limao strong,
+.stock-main-card.limao b{
+  color:#648132 !important;
+}
+.stock-main-card.chocolate strong,
+.stock-main-card.chocolate b{
+  color:#7a4b2f !important;
+}
+
+/* Cabeçalhos e miolo dos cards do estoque mais alinhados com o caixa */
+.stock-main-card.maracuja > summary{
+  background:linear-gradient(180deg,#fffdf5,#fff4cf) !important;
+}
+.stock-main-card.limao > summary{
+  background:linear-gradient(180deg,#fefff9,#eef7d2) !important;
+}
+.stock-main-card.chocolate > summary{
+  background:linear-gradient(180deg,#fffdfa,#f6e4d6) !important;
+}
+.stock-main-card .product-stock-body{
+  background:rgba(255,255,255,.34);
+}
+.stock-main-card .mini-kpis > div{
+  background:rgba(255,255,255,.54) !important;
+  border-color:rgba(255,255,255,.45) !important;
+}
+
+/* Badges dentro do estoque seguem o sabor */
+.stock-main-card.maracuja .stock-alert,
+.stock-main-card.maracuja .lot-badge{
+  color:#8a6118 !important;
+  background:rgba(255,246,214,.82) !important;
+  border:1px solid rgba(220,173,66,.28) !important;
+}
+.stock-main-card.limao .stock-alert,
+.stock-main-card.limao .lot-badge{
+  color:#648132 !important;
+  background:rgba(243,250,222,.84) !important;
+  border:1px solid rgba(160,193,93,.28) !important;
+}
+.stock-main-card.chocolate .stock-alert,
+.stock-main-card.chocolate .lot-badge{
+  color:#7a4b2f !important;
+  background:rgba(249,236,224,.84) !important;
+  border:1px solid rgba(186,129,84,.28) !important;
+}
+
+/* Lotes do histórico também acompanham o sabor */
+.lot-drawer.maracuja{
+  background:linear-gradient(180deg,#fffef8,#fff6de) !important;
+  border-color:rgba(220,173,66,.62) !important;
+}
+.lot-drawer.limao{
+  background:linear-gradient(180deg,#fefff9,#f1f8df) !important;
+  border-color:rgba(160,193,93,.62) !important;
+}
+.lot-drawer.chocolate{
+  background:linear-gradient(180deg,#fffefc,#f8e9dc) !important;
+  border-color:rgba(186,129,84,.62) !important;
+}
+
+/* Estoque com título e guia mais verde */
+body[data-route="estoque"] .screen-title{
+  color:#68843d !important;
+}
+body[data-route="estoque"] .screen-title::after{
+  background:linear-gradient(90deg, rgba(126,168,75,.42), rgba(126,168,75,0)) !important;
+}
+body[data-route="estoque"] .stock-guide{
+  background:linear-gradient(180deg,#fcfff8,#f3f8e8) !important;
+  border-color:rgba(162,195,95,.72) !important;
+  color:#6d8340 !important;
+  border-left:4px solid #9bbb61 !important;
+}
+
+
+/* v8.0 — ajustes finos pedidos */
+
+/* 1) total da venda: verde mais suave */
+.total-box{
+  background:linear-gradient(135deg,#d7e8aa,#c3d98b) !important;
+  color:#5c7a2e !important;
+  border:1px solid rgba(152,184,94,.48);
+}
+.total-box span{
+  color:#6d8741 !important;
+}
+.total-box b{
+  color:#5c7a2e !important;
+}
+
+/* 2) Pago x Em aberto com cores diferentes */
+.chip.okchip.active{
+  background:linear-gradient(180deg,#7faa4a,#64883c) !important;
+  border-color:#64883c !important;
+  color:#fff !important;
+}
+.chip.openchip.active{
+  background:linear-gradient(180deg,#f1cd6f,#ddb04a) !important;
+  border-color:#ddb04a !important;
+  color:#6f4f10 !important;
+}
+
+/* 3) Pagamentos com a mesma lógica de “bolha” do Financeiro */
+.accounts-area{
+  position:relative;
+  background:linear-gradient(180deg, rgba(249,246,255,.98), rgba(239,233,255,.97)) !important;
+  border-color:rgba(170,145,221,.70) !important;
+}
+.accounts-area::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  top:0;
+  height:4px;
+  border-radius:0 0 999px 999px;
+  background:linear-gradient(90deg,#b39be3,#8b6ac9);
+}
+.accounts-area .finance-area-title strong,
+.accounts-area .money-summary-value b,
+.accounts-area .area-icon{
+  color:#7c5ab9 !important;
+}
+.payments-drawer > summary{
+  background:linear-gradient(180deg,#fcfaff,#f1ebff) !important;
+}
+.account-card{
+  background:linear-gradient(180deg,#fffefc,#f7f2ff) !important;
+  border:1px solid rgba(183,164,224,.44) !important;
+}
+
+/* 4) Estoque e produtos do caixa obedecendo às cores padrão */
+.product-admin-row.maracuja{
+  background:linear-gradient(135deg,#fffef8,#fff4cf) !important;
+  border-color:rgba(220,173,66,.62) !important;
+}
+.product-admin-row.limao{
+  background:linear-gradient(135deg,#fefff9,#eef7d2) !important;
+  border-color:rgba(160,193,93,.62) !important;
+}
+.product-admin-row.chocolate{
+  background:linear-gradient(135deg,#fffdfa,#f6e4d6) !important;
+  border-color:rgba(186,129,84,.62) !important;
+}
+
+/* novo sabor / produto customizado sempre branco */
+.product-admin-row.custom-product,
+.product-pick.custom-product,
+.stock-main-card.custom-product{
+  background:#fff !important;
+  border-color:var(--line) !important;
+}
+.product-admin-row.custom-product strong,
+.product-pick.custom-product b,
+.stock-main-card.custom-product strong,
+.stock-main-card.custom-product b{
+  color:var(--ink) !important;
+}
+.product-form > summary{
+  background:#fff !important;
+}
+
+/* 5) Clientes por status */
+.clean-client-card.client-idle{
+  background:linear-gradient(180deg,#ffffff,#fffdfb) !important;
+  border-color:#ead8c3 !important;
+}
+.clean-client-card.client-paid{
+  background:linear-gradient(180deg,#fcfff8,#eef7df) !important;
+  border-color:rgba(152,184,94,.64) !important;
+}
+.clean-client-card.client-open{
+  background:linear-gradient(180deg,#fffef7,#fff3cc) !important;
+  border-color:rgba(223,181,79,.68) !important;
+}
+.clean-client-card.client-overdue{
+  background:linear-gradient(180deg,#fff9f7,#ffe5de) !important;
+  border-color:rgba(207,114,96,.68) !important;
+}
+
+.clean-client-card.client-idle .price{ color:#6b4a35 !important; }
+.clean-client-card.client-paid .price,
+.clean-client-card.client-paid strong{ color:#5d7f30 !important; }
+.clean-client-card.client-open .price,
+.clean-client-card.client-open strong{ color:#8a6617 !important; }
+.clean-client-card.client-overdue .price,
+.clean-client-card.client-overdue strong{ color:#a3564b !important; }
+
+.clean-client-card.client-paid .client-quick-data{
+  background:linear-gradient(180deg,#fffefc,#f5fbe9) !important;
+}
+.clean-client-card.client-open .client-quick-data{
+  background:linear-gradient(180deg,#fffefc,#fff8df) !important;
+}
+.clean-client-card.client-overdue .client-quick-data{
+  background:linear-gradient(180deg,#fffefc,#fff0ec) !important;
+}
+
+/* manter os clientes sem compras bem neutros */
+.clean-client-card.client-idle .client-quick-data{
+  background:linear-gradient(180deg,#fffefc,#fffaf5) !important;
+}
+
+
+/* v8.1 — Financeiro: Recebíveis roxo / Pagamentos verde */
+
+/* RECEBÍVEIS => ROXO */
+.receive-area{
+  position:relative;
+  background:linear-gradient(180deg,#faf6ff,#f1e9ff) !important;
+  border-color:#cdb4ef !important;
+}
+.receive-area::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  top:0;
+  height:4px;
+  border-radius:0 0 999px 999px;
+  background:linear-gradient(90deg,#b191e7,#7f62c8);
+}
+.receive-area .finance-area-title strong,
+.receive-area .money-summary-value b,
+.receive-area .area-icon{
+  color:#7a5bc0 !important;
+}
+.receive-area .finance-area-title span,
+.receive-area .money-summary-value span{
+  color:#8f7cad !important;
+}
+.receive-area .receive-drawer{
+  background:linear-gradient(180deg,#fcfaff,#f5efff) !important;
+  border-color:#cdb4ef !important;
+}
+.receive-area .receive-drawer > summary{
+  background:linear-gradient(180deg,#fdfbff,#f2ebff) !important;
+}
+.receive-area .receive-drawer .card{
+  background:transparent !important;
+}
+.receive-area .client-charge,
+.receive-area .charge-ticket,
+.receive-area .charge-ticket.read-only{
+  background:linear-gradient(180deg,#ffffff,#f7f1ff) !important;
+  border-color:#d7c4f2 !important;
+}
+.receive-area .tag.em_aberto,
+.receive-area .tag.parcial{
+  background:linear-gradient(180deg,#f2e9ff,#e0d1fb) !important;
+  color:#7152ba !important;
+}
+.receive-area .tag.pago{
+  background:linear-gradient(180deg,#f0f8eb,#dff0d4) !important;
+  color:#4f7a46 !important;
+}
+.receive-area .tag.cancelado{
+  background:linear-gradient(180deg,#fff0ed,#ffdcd5) !important;
+  color:#a7584b !important;
+}
+
+/* PAGAMENTOS => VERDE */
+.accounts-area{
+  position:relative;
+  background:linear-gradient(180deg,#f8fdf1,#edf7db) !important;
+  border-color:#b7d589 !important;
+}
+.accounts-area::before{
+  content:"";
+  position:absolute;
+  left:14px;
+  right:14px;
+  top:0;
+  height:4px;
+  border-radius:0 0 999px 999px;
+  background:linear-gradient(90deg,#a6cd61,#6f9d3b);
+}
+.accounts-area .finance-area-title strong,
+.accounts-area .money-summary-value b,
+.accounts-area .area-icon{
+  color:#628a33 !important;
+}
+.accounts-area .finance-area-title span,
+.accounts-area .money-summary-value span{
+  color:#7f9366 !important;
+}
+.payments-drawer{
+  background:linear-gradient(180deg,#fbfff6,#f2f9e7) !important;
+  border-color:#b7d589 !important;
+  border-radius:18px !important;
+}
+.payments-drawer > summary{
+  background:linear-gradient(180deg,#fefff9,#f3fae9) !important;
+}
+.payments-drawer[open] > summary{
+  border-bottom:1px dashed #cfe1b1 !important;
+}
+.accounts-area .account-card{
+  background:linear-gradient(180deg,#ffffff,#f7fbeF) !important;
+  border-color:#cfe1b1 !important;
+}
+.accounts-area .account-card b{
+  color:#64883c !important;
+}
+.accounts-area .account-card small,
+.accounts-area .account-card span{
+  color:#7c9261 !important;
+}
+.accounts-area .mini-kpis > div{
+  background:linear-gradient(180deg,#ffffff,#f6fbeD) !important;
+  border-color:#cfe1b1 !important;
+}
+.accounts-area .account-move{
+  background:linear-gradient(180deg,#ffffff,#f6fbeD) !important;
+  border-color:#cfe1b1 !important;
+}
+.accounts-area .account-move.saida{
+  background:linear-gradient(180deg,#fff9f7,#fff0ed) !important;
+  border-color:#efc7c0 !important;
+}
+.accounts-area details.accordion[style]{
+  border-color:#b7d589 !important;
+}
+
+/* só para garantir que o roxo e o verde apareçam também nos balões internos */
+.receive-area .money-summary-value,
+.accounts-area .money-summary-value{
+  min-width:92px;
+}
+
+
+/* v8.2 — Pago x Em aberto com cores realmente diferentes */
+
+/* estado base */
+.chip.okchip,
+.chip.openchip{
+  border-width:1px;
+}
+
+/* pago = verde */
+.chip.okchip.active,
+button.chip.okchip.active,
+body[data-route="venda"] #saleForm button.chip.okchip.active{
+  background:linear-gradient(180deg,#7faa4a,#64883c) !important;
+  border-color:#64883c !important;
+  color:#ffffff !important;
+  box-shadow:0 8px 16px rgba(100,136,60,.16);
+}
+
+/* em aberto / a cobrar = amarelo dourado */
+.chip.openchip.active,
+button.chip.openchip.active,
+body[data-route="venda"] #saleForm button.chip.openchip.active{
+  background:linear-gradient(180deg,#f2d77c,#ddb04a) !important;
+  border-color:#ddb04a !important;
+  color:#6f4f10 !important;
+  box-shadow:0 8px 16px rgba(221,176,74,.16);
+}
+
+/* corrige regra antiga que deixava toda chip ativa verde dentro da venda */
+body[data-route="venda"] #saleForm button.chip.active{
+  color:inherit;
+}
+body[data-route="venda"] #saleForm button.chip.okchip.active{
+  color:#fff !important;
+}
+body[data-route="venda"] #saleForm button.chip.openchip.active{
+  color:#6f4f10 !important;
+}
+
+/* quando não estiver ativo, deixa mais neutro */
+.chip.okchip:not(.active),
+.chip.openchip:not(.active){
+  background:linear-gradient(180deg,#fffefc,#fbf5ee);
+  color:#7a5a44;
+}
+
+
+/* v8.3 — fundo com texturas minimalistas de limão, maracujá e chocolate */
+
+/* base do fundo */
+html, body{
+  background:
+    linear-gradient(180deg, #fffdf9 0%, #fbf4ea 46%, #f8efe3 100%) !important;
+}
+
+/* camada principal: frutas e chocolate bem discretos */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.55;
+
+  /* 
+    1) limão = anéis suaves
+    2) maracujá = sementes/pontos em círculos
+    3) chocolate = blocos lineares discretos
+  */
+  background:
+    /* limão — anéis */
+    radial-gradient(circle at 10% 18%,
+      transparent 0 34px,
+      rgba(166,198,95,.12) 34px 36px,
+      transparent 36px 100%) ,
+    radial-gradient(circle at 82% 26%,
+      transparent 0 28px,
+      rgba(166,198,95,.10) 28px 30px,
+      transparent 30px 100%),
+    radial-gradient(circle at 18% 78%,
+      transparent 0 26px,
+      rgba(166,198,95,.10) 26px 28px,
+      transparent 28px 100%),
+
+    /* maracujá — discos e sementinhas */
+    radial-gradient(circle at 86% 76%,
+      rgba(244,218,128,.10) 0 24px,
+      transparent 24px 100%),
+    radial-gradient(circle at 86% 76%,
+      rgba(122,79,56,.10) 1px,
+      transparent 1.8px) 0 0 / 11px 11px,
+    radial-gradient(circle at 24% 54%,
+      rgba(244,218,128,.08) 0 20px,
+      transparent 20px 100%),
+    radial-gradient(circle at 24% 54%,
+      rgba(122,79,56,.08) 1px,
+      transparent 1.7px) 0 0 / 10px 10px,
+
+    /* chocolate — quadradinhos/blocos */
+    linear-gradient(rgba(186,129,84,.07), rgba(186,129,84,.07)) 72% 14% / 64px 18px no-repeat,
+    linear-gradient(rgba(186,129,84,.06), rgba(186,129,84,.06)) 72% 14% / 18px 54px no-repeat,
+    linear-gradient(rgba(186,129,84,.06), rgba(186,129,84,.06)) 58% 84% / 76px 20px no-repeat,
+    linear-gradient(rgba(186,129,84,.05), rgba(186,129,84,.05)) 58% 84% / 20px 64px no-repeat,
+
+    /* profundidade cremosa já existente */
+    radial-gradient(circle at 0% 0%, rgba(241,199,106,.10), transparent 25%),
+    radial-gradient(circle at 100% 0%, rgba(183,203,119,.09), transparent 24%),
+    radial-gradient(circle at 50% 100%, rgba(215,163,125,.08), transparent 25%);
+}
+
+/* camada extra para dar mais profundidade com brilho bem sutil */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  opacity:.7;
+  background:
+    radial-gradient(circle at 12% 20%, rgba(255,255,255,.45), transparent 11%),
+    radial-gradient(circle at 84% 72%, rgba(255,255,255,.34), transparent 12%),
+    radial-gradient(circle at 78% 18%, rgba(255,255,255,.26), transparent 9%),
+    linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,0) 18%),
+    linear-gradient(0deg, rgba(255,255,255,.08), rgba(255,255,255,0) 15%);
+}
+
+/* garante que o conteúdo fique acima das texturas */
+.app-shell,
+.app-header,
+.bottom-nav{
+  position:relative;
+  z-index:1;
+}
+
+/* textura um pouco mais forte no desktop, sem exagero */
+@media (min-width: 860px){
+  body::before{
+    opacity:.62;
+  }
+}
+
+/* mais leve no mobile para não poluir */
+@media (max-width: 480px){
+  body::before{
+    opacity:.42;
+    background:
+      radial-gradient(circle at 12% 18%,
+        transparent 0 26px,
+        rgba(166,198,95,.10) 26px 28px,
+        transparent 28px 100%),
+      radial-gradient(circle at 85% 75%,
+        rgba(244,218,128,.08) 0 18px,
+        transparent 18px 100%),
+      radial-gradient(circle at 85% 75%,
+        rgba(122,79,56,.08) 1px,
+        transparent 1.6px) 0 0 / 10px 10px,
+      linear-gradient(rgba(186,129,84,.05), rgba(186,129,84,.05)) 78% 12% / 54px 16px no-repeat,
+      linear-gradient(rgba(186,129,84,.05), rgba(186,129,84,.05)) 78% 12% / 16px 44px no-repeat,
+      radial-gradient(circle at 0% 0%, rgba(241,199,106,.10), transparent 24%),
+      radial-gradient(circle at 100% 0%, rgba(183,203,119,.09), transparent 22%),
+      radial-gradient(circle at 50% 100%, rgba(215,163,125,.08), transparent 24%);
+  }
+}
+
+
+/* v8.4 — navegação fixa de verdade + blocos brancos no estoque */
+
+/* 1) barra inferior fixa enquanto o conteúdo desliza por trás */
+html, body{
+  min-height:100%;
+}
+body{
+  overflow-y:auto;
+}
+.app-shell{
+  min-height:100vh;
+  padding-bottom:112px !important; /* espaço para a barra fixa */
+}
+.bottom-nav{
+  position:fixed !important;
+  left:10px !important;
+  right:10px !important;
+  bottom:10px !important;
+  z-index:50 !important;
+}
+.app-header{
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+@media (min-width:760px){
+  .bottom-nav{
+    max-width:760px;
+    left:50% !important;
+    right:auto !important;
+    transform:translateX(-50%);
+  }
+}
+
+/* 2) Na aba Estoque, os blocos da segunda imagem ficam brancos */
+body[data-route="estoque"] .accordion,
+body[data-route="estoque"] .accordion > summary,
+body[data-route="estoque"] .product-stock-drawer:not(.maracuja):not(.limao):not(.chocolate),
+body[data-route="estoque"] .lot-drawer:not(.maracuja):not(.limao):not(.chocolate){
+  background:#ffffff !important;
+}
+
+body[data-route="estoque"] .accordion,
+body[data-route="estoque"] .product-stock-drawer:not(.maracuja):not(.limao):not(.chocolate),
+body[data-route="estoque"] .lot-drawer:not(.maracuja):not(.limao):not(.chocolate){
+  border-color:#e7d9c7 !important;
+  box-shadow:0 8px 20px rgba(96,65,45,.05) !important;
+}
+
+body[data-route="estoque"] .accordion > summary{
+  background:#ffffff !important;
+  border-radius:inherit;
+}
+
+body[data-route="estoque"] .accordion[open] > summary{
+  border-bottom:1px dashed #eadcc9 !important;
+}
+
+/* mantém texto limpo nesses blocos brancos */
+body[data-route="estoque"] .accordion strong,
+body[data-route="estoque"] .accordion h3,
+body[data-route="estoque"] .accordion .section-head h2{
+  color:#5b3d2c !important;
+}
+body[data-route="estoque"] .accordion small,
+body[data-route="estoque"] .accordion span{
+  color:#8f7463 !important;
+}
+
+/* campos internos nesses blocos brancos */
+body[data-route="estoque"] .accordion input,
+body[data-route="estoque"] .accordion select,
+body[data-route="estoque"] .accordion textarea{
+  background:#ffffff !important;
+  border-color:#e6d7c6 !important;
+}
+
+/* produto customizado/novo continua branco em todo o ecossistema */
+body[data-route="estoque"] .product-admin-row.custom-product,
+body[data-route="estoque"] .product-pick.custom-product,
+body[data-route="estoque"] .stock-main-card.custom-product{
+  background:#ffffff !important;
+  border-color:#e6d7c6 !important;
+}
+
+/* leve respiro final para o conteúdo não ficar encostando na nav */
+.screen:last-child,
+.screen .accordion:last-child,
+.screen .card:last-child{
+  margin-bottom:8px;
+}
+
+
+/* v8.5 — Pix com QR Code no caixa */
+.pix-info-box{
+  margin-top:12px;
+  border:1px solid rgba(166,198,95,.45);
+  border-radius:22px;
+  background:linear-gradient(180deg,#fffefb,#f8fcef);
+  box-shadow:0 10px 20px rgba(96,65,45,.06);
+  overflow:hidden;
+}
+.pix-info-head{
+  padding:12px 14px 10px;
+  border-bottom:1px dashed rgba(166,198,95,.35);
+}
+.pix-info-head strong{
+  display:block;
+  color:#5f7f33;
+  font-size:14px;
+  font-weight:800;
+}
+.pix-info-head small{
+  color:#7f9366;
+  font-size:12px;
+}
+.pix-info-card{
+  display:grid;
+  grid-template-columns: 132px 1fr;
+  gap:12px;
+  align-items:center;
+  padding:12px 14px 14px;
+}
+.pix-qr-wrap{
+  background:#fff;
+  border:1px solid #e7d9c7;
+  border-radius:18px;
+  padding:8px;
+  box-shadow:0 6px 14px rgba(96,65,45,.05);
+}
+.pix-qr-image{
+  display:block;
+  width:100%;
+  max-width:116px;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:12px;
+}
+.pix-meta{
+  display:grid;
+  gap:10px;
+}
+.pix-meta-row{
+  background:rgba(255,255,255,.65);
+  border:1px solid #e7d9c7;
+  border-radius:16px;
+  padding:10px 12px;
+}
+.pix-meta-row span{
+  display:block;
+  color:#8a705f;
+  font-size:11px;
+  margin-bottom:4px;
+}
+.pix-meta-row b{
+  color:#5a3d2c;
+  font-size:14px;
+  line-height:1.2;
+  word-break:break-word;
+}
+
+@media (max-width:460px){
+  .pix-info-card{
+    grid-template-columns:1fr;
+  }
+  .pix-qr-wrap{
+    width:min(170px, 100%);
+    margin:0 auto;
+  }
+  .pix-meta-row{
+    text-align:left;
+  }
+}
+
+
+/* v8.6 — botão para ampliar QR do Pix */
+.pix-open-btn{
+  width:100%;
+  min-height:42px;
+}
+
+.pix-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(38,30,24,.48);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  z-index:120;
+}
+.pix-modal.open{
+  display:flex;
+}
+.pix-modal-card{
+  width:min(92vw, 420px);
+  background:linear-gradient(180deg,#fffefb,#faf7f0);
+  border:1px solid #e7d9c7;
+  border-radius:24px;
+  box-shadow:0 22px 40px rgba(59,45,35,.24);
+  padding:14px;
+}
+.pix-modal-close{
+  display:block;
+  margin-left:auto;
+  margin-bottom:10px;
+  min-height:38px;
+  padding:0 14px;
+}
+.pix-modal-body{
+  display:grid;
+  gap:14px;
+  justify-items:center;
+}
+.pix-qr-image-large{
+  display:block;
+  width:min(100%, 300px);
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:16px;
+  background:#fff;
+  border:1px solid #e7d9c7;
+  padding:8px;
+}
+.pix-modal-info{
+  width:100%;
+  text-align:center;
+  background:#fff;
+  border:1px solid #e7d9c7;
+  border-radius:18px;
+  padding:12px;
+}
+.pix-modal-info strong{
+  display:block;
+  color:#5a3d2c;
+  font-size:16px;
+  font-weight:800;
+  margin-bottom:8px;
+}
+.pix-modal-info span{
+  display:block;
+  color:#8a705f;
+  font-size:11px;
+  margin-bottom:4px;
+}
+.pix-modal-info b{
+  color:#5a3d2c;
+  font-size:14px;
+  word-break:break-word;
+}
+
+@media (max-width:460px){
+  .pix-modal-card{
+    width:min(94vw, 360px);
+    padding:12px;
+  }
+  .pix-qr-image-large{
+    width:min(100%, 260px);
+  }
+}
+
+
+/* v8.8 — Pix confiável + clientes com quadrado todo colorido */
+
+/* PIX */
+.pix-qr-image{
+  cursor:pointer;
+}
+.pix-open-actions{
+  display:grid;
+  gap:8px;
+}
+.pix-open-btn.secondary{
+  min-height:40px;
+}
+
+/* CLIENTES — card inteiro colorido por status, como no financeiro */
+.clean-client-card.client-idle{
+  background:linear-gradient(180deg,#ffffff,#fffdfb) !important;
+  border-color:#ead8c3 !important;
+}
+.clean-client-card.client-idle .client-drawer-summary,
+.clean-client-card.client-idle .client-drawer-body{
+  background:transparent !important;
+}
+.clean-client-card.client-idle .client-quick-data,
+.clean-client-card.client-idle .client-ticket,
+.clean-client-card.client-idle .client-history-block{
+  background:linear-gradient(180deg,#fffefc,#fffaf5) !important;
+  border-color:#ead8c3 !important;
+}
+
+/* verde = pagos */
+.clean-client-card.client-paid{
+  background:linear-gradient(180deg,#f7fdea,#edf7d9) !important;
+  border-color:#a7ca6a !important;
+  box-shadow:0 12px 28px rgba(126,168,75,.10) !important;
+}
+.clean-client-card.client-paid .client-drawer-summary,
+.clean-client-card.client-paid .client-drawer-body{
+  background:transparent !important;
+}
+.clean-client-card.client-paid .client-drawer-summary strong,
+.clean-client-card.client-paid .price,
+.clean-client-card.client-paid .client-drawer-summary small{
+  color:#5e7f33 !important;
+}
+.clean-client-card.client-paid .client-drawer-summary{
+  border-bottom-color:rgba(167,202,106,.45) !important;
+}
+.clean-client-card.client-paid .client-quick-data,
+.clean-client-card.client-paid .client-ticket,
+.clean-client-card.client-paid .client-history-block,
+.clean-client-card.client-paid .client-empty{
+  background:linear-gradient(180deg,#fcfff8,#f2fae6) !important;
+  border-color:#cfe1ac !important;
+}
+
+/* amarelo = aberto no mês */
+.clean-client-card.client-open{
+  background:linear-gradient(180deg,#fffdf1,#fff0bf) !important;
+  border-color:#e3bc57 !important;
+  box-shadow:0 12px 28px rgba(227,188,87,.10) !important;
+}
+.clean-client-card.client-open .client-drawer-summary,
+.clean-client-card.client-open .client-drawer-body{
+  background:transparent !important;
+}
+.clean-client-card.client-open .client-drawer-summary strong,
+.clean-client-card.client-open .price,
+.clean-client-card.client-open .client-drawer-summary small{
+  color:#8d6816 !important;
+}
+.clean-client-card.client-open .client-drawer-summary{
+  border-bottom-color:rgba(227,188,87,.42) !important;
+}
+.clean-client-card.client-open .client-quick-data,
+.clean-client-card.client-open .client-ticket,
+.clean-client-card.client-open .client-history-block,
+.clean-client-card.client-open .client-empty{
+  background:linear-gradient(180deg,#fffef7,#fff7db) !important;
+  border-color:#edd492 !important;
+}
+
+/* vermelho = mês anterior em aberto */
+.clean-client-card.client-overdue{
+  background:linear-gradient(180deg,#fff9f7,#ffe2da) !important;
+  border-color:#d58c81 !important;
+  box-shadow:0 12px 28px rgba(213,140,129,.10) !important;
+}
+.clean-client-card.client-overdue .client-drawer-summary,
+.clean-client-card.client-overdue .client-drawer-body{
+  background:transparent !important;
+}
+.clean-client-card.client-overdue .client-drawer-summary strong,
+.clean-client-card.client-overdue .price,
+.clean-client-card.client-overdue .client-drawer-summary small{
+  color:#a1554a !important;
+}
+.clean-client-card.client-overdue .client-drawer-summary{
+  border-bottom-color:rgba(213,140,129,.42) !important;
+}
+.clean-client-card.client-overdue .client-quick-data,
+.clean-client-card.client-overdue .client-ticket,
+.clean-client-card.client-overdue .client-history-block,
+.clean-client-card.client-overdue .client-empty{
+  background:linear-gradient(180deg,#fffdfc,#fff0ec) !important;
+  border-color:#efc7c0 !important;
+}
+
+/* pequenas harmonizações internas */
+.clean-client-card .tag{
+  box-shadow:none;
+}
+.clean-client-card.client-paid .tag.total{ background:linear-gradient(180deg,#eef8e4,#deefcd) !important; color:#56773d !important; }
+.clean-client-card.client-open .tag.total{ background:linear-gradient(180deg,#fff5d8,#ffe8b1) !important; color:#8b6618 !important; }
+.clean-client-card.client-overdue .tag.total{ background:linear-gradient(180deg,#fff1ed,#ffdcd4) !important; color:#a3564b !important; }
+
+.clean-client-card .client-clean-actions .mini{
+  background:#fff !important;
+}
+
+/* melhora leitura dos tickets conforme o card */
+.clean-client-card.client-paid .client-ticket .tag.pago{ background:linear-gradient(180deg,#eef8e4,#deefcd) !important; color:#56773d !important; }
+.clean-client-card.client-open .client-ticket .tag.em_aberto,
+.clean-client-card.client-open .client-ticket .tag.parcial{ background:linear-gradient(180deg,#fff4d9,#ffe6aa) !important; color:#8b6618 !important; }
+.clean-client-card.client-overdue .client-ticket .tag.em_aberto,
+.clean-client-card.client-overdue .client-ticket .tag.parcial{ background:linear-gradient(180deg,#fff1ed,#ffdcd4) !important; color:#a3564b !important; }
+
+
+/* v8.9 — relatórios por cliente e pagamentos detalhados */
+
+/* relatório > por cliente */
+.report-client-list{
+  display:grid;
+  gap:8px;
+}
+.report-client-drawer{
+  margin-top:0;
+}
+.report-client-drawer > summary{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+.report-client-drawer > summary strong{
+  display:block;
+}
+.report-client-drawer > summary small{
+  display:block;
+  margin-top:3px;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.report-client-drawer > summary b{
+  display:block;
+  font-size:16px;
+  letter-spacing:-.03em;
+}
+.report-client-body{
+  padding:0 10px 10px;
+}
+.report-client-actions{
+  justify-content:flex-end;
+  margin:8px 0 10px;
+}
+
+/* pagamentos detalhados */
+.payment-method-list{
+  display:grid;
+  gap:10px;
+}
+.payment-method-drawer{
+  padding:0;
+  overflow:hidden;
+}
+.payment-method-drawer > summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px;
+}
+.payment-method-drawer > summary::-webkit-details-marker{
+  display:none;
+}
+.payment-method-drawer[open] > summary{
+  border-bottom:1px dashed var(--line);
+}
+.payment-method-body{
+  padding:10px;
+  display:grid;
+  gap:8px;
+}
+.payment-client-drawer{
+  margin-top:0;
+}
+.payment-client-drawer > summary{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+.payment-client-drawer > summary strong{
+  display:block;
+}
+.payment-client-drawer > summary small{
+  display:block;
+  margin-top:3px;
+  color:var(--ink-soft);
+  font-size:12px;
+}
+.payment-client-drawer > summary b{
+  display:block;
+  font-size:16px;
+  letter-spacing:-.03em;
+}
+.payment-client-body{
+  padding:0 10px 10px;
+}
+.accounts-area .payment-method-drawer{
+  background:linear-gradient(180deg,#ffffff,#f7fbef) !important;
+  border-color:#cfe1b1 !important;
+}
+.accounts-area .payment-client-drawer{
+  background:linear-gradient(180deg,#ffffff,#fbfff6) !important;
+  border-color:#d9e8c0 !important;
+}
+.accounts-area .payment-client-drawer .charge-ticket{
+  background:linear-gradient(180deg,#ffffff,#fbfff6) !important;
+  border-color:#cfe1b1 !important;
+}
+.accounts-area .payment-client-drawer .charge-ticket small{
+  color:#7c9261 !important;
+}
+@media(max-width:430px){
+  .report-client-drawer > summary,
+  .payment-client-drawer > summary{
+    flex-direction:column;
+  }
+  .report-client-drawer > summary > div:last-child,
+  .payment-client-drawer > summary > div:last-child{
+    text-align:left !important;
+  }
+}
+
+
+/* v9.0 — refino visual e troco no dinheiro */
+
+.payment-helper-stack{
+  display:grid;
+  gap:10px;
+  margin-top:10px;
+}
+
+.cash-box{
+  border:1px solid #d7e3bf;
+  background:linear-gradient(180deg,#ffffff 0%,#f7fbef 100%);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--shadow-soft);
+}
+.cash-box summary{
+  list-style:none;
+  cursor:pointer;
+  padding:12px 14px;
+  font-weight:800;
+  color:#58752d;
+}
+.cash-box summary::-webkit-details-marker{display:none}
+.cash-box[open] summary{
+  border-bottom:1px dashed #d7e3bf;
+}
+.cash-grid{
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:10px;
+  padding:12px 14px 0;
+}
+.cash-stat,
+.cash-input-wrap{
+  background:#fff;
+  border:1px solid #d7e3bf;
+  border-radius:16px;
+  padding:12px;
+}
+.cash-stat small,
+.cash-input-wrap span{
+  display:block;
+  color:#6f8258;
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.cash-stat b{
+  display:block;
+  margin-top:6px;
+  font-size:22px;
+  letter-spacing:-.04em;
+  color:#3d4b26;
+}
+.cash-input-wrap input{
+  margin-top:6px;
+  min-height:46px;
+  font-size:22px;
+  font-weight:800;
+  color:#3d4b26;
+  border-radius:14px;
+  border:1px solid #d7e3bf;
+  background:#fcfef8;
+}
+.cash-result-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  padding:10px 14px 0;
+}
+.cash-result{
+  background:#fff;
+  border:1px solid #d7e3bf;
+  border-radius:16px;
+  padding:12px;
+}
+.cash-result small{
+  display:block;
+  color:#6f8258;
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+.cash-result b{
+  display:block;
+  margin-top:6px;
+  font-size:22px;
+  letter-spacing:-.04em;
+  color:#3d4b26;
+}
+.cash-result.highlight{
+  background:linear-gradient(180deg,#f6fbef 0%,#edf7dd 100%);
+}
+.cash-hint{
+  margin:10px 14px 14px;
+  padding:10px 12px;
+  background:#fff;
+  border:1px dashed #d7e3bf;
+  border-radius:14px;
+  color:#5d6d48;
+  font-size:13px;
+  line-height:1.35;
+}
+
+.accounts-area .payments-drawer{
+  border-color:#cfe1b1;
+  background:linear-gradient(180deg,#fbfef7 0%,#f4faea 100%);
+}
+.accounts-area .payments-drawer > summary{
+  padding:14px 14px 12px;
+}
+.accounts-area .payment-method-list{
+  margin-top:2px;
+}
+.accounts-area .payment-method-drawer{
+  border:1px solid #dbe8c8 !important;
+  background:linear-gradient(180deg,#ffffff 0%,#fbfff5 100%) !important;
+  box-shadow:none;
+}
+.accounts-area .payment-method-drawer > summary{
+  padding:14px;
+}
+.accounts-area .payment-method-drawer > summary small{
+  color:#759353;
+}
+.accounts-area .payment-method-drawer > summary b{
+  font-size:24px;
+  color:#58752d;
+}
+.accounts-area .payment-method-body{
+  background:rgba(255,255,255,.45);
+}
+.accounts-area .payment-client-drawer{
+  border-color:#e1ebd3;
+  background:#ffffff;
+}
+.accounts-area .payment-client-body{
+  background:#fcfef9;
+}
+.accounts-area .payment-client-drawer > summary{
+  padding:12px;
+}
+.accounts-area .payment-client-drawer > summary strong{
+  font-size:15px;
+}
+.accounts-area .payment-client-drawer > summary b{
+  color:#4f682b;
+}
+.accounts-area .payment-client-drawer .charge-ticket{
+  box-shadow:none;
+}
+
+.report-month-drawer{
+  border-color:#edd9aa;
+  background:linear-gradient(180deg,#fffefb 0%,#fffaf0 100%);
+}
+.report-month-drawer summary{
+  padding:16px;
+}
+.report-month-drawer summary strong{
+  font-size:18px;
+  color:#5f452d;
+}
+.report-month-drawer .drawer-content{
+  background:#fffdfa;
+}
+.month-section-card{
+  background:#fff;
+  border:1px solid #f0e1bf;
+  border-radius:18px;
+  padding:14px;
+  box-shadow:none;
+}
+.month-section-card + .month-section-card{
+  margin-top:10px;
+}
+.month-section-card h3{
+  margin:0 0 6px;
+  color:#6a4c32;
+}
+.month-section-card .section-note{
+  color:#9b8064;
+  font-size:12px;
+  margin-bottom:10px;
+}
+.report-client-drawer{
+  border-color:#eadbb6;
+  background:linear-gradient(180deg,#ffffff 0%,#fffaf2 100%);
+}
+.report-client-body{
+  background:#fffdfa;
+}
+.report-client-drawer > summary{
+  padding:12px;
+}
+.report-client-drawer > summary b{
+  color:#6e5435;
+}
+.report-client-actions .mini{
+  border-color:#eadbb6;
+}
+
+.pix-info-box{
+  border-color:#cfe1b1;
+  background:linear-gradient(180deg,#ffffff 0%,#f8fcf1 100%);
+}
+.pix-info-card{
+  background:#fcfff8;
+}
+
+@media(max-width:430px){
+  .cash-grid,
+  .cash-result-row{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* v9.2 — QR maior, proporcional e sem corte */
+.pix-info-card{
+  grid-template-columns: 170px 1fr !important;
+  align-items:start;
+}
+.pix-qr-wrap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff !important;
+  border:1px solid #e7d9c7;
+  border-radius:20px;
+  padding:10px;
+  min-height:170px;
+}
+.pix-qr-image{
+  display:block;
+  width:100% !important;
+  max-width:150px !important;
+  height:auto !important;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+  border-radius:10px;
+  background:#fff;
+}
+.pix-modal-body{
+  gap:16px;
+}
+.pix-qr-image-large{
+  display:block;
+  width:min(100%, 360px) !important;
+  max-width:360px !important;
+  height:auto !important;
+  aspect-ratio:auto !important;
+  object-fit:contain !important;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid #e7d9c7;
+  padding:10px;
+}
+.pix-modal-card{
+  width:min(94vw, 480px) !important;
+}
+.pix-modal-info{
+  max-width:360px;
+}
+@media (max-width:460px){
+  .pix-info-card{
+    grid-template-columns:1fr !important;
+  }
+  .pix-qr-wrap{
+    width:min(220px, 100%);
+    min-height:auto;
+    margin:0 auto;
+  }
+  .pix-qr-image{
+    max-width:190px !important;
+  }
+  .pix-qr-image-large{
+    width:min(100%, 300px) !important;
+    max-width:300px !important;
+  }
+}
+
+
+/* v9.3 — Pix exibido por botão */
+.pix-trigger-box{
+  margin-top:10px;
+  border:1px solid #cfe1b1;
+  background:linear-gradient(180deg,#ffffff 0%,#f8fcf1 100%);
+  border-radius:18px;
+  padding:12px;
+  box-shadow:var(--shadow-soft);
+}
+.pix-trigger-text strong{
+  display:block;
+  color:#5f7f33;
+  font-size:14px;
+  font-weight:800;
+}
+.pix-trigger-text small{
+  display:block;
+  color:#7f9366;
+  font-size:12px;
+  margin-top:4px;
+}
+.pix-trigger-actions{
+  display:grid;
+  gap:8px;
+  margin-top:10px;
+}
+.pix-open-btn{
+  width:100%;
+}
+
+
+/* v9.4 — Pix com nome/chave escritos + botão para QR */
+.pix-trigger-box{
+  margin-top:10px;
+  border:1px solid #cfe1b1;
+  background:linear-gradient(180deg,#ffffff 0%,#f8fcf1 100%);
+  border-radius:18px;
+  padding:12px;
+  box-shadow:var(--shadow-soft);
+}
+.pix-trigger-text strong{
+  display:block;
+  color:#5f7f33;
+  font-size:14px;
+  font-weight:800;
+}
+.pix-trigger-text small{
+  display:block;
+  color:#7f9366;
+  font-size:12px;
+  margin-top:4px;
+}
+.pix-inline-info{
+  display:grid;
+  gap:8px;
+  margin-top:10px;
+}
+.pix-inline-card{
+  background:#fff;
+  border:1px solid #d7e3bf;
+  border-radius:16px;
+  padding:10px 12px;
+}
+.pix-inline-card span{
+  display:block;
+  color:#7a8f61;
+  font-size:11px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+  margin-bottom:4px;
+}
+.pix-inline-card b{
+  display:block;
+  color:#4f682b;
+  font-size:14px;
+  line-height:1.3;
+  word-break:break-word;
+}
+.pix-trigger-actions{
+  display:grid;
+  gap:8px;
+  margin-top:10px;
+}
+.pix-open-btn{
+  width:100%;
+}
+
+
+/* v9.5 Release Final — consolidação */
+.payment-helper-stack{display:grid;gap:10px;margin-top:10px}
+.pix-trigger-box{margin-top:10px;border:1px solid #cfe1b1;background:linear-gradient(180deg,#ffffff 0%,#f8fcf1 100%);border-radius:18px;padding:12px;box-shadow:var(--shadow-soft)}
+.pix-trigger-text strong{display:block;color:#5f7f33;font-size:14px;font-weight:800}
+.pix-trigger-text small{display:block;color:#7f9366;font-size:12px;margin-top:4px}
+.pix-inline-info{display:grid;gap:8px;margin-top:10px}
+.pix-inline-card{background:#fff;border:1px solid #d7e3bf;border-radius:16px;padding:10px 12px}
+.pix-inline-card span{display:block;color:#7a8f61;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+.pix-inline-card b{display:block;color:#4f682b;font-size:14px;line-height:1.3;word-break:break-word}
+.pix-trigger-actions{display:grid;gap:8px;margin-top:10px}
+.pix-open-btn{width:100%}
+.pix-qr-image-large{display:block;width:min(100%,360px)!important;max-width:360px!important;height:auto!important;aspect-ratio:auto!important;object-fit:contain!important;border-radius:18px;background:#fff;border:1px solid #e7d9c7;padding:10px}
+.pix-modal-card{width:min(94vw,480px)!important}
+
+.cash-box{border:1px solid #d7e3bf;background:linear-gradient(180deg,#ffffff 0%,#f7fbef 100%);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-soft)}
+.cash-box summary{list-style:none;cursor:pointer;padding:12px 14px;font-weight:800;color:#58752d}
+.cash-box summary::-webkit-details-marker{display:none}
+.cash-box[open] summary{border-bottom:1px dashed #d7e3bf}
+.cash-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:10px;padding:12px 14px 0}
+.cash-stat,.cash-input-wrap{background:#fff;border:1px solid #d7e3bf;border-radius:16px;padding:12px}
+.cash-stat small,.cash-input-wrap span{display:block;color:#6f8258;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.cash-stat b{display:block;margin-top:6px;font-size:22px;letter-spacing:-.04em;color:#3d4b26}
+.cash-input-wrap input{margin-top:6px;min-height:46px;font-size:22px;font-weight:800;color:#3d4b26;border-radius:14px;border:1px solid #d7e3bf;background:#fcfef8}
+.cash-result-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px 14px 0}
+.cash-result{background:#fff;border:1px solid #d7e3bf;border-radius:16px;padding:12px}
+.cash-result small{display:block;color:#6f8258;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em}
+.cash-result b{display:block;margin-top:6px;font-size:22px;letter-spacing:-.04em;color:#3d4b26}
+.cash-result.highlight{background:linear-gradient(180deg,#f6fbef 0%,#edf7dd 100%)}
+.cash-hint{margin:10px 14px 14px;padding:10px 12px;background:#fff;border:1px dashed #d7e3bf;border-radius:14px;color:#5d6d48;font-size:13px;line-height:1.35}
+
+.report-client-list,.payment-method-list{display:grid;gap:10px}
+.report-client-drawer,.payment-method-drawer,.payment-client-drawer{border-radius:18px}
+.report-client-drawer > summary,.payment-client-drawer > summary{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.payment-method-drawer{padding:0;overflow:hidden}
+.payment-method-drawer > summary{list-style:none;cursor:pointer;padding:14px}
+.payment-method-drawer > summary::-webkit-details-marker{display:none}
+.payment-method-body,.report-client-body,.payment-client-body{padding:10px}
+.accounts-area .payment-method-drawer{background:linear-gradient(180deg,#ffffff,#f7fbef)!important;border-color:#cfe1b1!important}
+.accounts-area .payment-client-drawer{background:linear-gradient(180deg,#ffffff,#fbfff6)!important;border-color:#d9e8c0!important}
+
+@media(max-width:430px){
+  .cash-grid,.cash-result-row,.pix-info-card{grid-template-columns:1fr!important}
+  .report-client-drawer > summary,.payment-client-drawer > summary{flex-direction:column}
+  .report-client-drawer > summary > div:last-child,.payment-client-drawer > summary > div:last-child{text-align:left!important}
+}
+
+
+/* v9.6 — Manual embutido e dicas rápidas */
+.help-tip{
+  display:inline-block;
+  position:relative;
+  vertical-align:middle;
+  margin-left:4px;
+  z-index:5;
+}
+.help-tip > summary{
+  list-style:none;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:20px;
+  height:20px;
+  min-width:20px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#fffefb,#f4faea);
+  color:#64883c;
+  border:1px solid #cfe1b1;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+  padding:0;
+  box-shadow:0 3px 8px rgba(96,65,45,.06);
+}
+.help-tip > summary::-webkit-details-marker{display:none}
+.help-tip[open] > summary{
+  background:linear-gradient(180deg,#edf7dd,#dcecbc);
+  color:#4f682b;
+}
+.help-tip-box{
+  position:absolute;
+  left:0;
+  top:26px;
+  width:min(280px, 78vw);
+  background:#fff;
+  border:1px solid #d7e3bf;
+  border-radius:16px;
+  padding:10px 12px;
+  box-shadow:0 16px 34px rgba(64,47,35,.16);
+  text-align:left;
+}
+.help-tip-box strong{
+  display:block;
+  color:#4f682b;
+  font-size:13px;
+  margin-bottom:4px;
+}
+.help-tip-box p{
+  margin:0;
+  color:#5d4a3b;
+  font-size:12px;
+  line-height:1.35;
+  font-weight:500;
+}
+
+.manual-drawer{
+  margin-bottom:12px;
+  background:linear-gradient(180deg,#fffefb,#f8fcf1)!important;
+  border-color:#cfe1b1!important;
+}
+.manual-drawer > summary{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:12px;
+}
+.manual-drawer > summary strong{
+  display:block;
+  color:#4f682b;
+}
+.manual-drawer > summary small{
+  display:block;
+  margin-top:3px;
+  color:#7f9366;
+  font-size:12px;
+}
+.manual-content{
+  padding:12px;
+  display:grid;
+  gap:10px;
+}
+.manual-mini-section{
+  background:#fff;
+  border:1px solid #d7e3bf;
+  border-radius:16px;
+  padding:12px;
+}
+.manual-mini-section h3{
+  margin:0 0 6px;
+  color:#4f682b;
+  font-size:15px;
+}
+.manual-mini-section p{
+  margin:0 0 8px;
+  color:#5d4a3b;
+  font-size:13px;
+  line-height:1.4;
+}
+.manual-mini-section ul{
+  margin:0;
+  padding-left:18px;
+  color:#5d4a3b;
+  font-size:13px;
+  line-height:1.45;
+}
+.manual-mini-section li{
+  margin:3px 0;
+}
+
+.screen-title .help-tip > summary{
+  width:22px;
+  height:22px;
+}
+.section-head h2 .help-tip,
+.finance-area-title strong .help-tip{
+  transform:translateY(-1px);
+}
+
+@media(max-width:430px){
+  .help-tip-box{
+    left:auto;
+    right:-4px;
+    width:min(300px, 84vw);
+  }
+}
+
+
+/* v9.7 — Dicas no estoque + relatório diário em destaque */
+.stock-main-card .help-tip,
+.product-stock-drawer .help-tip,
+.stock-guide .help-tip{
+  margin-left:6px;
+}
+.stock-main-card .help-tip > summary{
+  background:rgba(255,255,255,.70);
+  border-color:rgba(255,255,255,.72);
+}
+body[data-route="estoque"] .help-tip > summary{
+  color:#64883c;
+  border-color:#cfe1b1;
+}
+body[data-route="estoque"] .help-tip-box{
+  border-color:#cfe1b1;
+}
+
+.month-section-priority{
+  background:linear-gradient(180deg,#ffffff 0%,#f8fcf1 100%) !important;
+  border:1px solid #cfe1b1 !important;
+  box-shadow:0 10px 22px rgba(100,136,60,.07) !important;
+}
+.month-section-priority h3{
+  color:#4f682b !important;
+}
+.month-section-priority .section-note{
+  color:#6f8258 !important;
+}
+.month-section-priority .monthly-row,
+.month-section-priority .inner-drawer,
+.month-section-priority .report-client-drawer{
+  border-color:#d7e3bf !important;
+}
+.report-month-drawer .month-section-card:first-of-type + .month-section-priority,
+.report-month-drawer .month-section-priority{
+  margin-top:10px;
+}
+
+.report-daily-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  padding:3px 8px;
+  background:#edf7dd;
+  color:#4f682b;
+  font-size:10px;
+  font-weight:900;
+  margin-left:6px;
+}
+
+
+/* v9.8 — Relatório diário realmente primeiro e em destaque */
+.monthly-control-block.month-section-priority{
+  background:linear-gradient(180deg,#f8fcf1 0%,#edf7dd 100%) !important;
+  border:1.5px solid #a8ca6a !important;
+  box-shadow:0 12px 24px rgba(100,136,60,.10) !important;
+}
+.monthly-control-block.month-section-priority > summary{
+  background:linear-gradient(180deg,#fbfff6 0%,#edf7dd 100%) !important;
+}
+.monthly-control-block.month-section-priority > summary strong{
+  color:#4f682b !important;
+}
+.monthly-control-block.month-section-priority > summary small{
+  color:#667d49 !important;
+}
+.monthly-control-block.month-section-priority > summary::before{
+  content:"principal";
+  display:inline-flex;
+  width:max-content;
+  margin-right:8px;
+  padding:3px 8px;
+  border-radius:999px;
+  background:#7faa4a;
+  color:#fff;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+.monthly-control-block.month-section-priority .monthly-row,
+.monthly-control-block.month-section-priority .inner-drawer{
+  background:#fff !important;
+  border-color:#d7e3bf !important;
+}

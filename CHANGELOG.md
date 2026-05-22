@@ -1,0 +1,66 @@
+# Changelog — Sr. Tortinhas Control
+
+## v9.8 — Relatório diário corrigido
+
+### Ajustes principais
+
+- Corrigida a hierarquia dos relatórios mensais.
+- Relatório diário agora aparece primeiro e com destaque.
+- Ordem dos relatórios:
+  1. Relatório diário
+  2. Por cliente
+  3. Por sabor/produto
+- Mantidas dicas rápidas na aba Estoque.
+- Mantido manual embutido na área de dados.
+- Mantido Pix com nome, chave e botão para QR Code.
+- Mantido cálculo automático de troco em dinheiro.
+- Mantidos pagamentos detalhados por forma, cliente e ticket.
+- Mantidas cores dos clientes por status.
+
+---
+
+## Histórico resumido
+
+### v9.7 — Estoque com ajuda + relatório diário
+
+- Reforçadas dicas rápidas na aba Estoque.
+- Adicionadas ajudas contextuais em produção, produtos do caixa, ficha técnica e histórico.
+- Tentativa inicial de priorização do relatório diário.
+
+### v9.6 — Manual embutido
+
+- Adicionados botões de ajuda `?` em pontos importantes do app.
+- Adicionado manual enxuto dentro da área de dados.
+
+### v9.5 — Release Final
+
+- Versão consolidada com Pix, QR Code, dinheiro com troco, relatórios, clientes, financeiro e estoque.
+
+### v9.4 — Pix com info escrita + botão QR
+
+- Nome e chave Pix exibidos diretamente no caixa.
+- QR Code exibido por botão.
+
+### v9.3 — Pix com botão
+
+- QR Code Pix passou a abrir somente via botão.
+
+### v9.2 — QR maior sem corte
+
+- QR Code substituído e ajustado para aparecer maior, proporcional e sem cortes.
+
+### v9.1 — Pix corrigido + troco
+
+- Corrigido erro `PIX_INFO is not defined`.
+- Mantido Pix e troco em dinheiro.
+
+---
+
+## Regra para próximas atualizações
+
+Sempre que uma nova versão for gerada, atualizar:
+
+- `README.md`
+- `CHANGELOG.md`
+- `VERSION.txt`
+- identificação da versão dentro do app, quando aplicável

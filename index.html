@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#756f57" />
+  <title>Sr. Tortinhas Control</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header" onclick="setRoute('venda')" role="button" aria-label="Ir para Venda">
+    <img src="logo.png" alt="Logo Senhor Tortinhas" class="brand-logo" />
+    <div>
+      <strong>Sr. Tortinhas Control</strong>
+      <small id="headerHint">Venda rápida</small>
+    </div>
+  </header>
+
+  <main id="app" class="app-shell"></main>
+
+  <nav class="bottom-nav" id="nav"></nav>
+  <div id="toast"></div>
+
+  <script>
+    if (location.protocol !== 'file:') {
+      const link = document.createElement('link');
+      link.rel = 'manifest';
+      link.href = 'manifest.webmanifest';
+      document.head.appendChild(link);
+    }
+  </script>
+  <script src="data-seed.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
