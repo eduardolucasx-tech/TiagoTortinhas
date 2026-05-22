@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v10_8_7_manual_visivel';
+const STORE_KEY = 'sr_tortinhas_control_v1_0_1_release_mobile_polish';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -516,6 +516,17 @@ function helpTip(title, text){
   </details>`;
 }
 
+
+function releaseBadge(){
+  return `<div class="release-badge">
+    <div>
+      <strong>v1.0.1 — Release Mobile Polish</strong>
+      <small>versão estável • mobile first • Google Sync</small>
+    </div>
+    <span>OK</span>
+  </div>`;
+}
+
 function appQuickManual(){
   return `<details class="accordion manual-drawer">
     <summary>
@@ -564,7 +575,7 @@ function appQuickManual(){
       </section>
       <section class="manual-mini-section">
         <h3>Rotina ideal</h3>
-        <p>Produziu? Lance no Estoque. Vendeu? Registre no Caixa. Gastou? Lance em Gastos. Fim do dia? Confira Financeiro e Relatórios.</p>
+        <p>Produziu? Lance no Estoque. Vendeu? Registre na Venda. Gastou? Lance em Gastos. Fim do dia? Confira Financeiro e Relatório diário.</p>
       </section>
     </div>
   </details>`;
@@ -1573,13 +1584,13 @@ function cobrancas(){
     <details class="accordion" style="margin-top:12px">
       <summary>Backup, dados e manual</summary>
       <div class="card" style="margin:0;border:0;border-radius:0;box-shadow:none">
-        ${firebaseLoginCard()}${appQuickManual()}
+        ${firebaseLoginCard()}${releaseBadge()}${appQuickManual()}
         <div class="grid">
           ${appQuickManual()}
 <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.7 Manual visível</small>
+        <small class="clean-note">Versão v1.0.1 — Release Mobile Polish</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1854,7 +1865,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.7 Manual visível</small>
+        <small class="clean-note">Versão v1.0.1 — Release Mobile Polish</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">

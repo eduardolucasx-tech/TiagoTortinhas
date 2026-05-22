@@ -3,7 +3,7 @@
   "short_name":"Tortinhas",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color":"#fffdf9",
+  "background_color":"#fffaf4",
   "theme_color":"#7faa4a",
   "icons": [
     {

@@ -7330,3 +7330,211 @@ nav.mobile-nav small{
   font-size:12px;
   line-height:1.4;
 }
+
+
+/* v1.0.1 — Release Mobile Polish */
+
+/* acabamento geral */
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  overscroll-behavior-y:none;
+}
+
+.app-shell{
+  padding-bottom:calc(var(--navH) + 22px + env(safe-area-inset-bottom)) !important;
+}
+
+/* cabeçalho mais limpo em mobile */
+.app-header{
+  min-height:76px;
+  border-bottom-color:#eadccf !important;
+  box-shadow:0 6px 18px rgba(96,65,45,.045);
+}
+
+.app-header .brand-logo{
+  box-shadow:0 4px 14px rgba(96,65,45,.07) !important;
+}
+
+.app-header .brand-meta strong{
+  color:#563827 !important;
+}
+
+.app-header .brand-meta small{
+  color:#9a806d !important;
+}
+
+/* chip avatar fica discreto e funcional */
+.app-header .header-sync-chip{
+  transform:translateZ(0);
+}
+.app-header .header-sync-chip:active{
+  transform:scale(.96) !important;
+}
+
+/* títulos mais respirados e com cara de app */
+.screen-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#5f7f33 !important;
+}
+
+.screen-title::after{
+  content:"";
+  height:1px;
+  flex:1;
+  background:linear-gradient(90deg,#b8d48d,rgba(184,212,141,0));
+  margin-top:4px;
+}
+
+/* cards mobile mais suaves */
+.card,
+.item,
+.pill-box,
+.inner-drawer,
+.accordion{
+  box-shadow:0 8px 22px rgba(88,66,46,.055) !important;
+}
+
+.checkout-card{
+  border-color:#cfe1b1 !important;
+  background:linear-gradient(180deg,#fffffc 0%,#fbfff6 100%) !important;
+}
+
+/* venda com sensação mais direta */
+.quick-products{
+  gap:9px !important;
+}
+
+.quick-products .product-pick{
+  border-width:1.3px !important;
+  box-shadow:0 8px 20px rgba(92,72,56,.055) !important;
+}
+
+.quick-products .product-pick .xy{
+  letter-spacing:-.055em !important;
+}
+
+.quick-products .product-pick .plus{
+  box-shadow:0 6px 16px rgba(84,64,48,.08) !important;
+}
+
+.clean-ticket .empty-inline{
+  color:#9a806d !important;
+  background:rgba(255,250,244,.72) !important;
+}
+
+/* final da venda com cara de fechamento */
+.sale-final-actions{
+  padding-top:2px !important;
+}
+
+.sale-final-actions .big-action{
+  background:linear-gradient(180deg,#84aa4c 0%,#5f8735 100%) !important;
+  box-shadow:0 12px 24px rgba(95,135,53,.20) !important;
+}
+
+.sale-final-actions .big-action:active,
+.sale-final-actions .ghost:active{
+  transform:translateY(1px) scale(.99);
+}
+
+/* dados do app */
+.release-badge{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px;
+  margin-bottom:10px;
+  border:1px solid #cfe1b1;
+  border-radius:18px;
+  background:linear-gradient(180deg,#ffffff 0%,#f7fbef 100%);
+  box-shadow:0 8px 20px rgba(96,65,45,.055);
+}
+
+.release-badge strong{
+  display:block;
+  color:#4f682b;
+  font-size:14px;
+  line-height:1.2;
+}
+
+.release-badge small{
+  display:block;
+  margin-top:3px;
+  color:#6f8258;
+  font-size:11px;
+  line-height:1.25;
+}
+
+.release-badge span{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:34px;
+  height:28px;
+  border-radius:999px;
+  background:#7faa4a;
+  color:#fff;
+  font-weight:900;
+  font-size:11px;
+}
+
+/* manual e checklist mais bonitos */
+.app-manual-drawer,
+.manual-drawer{
+  box-shadow:0 8px 20px rgba(96,65,45,.055) !important;
+}
+
+.manual-mini-section{
+  box-shadow:none !important;
+}
+
+/* bottom nav mobile */
+.bottom-nav{
+  box-shadow:0 -10px 26px rgba(96,65,45,.10) !important;
+  border-color:#eadccf !important;
+}
+
+.bottom-nav button{
+  transition:transform .12s ease, background-color .16s ease;
+}
+
+.bottom-nav button:active{
+  transform:scale(.97);
+}
+
+/* iPhone pequeno */
+@media(max-width:390px){
+  .app-shell{
+    padding-left:10px !important;
+    padding-right:10px !important;
+  }
+
+  .quick-products{
+    gap:8px !important;
+  }
+
+  .quick-products .product-pick{
+    border-radius:18px !important;
+  }
+
+  .screen-title{
+    font-size:22px !important;
+  }
+}
+
+/* desktop/tablet mantém elegante */
+@media(min-width:760px){
+  .app-header{
+    max-width:860px;
+    margin:0 auto;
+    border-left:1px solid #eadccf;
+    border-right:1px solid #eadccf;
+    border-radius:0 0 22px 22px;
+  }
+}

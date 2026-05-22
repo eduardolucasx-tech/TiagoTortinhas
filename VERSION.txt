@@ -1,6 +1,6 @@
-v10.8.7 — Manual visível
+v1.0.1 — Release Mobile Polish
 
 Data da versão: 2026-05-22
-Status: Manual rápido visível dentro de Dados do app
-Base: v10.8.6 — Chip avatar e status
-Observação: mantida a linha v10.8.x.
+Status: release pública estável com polimento mobile
+Base interna: v10.8.7 — Manual visível
+Linha pública: v1.0.x
