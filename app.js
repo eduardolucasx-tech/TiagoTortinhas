@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v10_8_2_corrige_chip_sync';
+const STORE_KEY = 'sr_tortinhas_control_v10_8_4_botoes_venda_apertados';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -202,7 +202,7 @@ function syncChipTooltip(){
 function updateHeaderSyncChip(){
   const header = document.querySelector('.app-header');
   if(!header) return;
-  const host = header.querySelector('.brand-meta') || header;
+  const host = header;
   let chip = host.querySelector('.header-sync-chip');
   if(!chip){
     chip = document.createElement('button');
@@ -224,7 +224,6 @@ function updateHeaderSyncChip(){
     });
     host.appendChild(chip);
   }
-  const status = syncChipStatusLabel();
   const photo = syncChipPhoto();
   const initial = escapeHtml(syncChipInitial());
   const name = escapeHtml(syncChipName());
@@ -718,10 +717,12 @@ function productCards(){
     const x = sold[p] || 0;
     const y = stock[p]?.disp || 0;
     const selectedQty = saleDraft.itens.find(it => it.produto === p)?.quantidade || 0;
+    const justTapped = saleDraft.justTappedProduct === p && Date.now() < (saleDraft.justTappedUntil || 0);
     const activeClass = selectedQty > 0 ? 'active selected' : '';
+    const tapClass = justTapped ? 'tapflash' : '';
     const bubbleClass = selectedQty > 0 ? 'plus count' : 'plus';
     const bubbleLabel = selectedQty > 0 ? String(selectedQty) : '+';
-    return `<button type="button" aria-pressed="${selectedQty > 0 ? 'true' : 'false'}" class="product-pick ${productClass(p)} ${activeClass}" onclick="addProductQuick('${p}')"><span class="${bubbleClass}">${bubbleLabel}</span><b>${escapeHtml(p)}</b><small>${brl(productPrice(p))}</small><span class="xy">${x}/${y}</span><em>vendido/disponível</em></button>`;
+    return `<button type="button" aria-pressed="${selectedQty > 0 ? 'true' : 'false'}" class="product-pick ${productClass(p)} ${activeClass} ${tapClass}" onclick="addProductQuick('${p}')"><span class="${bubbleClass}">${bubbleLabel}</span><b>${escapeHtml(p)}</b><small>${brl(productPrice(p))}</small><span class="xy">${x}/${y}</span><em>vendido/disponível</em></button>`;
   }).join('');
 }
 function currentTicketItems(){
@@ -1575,7 +1576,7 @@ function cobrancas(){
           <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.2 Corrige chip sync</small>
+        <small class="clean-note">Versão v10.8.4 Botões de venda apertados</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1850,7 +1851,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.2 Corrige chip sync</small>
+        <small class="clean-note">Versão v10.8.4 Botões de venda apertados</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -2627,7 +2628,16 @@ function addProductQuick(product){
   if(existing) existing.quantidade += 1;
   else saleDraft.itens.push({ produto: product, quantidade: 1 });
   saleDraft.produto = product;
+  saleDraft.justTappedProduct = product;
+  saleDraft.justTappedUntil = Date.now() + 220;
   render();
+  setTimeout(() => {
+    if(saleDraft.justTappedProduct === product && Date.now() >= (saleDraft.justTappedUntil || 0)){
+      saleDraft.justTappedProduct = '';
+      saleDraft.justTappedUntil = 0;
+      render();
+    }
+  }, 240);
 }
 function addItemToTicket(){
   const qty = Math.max(1, Number(document.getElementById('saleQty')?.value) || saleDraft.quantidade || 1);

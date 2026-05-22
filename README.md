@@ -2,7 +2,7 @@
 
 **Sr. Tortinhas Control** é um app/PWA simples e direto para controle de vendas, caixa, financeiro, clientes, estoque, produção e relatórios de uma operação artesanal de tortinhas.
 
-> Versão atual: **v10.8.2 — Corrige chip sync**
+> Versão atual: **v10.8.4 — Botões de venda apertados**
 
 ---
 
@@ -464,3 +464,27 @@ O chip continua exibindo nome e foto da conta Google quando conectado.
 - Corrigido erro `cloudLastSaveStatus is not defined`.
 - Chip de conta/sync volta a renderizar corretamente.
 - Mantida correção dos botões **Limpar** e **Salvar venda** no final da página.
+
+
+---
+
+## v10.8.3 — Cabeçalho alinhado
+
+### Ajuste visual
+
+- Cabeçalho reorganizado.
+- **Logo + nome do app** ficam à esquerda.
+- **Conta Google / status de sync** ficam à direita.
+- Em telas estreitas, o chip da conta desce para a linha de baixo, mas permanece alinhado com o cabeçalho.
+
+
+---
+
+## v10.8.4 — Botões de venda apertados
+
+### Melhorias na tela de venda
+
+- Botões de sabor agora mostram resposta visual mais clara ao toque.
+- Ao clicar, o botão recebe um efeito rápido de **pressionado**.
+- Quando o sabor já está no ticket, ele permanece com aspecto de **selecionado**.
+- A quantidade escolhida continua aparecendo dentro da bolha no canto.

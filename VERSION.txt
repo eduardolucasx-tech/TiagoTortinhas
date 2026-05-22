@@ -1,6 +1,6 @@
-v10.8.2 — Corrige chip sync
+v10.8.4 — Botões de venda apertados
 
 Data da versão: 2026-05-22
-Status: Correção do erro cloudLastSaveStatus no chip de sincronização
-Base: v10.8.1 — Botões venda no final
-Observação: esta versão NÃO usa a base v10.9.
+Status: Feedback visual mais claro no clique dos sabores
+Base: v10.8.3 — Cabeçalho alinhado
+Observação: mantida a linha v10.8.x.

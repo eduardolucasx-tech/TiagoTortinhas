@@ -1,5 +1,21 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.8.4 — Botões de venda apertados
+
+### Melhorado
+- Feedback visual de clique nos botões de venda.
+- Efeito de botão pressionado ao tocar no sabor.
+- Estado selecionado mais evidente quando o item já está no ticket.
+
+
+## v10.8.3 — Cabeçalho alinhado
+
+### Melhorado
+- Cabeçalho com alinhamento mais limpo.
+- Marca à esquerda e conta/sync à direita.
+- Melhor comportamento responsivo no mobile.
+
+
 ## v10.8.2 — Corrige chip sync
 
 ### Corrigido

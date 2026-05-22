@@ -6563,3 +6563,203 @@ body[data-route="login"] .header-sync-chip{
 .header-sync-chip__avatar{
   display:flex !important;
 }
+
+
+/* v10.8.3 — cabeçalho alinhado: marca à esquerda, conta à direita */
+.app-header{
+  display:grid !important;
+  grid-template-columns:auto 1fr auto !important;
+  align-items:center !important;
+  column-gap:12px !important;
+  row-gap:10px !important;
+  padding:14px 16px !important;
+}
+
+.app-header .brand-logo{
+  grid-column:1;
+  grid-row:1;
+  margin:0 !important;
+  align-self:center !important;
+}
+
+.app-header .brand-meta{
+  grid-column:2;
+  grid-row:1;
+  min-width:0;
+  display:flex !important;
+  flex-direction:column !important;
+  justify-content:center !important;
+  gap:4px !important;
+}
+
+.app-header .brand-meta strong{
+  font-size:15px !important;
+  line-height:1.12 !important;
+}
+
+.app-header .brand-meta small{
+  font-size:11px !important;
+  line-height:1.1 !important;
+}
+
+.app-header .header-sync-chip{
+  grid-column:3;
+  grid-row:1;
+  justify-self:end;
+  align-self:center;
+  position:relative !important;
+  margin:0 !important;
+  min-width:165px !important;
+  max-width:220px !important;
+  min-height:42px !important;
+  padding:6px 10px 6px 6px !important;
+}
+
+.app-header .header-sync-chip__text strong{
+  max-width:125px !important;
+}
+
+.app-header .header-sync-chip__text small{
+  font-size:10px !important;
+  white-space:nowrap;
+}
+
+/* Se faltar espaço, o chip vai para baixo, mas alinhado à esquerda com o bloco da marca */
+@media (max-width: 520px){
+  .app-header{
+    grid-template-columns:auto 1fr !important;
+    align-items:start !important;
+  }
+
+  .app-header .brand-logo{
+    grid-column:1;
+    grid-row:1;
+  }
+
+  .app-header .brand-meta{
+    grid-column:2;
+    grid-row:1;
+    align-self:center;
+  }
+
+  .app-header .header-sync-chip{
+    grid-column:2;
+    grid-row:2;
+    justify-self:start !important;
+    margin-top:2px !important;
+    min-width:170px !important;
+    max-width:100% !important;
+  }
+
+  .app-header .header-sync-chip__text strong{
+    max-width:118px !important;
+  }
+}
+
+
+/* v10.8.4 — feedback mais claro ao apertar os botões de venda */
+.product-pick{
+  transition:
+    transform .12s ease,
+    box-shadow .18s ease,
+    background-color .18s ease,
+    border-color .18s ease,
+    filter .18s ease,
+    opacity .18s ease;
+  transform:translateY(0);
+}
+
+.product-pick:active{
+  transform:translateY(2px) scale(.985);
+  box-shadow:
+    inset 0 4px 10px rgba(73,54,38,.08),
+    0 2px 6px rgba(92,72,56,.05) !important;
+}
+
+.product-pick.selected,
+.product-pick.active{
+  transform:translateY(1px);
+  box-shadow:
+    inset 0 2px 10px rgba(73,54,38,.08),
+    inset 0 0 0 1.4px rgba(0,0,0,.05),
+    0 10px 18px rgba(95,76,58,.10) !important;
+  filter:saturate(1.12) contrast(1.01);
+}
+
+.product-pick.tapflash{
+  transform:translateY(2px) scale(.985) !important;
+  box-shadow:
+    inset 0 5px 12px rgba(73,54,38,.10),
+    inset 0 0 0 1.6px rgba(0,0,0,.06),
+    0 3px 8px rgba(95,76,58,.06) !important;
+  filter:saturate(1.16) brightness(.99);
+}
+
+.product-pick.selected .xy,
+.product-pick.active .xy,
+.product-pick.tapflash .xy{
+  color:#4d3524;
+}
+
+.product-pick.selected b,
+.product-pick.active b,
+.product-pick.tapflash b{
+  color:#5b3f2c;
+}
+
+.product-pick .plus{
+  transition:
+    transform .12s ease,
+    background-color .16s ease,
+    color .16s ease,
+    box-shadow .16s ease,
+    opacity .16s ease;
+}
+
+.product-pick:active .plus,
+.product-pick.tapflash .plus{
+  transform:scale(.95);
+}
+
+.product-pick .plus.count{
+  background:rgba(255,255,255,.98) !important;
+  color:#5b3f2c !important;
+  box-shadow:0 5px 12px rgba(84,64,48,.11);
+  min-width:30px;
+  min-height:30px;
+  padding:0 7px;
+  font-size:14px !important;
+  font-weight:800;
+}
+
+.product-pick.selected .plus.count,
+.product-pick.active .plus.count{
+  background:#fffdf9 !important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.7), 0 5px 12px rgba(84,64,48,.12);
+}
+
+.product-pick.tapflash .plus.count{
+  background:#ffffff !important;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.04), 0 2px 5px rgba(84,64,48,.10) !important;
+}
+
+.product-pick.maracuja.selected,
+.product-pick.maracuja.active,
+.product-pick.maracuja.tapflash{
+  background:#fff1ab !important;
+  border-color:#d4b03f !important;
+}
+
+.product-pick.limao.selected,
+.product-pick.limao.active,
+.product-pick.limao.tapflash{
+  background:#e6f5c1 !important;
+  border-color:#95ba53 !important;
+}
+
+.product-pick.chocolate.selected,
+.product-pick.chocolate.active,
+.product-pick.chocolate.tapflash{
+  background:#f1d8c8 !important;
+  border-color:#b88259 !important;
+}
