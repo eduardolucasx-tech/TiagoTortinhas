@@ -2,7 +2,7 @@
 
 **Sr. Tortinhas Control** é um app/PWA simples e direto para controle de vendas, caixa, financeiro, clientes, estoque, produção e relatórios de uma operação artesanal de tortinhas.
 
-> Versão atual: **v10.3 — Firebase API Key Corrigida**
+> Versão atual: **v10.4 — Firebase Key Final**
 
 ---
 
@@ -356,3 +356,16 @@ Se aparecer o arquivo com os dados preenchidos, abra o app novamente. Ele deve m
 - Mantido login obrigatório com Google.
 - Mantida sincronização via Firestore.
 - Adicionado favicon apontando para `logo.png`.
+
+
+---
+
+## v10.4 — Firebase Key Final
+
+### Correção
+
+- `firebase-config.js` atualizado com a configuração copiada diretamente do Firebase Console.
+- Corrige o erro esperado:
+  - `auth/api-key-not-valid`
+- Mantido login obrigatório com Google.
+- Mantida sincronização via Firestore.

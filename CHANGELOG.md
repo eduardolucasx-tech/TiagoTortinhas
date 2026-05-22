@@ -1,5 +1,12 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.4 — Firebase Key Final
+
+### Corrigido
+- `apiKey` do Firebase atualizada com o valor exato do Firebase Console.
+- Correção do erro `auth/api-key-not-valid`.
+
+
 ## v10.3 — Firebase API Key Corrigida
 
 ### Corrigido
