@@ -1,5 +1,13 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.8.7 — Manual visível
+
+### Corrigido
+- Manual rápido do app voltou a aparecer em Dados do app.
+- Manual recebeu destaque visual próprio.
+- Mantida base v10.8.x.
+
+
 ## v10.8.6 — Chip avatar e status
 
 ### Melhorado

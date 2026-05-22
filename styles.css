@@ -7257,3 +7257,76 @@ nav.mobile-nav small{
     height:14px !important;
   }
 }
+
+
+/* v10.8.7 — Manual visível dentro de Dados do app */
+.app-manual-drawer,
+.manual-drawer{
+  margin-bottom:10px !important;
+  border:1px solid #cfe1b1 !important;
+  background:linear-gradient(180deg,#ffffff 0%,#f8fcf1 100%) !important;
+  border-radius:18px !important;
+  overflow:hidden;
+}
+
+.app-manual-drawer > summary,
+.manual-drawer > summary{
+  min-height:50px;
+  padding:14px 12px !important;
+  cursor:pointer;
+  list-style:none;
+}
+
+.app-manual-drawer > summary::-webkit-details-marker,
+.manual-drawer > summary::-webkit-details-marker{
+  display:none;
+}
+
+.app-manual-drawer > summary strong,
+.manual-drawer > summary strong{
+  color:#4f682b !important;
+  font-size:15px !important;
+}
+
+.app-manual-drawer > summary small,
+.manual-drawer > summary small{
+  display:block;
+  margin-top:3px;
+  color:#6f8258 !important;
+  font-size:11px !important;
+}
+
+.manual-content{
+  display:grid;
+  gap:10px;
+  padding:10px 12px 12px;
+  border-top:1px dashed #d7e3bf;
+}
+
+.manual-mini-section{
+  background:#fff;
+  border:1px solid #e5efd2;
+  border-radius:16px;
+  padding:11px 12px;
+}
+
+.manual-mini-section h3{
+  margin:0 0 5px;
+  color:#4f682b;
+  font-size:14px;
+}
+
+.manual-mini-section p{
+  margin:0;
+  color:#5d4a3b;
+  font-size:12px;
+  line-height:1.4;
+}
+
+.manual-mini-section ul{
+  margin:7px 0 0;
+  padding-left:18px;
+  color:#5d4a3b;
+  font-size:12px;
+  line-height:1.4;
+}

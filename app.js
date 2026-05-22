@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v10_8_6_chip_avatar_status';
+const STORE_KEY = 'sr_tortinhas_control_v10_8_7_manual_visivel';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -520,7 +520,7 @@ function appQuickManual(){
   return `<details class="accordion manual-drawer">
     <summary>
       <div>
-        <strong>Manual rápido do app</strong>
+        <strong>📘 Manual rápido do app</strong>
         <small>Guia enxuto para usar sem sair do sistema</small>
       </div>
     </summary>
@@ -1575,10 +1575,11 @@ function cobrancas(){
       <div class="card" style="margin:0;border:0;border-radius:0;box-shadow:none">
         ${firebaseLoginCard()}${appQuickManual()}
         <div class="grid">
-          <button class="ghost" onclick="exportBackup()">Exportar backup</button>
+          ${appQuickManual()}
+<button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.6 Chip avatar status</small>
+        <small class="clean-note">Versão v10.8.7 Manual visível</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1853,7 +1854,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.6 Chip avatar status</small>
+        <small class="clean-note">Versão v10.8.7 Manual visível</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
