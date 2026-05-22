@@ -6550,3 +6550,16 @@ body[data-route="login"] .header-sync-chip{
     margin-bottom:calc(var(--navH) + 28px + env(safe-area-inset-bottom)) !important;
   }
 }
+
+
+/* v10.8.2 — correção visual do chip após bug de variável */
+.header-sync-chip{
+  min-width:146px !important;
+  opacity:1 !important;
+}
+.header-sync-chip__text{
+  display:flex !important;
+}
+.header-sync-chip__avatar{
+  display:flex !important;
+}

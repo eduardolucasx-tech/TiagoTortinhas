@@ -1,5 +1,13 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.8.2 — Corrige chip sync
+
+### Corrigido
+- Erro `cloudLastSaveStatus is not defined`.
+- Chip de sincronização não quebra mais a renderização do cabeçalho.
+- Mantida base anterior à v10.9.
+
+
 ## v10.8.1 — Botões venda no final
 
 ### Corrigido

@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v10_8_1_botoes_venda_no_final';
+const STORE_KEY = 'sr_tortinhas_control_v10_8_2_corrige_chip_sync';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -32,6 +32,8 @@ let cloudEnabled = false;
 let cloudUnsubscribe = null;
 let cloudSaveTimer = null;
 let applyingRemoteState = false;
+let cloudPendingWrites = false;
+let cloudLastSaveStatus = '';
 let lastCloudUpdatedAt = 0;
 let lastCloudUpdatedBy = '';
 const CLOUD_DEVICE_ID = localStorage.getItem('sr_tortinhas_device_id') || (() => {
@@ -160,9 +162,10 @@ function renderNav(){ document.getElementById('nav').innerHTML = NAV.map(([id,ic
 
 
 function syncChipModeClass(){
-  const status = String(cloudLastSaveStatus || '');
+  const status = String(window.cloudLastSaveStatus || cloudLastSaveStatus || '');
+  const pending = Boolean(window.cloudPendingWrites || cloudPendingWrites);
   if(status.toLowerCase().includes('erro')) return 'is-error';
-  if(cloudPendingWrites) return 'is-pending';
+  if(pending) return 'is-pending';
   if(firebaseConfigured() && cloudUser && cloudReady) return 'is-cloud';
   return 'is-local';
 }
@@ -464,6 +467,7 @@ function render(){
     app.className = 'app-shell login-screen';
     app.innerHTML = firebaseSetupGate();
     updateHeaderSyncChip();
+  requestAnimationFrame(updateHeaderSyncChip);
     bind();
     return;
   }
@@ -1571,7 +1575,7 @@ function cobrancas(){
           <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.1 Botões venda no final</small>
+        <small class="clean-note">Versão v10.8.2 Corrige chip sync</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1846,7 +1850,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.1 Botões venda no final</small>
+        <small class="clean-note">Versão v10.8.2 Corrige chip sync</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
