@@ -1,5 +1,14 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.8.5 — Mobile first
+
+### Melhorado
+- Layout refinado com prioridade para mobile.
+- Cabeçalho mais compacto e responsivo.
+- Grid de venda otimizado para telas pequenas.
+- Cards, espaçamentos e botões mais proporcionais para celular.
+
+
 ## v10.8.4 — Botões de venda apertados
 
 ### Melhorado

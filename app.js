@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v10_8_4_botoes_venda_apertados';
+const STORE_KEY = 'sr_tortinhas_control_v10_8_5_mobile_first';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -1576,7 +1576,7 @@ function cobrancas(){
           <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.4 Botões de venda apertados</small>
+        <small class="clean-note">Versão v10.8.5 Mobile first</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1851,7 +1851,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8.4 Botões de venda apertados</small>
+        <small class="clean-note">Versão v10.8.5 Mobile first</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">

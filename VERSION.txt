@@ -1,6 +1,6 @@
-v10.8.4 — Botões de venda apertados
+v10.8.5 — Mobile first
 
 Data da versão: 2026-05-22
-Status: Feedback visual mais claro no clique dos sabores
-Base: v10.8.3 — Cabeçalho alinhado
+Status: Refino mobile first de layout e espaçamento
+Base: v10.8.4 — Botões de venda apertados
 Observação: mantida a linha v10.8.x.

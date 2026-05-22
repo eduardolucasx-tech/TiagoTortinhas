@@ -6763,3 +6763,340 @@ body[data-route="login"] .header-sync-chip{
   background:#f1d8c8 !important;
   border-color:#b88259 !important;
 }
+
+
+/* v10.8.5 — mobile first real */
+:root{
+  --navH:72px;
+}
+
+/* Base mobile */
+body{
+  padding-bottom:calc(var(--navH) + 10px + env(safe-area-inset-bottom));
+}
+
+.app-shell{
+  max-width:760px;
+  margin:0 auto;
+  padding:12px 12px 18px;
+}
+
+.app-header{
+  display:grid !important;
+  grid-template-columns:42px 1fr auto !important;
+  align-items:center !important;
+  column-gap:10px !important;
+  row-gap:8px !important;
+  padding:10px 12px !important;
+  border-radius:0 0 16px 16px;
+}
+
+.app-header .brand-logo{
+  width:42px !important;
+  height:42px !important;
+  padding:2px !important;
+}
+
+.app-header .brand-meta{
+  min-width:0;
+}
+
+.app-header .brand-meta strong{
+  font-size:14px !important;
+  line-height:1.1 !important;
+  letter-spacing:-.02em;
+}
+
+.app-header .brand-meta small{
+  font-size:10px !important;
+  line-height:1.1 !important;
+  margin-top:3px !important;
+}
+
+.app-header .header-sync-chip{
+  min-width:unset !important;
+  width:auto !important;
+  max-width:148px !important;
+  min-height:36px !important;
+  padding:4px 8px 4px 5px !important;
+  border-radius:999px !important;
+  box-shadow:0 4px 12px rgba(96,65,45,.08) !important;
+}
+
+.app-header .header-sync-chip__avatar{
+  width:24px !important;
+  height:24px !important;
+}
+
+.app-header .header-sync-chip__text strong{
+  max-width:82px !important;
+  font-size:11px !important;
+  line-height:1.05 !important;
+}
+
+.app-header .header-sync-chip__text small{
+  font-size:9px !important;
+  line-height:1.05 !important;
+}
+
+.app-header .header-sync-chip__dot{
+  width:7px !important;
+  height:7px !important;
+}
+
+.screen-title{
+  margin:2px 0 10px !important;
+  font-size:24px !important;
+  line-height:1.02 !important;
+}
+
+.sub{
+  margin:0 0 10px !important;
+  font-size:12px !important;
+  line-height:1.35 !important;
+}
+
+.card,.item,.pill-box{
+  border-radius:18px !important;
+}
+
+.card{
+  padding:12px !important;
+  margin-bottom:10px !important;
+}
+
+.item{
+  padding:12px !important;
+}
+
+.section-head{
+  margin:10px 2px 8px !important;
+  gap:8px !important;
+}
+
+.section-head h2,
+.section-head.compact h2{
+  font-size:14px !important;
+}
+
+.section-head span{
+  font-size:11px !important;
+}
+
+button{
+  min-height:44px !important;
+  border-radius:14px !important;
+}
+
+.big-action{
+  min-height:50px !important;
+  font-size:15px !important;
+}
+
+input,select,textarea{
+  min-height:46px !important;
+  padding:11px 12px !important;
+  border-radius:14px !important;
+  font-size:15px;
+}
+
+.quick-products{
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:10px !important;
+  margin-bottom:10px !important;
+}
+
+.quick-products .product-pick{
+  min-height:124px !important;
+  padding:12px 10px !important;
+  border-radius:20px !important;
+}
+
+.quick-products .product-pick.chocolate{
+  grid-column:1 / -1;
+  min-height:110px !important;
+}
+
+.quick-products .product-pick .plus{
+  right:9px !important;
+  top:8px !important;
+  width:28px !important;
+  height:28px !important;
+}
+
+.quick-products .product-pick b{
+  font-size:13px !important;
+}
+
+.quick-products .product-pick small{
+  font-size:11px !important;
+}
+
+.quick-products .product-pick .xy{
+  font-size:28px !important;
+  margin-top:8px !important;
+}
+
+.quick-products .product-pick em{
+  font-size:10px !important;
+}
+
+.clean-ticket .empty-inline{
+  min-height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:12px;
+}
+
+.ticket-line{
+  gap:10px !important;
+  padding:10px 0 !important;
+}
+
+.ticket-controls{
+  gap:6px !important;
+}
+
+.ticket-controls > b{
+  font-size:18px !important;
+}
+
+.ticket-controls .line-total{
+  font-size:14px !important;
+}
+
+.sale-final-actions{
+  gap:10px !important;
+  margin:14px 0 calc(var(--navH) + 16px + env(safe-area-inset-bottom)) !important;
+}
+
+.mobile-nav,
+.bottom-nav,
+nav.mobile-nav{
+  min-height:var(--navH);
+}
+
+.mobile-nav button,
+.bottom-nav button,
+nav.mobile-nav button{
+  min-height:58px !important;
+  padding-top:8px !important;
+  padding-bottom:8px !important;
+}
+
+.mobile-nav small,
+.bottom-nav small,
+nav.mobile-nav small{
+  font-size:11px !important;
+}
+
+/* Utility mobile tightening */
+.grid2,
+.inline-field{
+  gap:8px !important;
+}
+
+@media (max-width:389px){
+  .app-shell{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .app-header{
+    grid-template-columns:42px 1fr !important;
+  }
+
+  .app-header .header-sync-chip{
+    grid-column:2 !important;
+    grid-row:2 !important;
+    justify-self:start !important;
+    max-width:155px !important;
+  }
+
+  .quick-products .product-pick{
+    min-height:116px !important;
+  }
+
+  .screen-title{
+    font-size:22px !important;
+  }
+}
+
+/* Grow up from mobile */
+@media (min-width:560px){
+  .app-shell{
+    padding:16px 16px 24px;
+  }
+
+  .app-header{
+    grid-template-columns:46px 1fr auto !important;
+    padding:12px 16px !important;
+  }
+
+  .app-header .brand-logo{
+    width:46px !important;
+    height:46px !important;
+  }
+
+  .app-header .brand-meta strong{
+    font-size:16px !important;
+  }
+
+  .app-header .brand-meta small{
+    font-size:11px !important;
+  }
+
+  .app-header .header-sync-chip{
+    max-width:190px !important;
+    min-height:40px !important;
+  }
+
+  .app-header .header-sync-chip__avatar{
+    width:26px !important;
+    height:26px !important;
+  }
+
+  .app-header .header-sync-chip__text strong{
+    max-width:110px !important;
+    font-size:12px !important;
+  }
+
+  .app-header .header-sync-chip__text small{
+    font-size:10px !important;
+  }
+
+  .screen-title{
+    font-size:28px !important;
+  }
+
+  .quick-products{
+    grid-template-columns:repeat(3,1fr) !important;
+  }
+
+  .quick-products .product-pick.chocolate{
+    grid-column:auto;
+    min-height:122px !important;
+  }
+
+  .card{
+    padding:14px !important;
+  }
+
+  .sale-final-actions{
+    margin-bottom:calc(var(--navH) + 18px + env(safe-area-inset-bottom)) !important;
+  }
+}
+
+@media (min-width:900px){
+  .app-shell{
+    max-width:860px;
+    padding:18px 18px 28px;
+  }
+
+  .screen-title{
+    font-size:30px !important;
+  }
+}
