@@ -1,5 +1,36 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.7 — Chip com cores de sync
+
+### Melhorado
+- Chip de conta/sync com cores mais claras por estado.
+- Verde para nuvem.
+- Amarelo para local.
+- Azul para salvando.
+- Vermelho para erro.
+
+
+## v10.6 — Chip de Conta e Sync
+
+### Adicionado
+- Chip visual de conta/sincronização no cabeçalho.
+- Exibe nome e foto da conta Google quando conectado.
+- Exibe estado Local/Nuvem/Salvando.
+- Toque no chip abre a área de sincronização.
+
+
+## v10.5 — Sync Turbo
+
+### Melhorado
+- Sincronização em tempo real mais rápida.
+- Salvamento na nuvem com debounce menor.
+- Listener Firestore com metadados.
+- Persistência offline.
+- Merge local + nuvem por coleção.
+- BroadcastChannel para abas locais.
+- Status de sync mais claro.
+
+
 ## v10.4 — Firebase Key Final
 
 ### Corrigido

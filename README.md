@@ -2,7 +2,7 @@
 
 **Sr. Tortinhas Control** é um app/PWA simples e direto para controle de vendas, caixa, financeiro, clientes, estoque, produção e relatórios de uma operação artesanal de tortinhas.
 
-> Versão atual: **v10.4 — Firebase Key Final**
+> Versão atual: **v10.7 — Chip com cores de sync**
 
 ---
 
@@ -369,3 +369,61 @@ Se aparecer o arquivo com os dados preenchidos, abra o app novamente. Ele deve m
   - `auth/api-key-not-valid`
 - Mantido login obrigatório com Google.
 - Mantida sincronização via Firestore.
+
+
+---
+
+## v10.5 — Sync Turbo
+
+### Melhorias de sincronização
+
+- Sync mais rápido entre PC e celular.
+- Debounce reduzido para envio quase imediato.
+- Listener Firestore com `includeMetadataChanges`.
+- Persistência offline do Firestore quando disponível.
+- BroadcastChannel para sincronização instantânea entre abas do mesmo navegador.
+- Revisão local e remota para reduzir risco de sobrescrever dados.
+- Merge por coleção entre local e nuvem.
+- Botão "Enviar dados locais" força carimbo de sync em todos os registros.
+- Status visual de sincronização mais claro.
+
+### Fluxo recomendado após atualizar
+
+1. Abra o app no PC.
+2. Entre com Google.
+3. Vá em Backup, dados e manual.
+4. Toque em **Enviar dados locais** uma vez.
+5. Abra no celular com a mesma conta Google.
+6. Faça uma venda teste no celular.
+7. Confira no PC se aparece em poucos segundos.
+
+
+---
+
+## v10.6 — Chip de Conta e Sync
+
+### Novo no cabeçalho
+
+- mini chip no topo mostrando:
+  - **Local** quando estiver só no navegador/aparelho;
+  - **Nuvem** quando estiver logado com Google;
+  - **foto da conta**;
+  - **nome da conta**;
+  - estado visual de sync.
+- ao tocar no chip, o app abre o Financeiro e destaca a área de sincronização.
+
+
+---
+
+## v10.7 — Chip com cores de sync
+
+### Melhorado
+
+O chip de conta/sincronização no cabeçalho agora usa leitura visual por cor:
+
+- **Verde**: sincronizado na nuvem
+- **Amarelo**: somente local
+- **Azul**: salvando/sincronizando
+- **Vermelho**: erro de sync
+
+O chip continua exibindo nome e foto da conta Google quando conectado.

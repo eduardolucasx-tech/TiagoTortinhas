@@ -1,5 +1,5 @@
-v10.4 — Firebase Key Final
+v10.7 — Chip com cores de sync
 
 Data da versão: 2026-05-22
-Status: Firebase apiKey final copiada diretamente do Firebase Console
+Status: Chip do cabeçalho com estados visuais de sincronização
 Base: Sr. Tortinhas Control

@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v10_4_firebase_key_final';
+const STORE_KEY = 'sr_tortinhas_control_v10_7_chip_cores_sync';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -156,6 +156,86 @@ window.forceCloudDownload = forceCloudDownload;
 initFirebaseSync();
 render(); }
 function renderNav(){ document.getElementById('nav').innerHTML = NAV.map(([id,ico,label]) => `<button class="${route===id?'active':''}" onclick="setRoute('${id}')"><span class="ico">${ico}</span><span>${label}</span></button>`).join(''); }
+
+
+
+function syncChipModeClass(){
+  const status = String(cloudLastSaveStatus || '');
+  if(status.toLowerCase().includes('erro')) return 'is-error';
+  if(cloudPendingWrites) return 'is-pending';
+  if(firebaseConfigured() && cloudUser && cloudReady) return 'is-cloud';
+  return 'is-local';
+}
+
+function syncChipStatusLabel(){
+  const status = String(cloudLastSaveStatus || '');
+  if(status.toLowerCase().includes('erro')) return 'Erro';
+  if(!firebaseConfigured()) return 'Local';
+  if(!cloudUser) return 'Local';
+  if(cloudPendingWrites) return 'Salvando';
+  if(cloudReady) return 'Nuvem';
+  return 'Conectando';
+}
+function syncChipName(){
+  if(cloudUser){
+    return cloudUser.displayName || cloudUser.email || 'Conta Google';
+  }
+  return 'Somente neste aparelho';
+}
+function syncChipPhoto(){
+  return cloudUser?.photoURL || '';
+}
+function syncChipInitial(){
+  const name = syncChipName();
+  return (name || 'L').trim().charAt(0).toUpperCase();
+}
+function syncChipTooltip(){
+  const status = String(cloudLastSaveStatus || '');
+  if(status.toLowerCase().includes('erro')) return 'Erro de sincronização. Toque para abrir a área de sync.';
+  if(!firebaseConfigured()) return 'Funcionando apenas localmente neste navegador';
+  if(!cloudUser) return 'Firebase configurado, mas sem conta conectada';
+  return `Sincronização ${cloudPendingWrites ? 'salvando' : (cloudReady ? 'na nuvem' : 'conectando')} • ${cloudUser.email || ''}`;
+}
+function updateHeaderSyncChip(){
+  const header = document.querySelector('.app-header');
+  if(!header) return;
+  let chip = header.querySelector('.header-sync-chip');
+  if(!chip){
+    chip = document.createElement('button');
+    chip.type = 'button';
+    chip.className = 'header-sync-chip';
+    chip.setAttribute('aria-label', 'Conta e sincronização');
+    chip.addEventListener('click', () => {
+      if(route !== 'financeiro'){
+        route = 'financeiro';
+        render();
+      }
+      setTimeout(() => {
+        const syncDrawer = document.querySelector('.cloud-sync-drawer');
+        if(syncDrawer && !syncDrawer.open) syncDrawer.open = true;
+        syncDrawer?.scrollIntoView({ behavior:'smooth', block:'center' });
+      }, 60);
+    });
+    header.appendChild(chip);
+  }
+  const status = syncChipStatusLabel();
+  const photo = syncChipPhoto();
+  const initial = escapeHtml(syncChipInitial());
+  const name = escapeHtml(syncChipName());
+  const modeClass = syncChipModeClass();
+  chip.className = `header-sync-chip ${modeClass}`;
+  chip.title = syncChipTooltip();
+  chip.innerHTML = `
+    <span class="header-sync-chip__avatar">
+      ${photo ? `<img src="${photo}" alt="${name}">` : `<span>${initial}</span>`}
+    </span>
+    <span class="header-sync-chip__text">
+      <strong>${name}</strong>
+      <small>${status}</small>
+    </span>
+    <span class="header-sync-chip__dot"></span>
+  `;
+}
 
 function firebaseConfigured(){
   const cfg = window.SR_TORTINHAS_FIREBASE_CONFIG;
@@ -378,6 +458,7 @@ function render(){
     app.setAttribute('data-route', 'login');
     app.className = 'app-shell login-screen';
     app.innerHTML = firebaseSetupGate();
+    updateHeaderSyncChip();
     bind();
     return;
   }
@@ -387,6 +468,7 @@ function render(){
     app.setAttribute('data-route', 'login');
     app.className = 'app-shell login-screen';
     app.innerHTML = firebaseLoadingGate();
+    updateHeaderSyncChip();
     bind();
     return;
   }
@@ -396,6 +478,7 @@ function render(){
     app.setAttribute('data-route', 'login');
     app.className = 'app-shell login-screen';
     app.innerHTML = googleLoginGate();
+    updateHeaderSyncChip();
     bind();
     return;
   }
@@ -404,6 +487,7 @@ function render(){
   app.setAttribute('data-route', route);
   app.className = `app-shell ${route}-screen`;
   app.innerHTML = ({ venda, estoque, clientes, financeiro })[route]();
+  updateHeaderSyncChip();
   bind();
 }
 
@@ -1478,7 +1562,7 @@ function cobrancas(){
           <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.4 Firebase Key Final</small>
+        <small class="clean-note">Versão v10.7 Chip com cores de sync</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1753,7 +1837,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.4 Firebase Key Final</small>
+        <small class="clean-note">Versão v10.7 Chip com cores de sync</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
