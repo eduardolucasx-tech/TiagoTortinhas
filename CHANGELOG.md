@@ -1,5 +1,26 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.1 — Login Gate Corrigido
+
+### Corrigido
+- Gate de login agora bloqueia o app quando Firebase não está configurado ou usuário não está logado.
+- Adicionada tela de Firebase não configurado.
+- Atualizado cache/service worker para evitar abrir versão anterior.
+
+
+## v10.0 — Google Login Obrigatório
+
+### Adicionado / alterado
+- Tela inicial de login obrigatório com Google.
+- Bloqueio das abas principais até autenticação.
+- Navegação inferior ocultada durante o login.
+- Fallback de login por redirect quando popup falhar.
+- Logout retorna para tela de entrada.
+
+### Importante
+- Adicionar domínio da Vercel nos domínios autorizados do Firebase Authentication.
+
+
 ## v9.9 — Firebase Google Sync
 
 ### Adicionado

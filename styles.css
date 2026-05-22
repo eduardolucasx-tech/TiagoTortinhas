@@ -6068,3 +6068,93 @@ body[data-route="estoque"] .help-tip-box{
 .cloud-mini-status{
   color:#6e7f3b;
 }
+
+
+/* v10.0 — Login Google obrigatório */
+body[data-route="login"] .bottom-nav{
+  display:none !important;
+}
+.login-screen{
+  min-height:calc(100vh - 90px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.login-gate-screen{
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px 0;
+}
+.login-gate-card{
+  width:min(100%, 430px);
+  background:linear-gradient(180deg,#ffffff 0%,#f8fcf1 100%);
+  border:1px solid #cfe1b1;
+  border-radius:30px;
+  box-shadow:0 20px 44px rgba(96,65,45,.12);
+  padding:28px 22px;
+  text-align:center;
+}
+.login-gate-logo{
+  width:86px;
+  height:86px;
+  object-fit:contain;
+  border-radius:24px;
+  margin:0 auto 14px;
+  background:#fff;
+  border:1px solid #e8ddd2;
+  padding:6px;
+}
+.login-gate-card h1{
+  margin:0 0 8px;
+  color:#4f682b;
+  font-size:26px;
+  line-height:1.08;
+  letter-spacing:-.04em;
+}
+.login-gate-card p{
+  margin:0 auto 16px;
+  color:#5d4a3b;
+  font-size:14px;
+  line-height:1.45;
+  max-width:330px;
+}
+.login-google-main{
+  width:100%;
+  margin:6px 0 12px;
+}
+.login-gate-card small{
+  display:block;
+  color:#7f9366;
+  font-size:12px;
+  line-height:1.35;
+}
+
+
+/* v10.1 — Login gate corrigido */
+.login-gate-card.setup-warning{
+  background:linear-gradient(180deg,#fffefb 0%,#fff8ef 100%);
+  border-color:#efcfa8;
+}
+.login-gate-card.setup-warning h1{
+  color:#8a5c2e;
+}
+.setup-steps{
+  margin-top:14px;
+  text-align:left;
+  background:#fff;
+  border:1px solid #efcfa8;
+  border-radius:16px;
+  padding:12px;
+}
+.setup-steps strong{
+  display:block;
+  color:#8a5c2e;
+  margin-bottom:8px;
+}
+.setup-steps small{
+  display:block;
+  color:#6d5746;
+  margin-top:5px;
+}

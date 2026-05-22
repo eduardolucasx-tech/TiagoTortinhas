@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v10_0_google_login_obrigatorio';
+const STORE_KEY = 'sr_tortinhas_control_v10_1_login_gate_corrigido';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -327,6 +327,25 @@ function firebaseLoginCard(){
 }
 
 
+
+function firebaseSetupGate(){
+  setHeader('Configuração Firebase');
+  return `<div class="login-gate-screen">
+    <div class="login-gate-card setup-warning">
+      <img src="logo.png" alt="Sr. Tortinhas Control" class="login-gate-logo">
+      <h1>Firebase não configurado</h1>
+      <p>Para usar login Google e sincronização, preencha o arquivo <b>firebase-config.js</b> com as chaves reais do seu projeto Firebase.</p>
+      <div class="setup-steps">
+        <strong>Checklist rápido</strong>
+        <small>1. Preencher firebase-config.js</small>
+        <small>2. Ativar Authentication > Google</small>
+        <small>3. Ativar Firestore Database</small>
+        <small>4. Adicionar domínio da Vercel em Authorized domains</small>
+      </div>
+    </div>
+  </div>`;
+}
+
 function googleLoginGate(){
   setHeader('Entrada com Google');
   return `<div class="login-gate-screen">
@@ -353,6 +372,16 @@ function firebaseLoadingGate(){
 function render(){
   renderNav();
   const app = document.getElementById('app');
+
+  if(!firebaseConfigured()){
+    document.body.setAttribute('data-route', 'login');
+    app.setAttribute('data-route', 'login');
+    app.className = 'app-shell login-screen';
+    app.innerHTML = firebaseSetupGate();
+    bind();
+    return;
+  }
+
   if(firebaseConfigured() && !authChecked){
     document.body.setAttribute('data-route', 'login');
     app.setAttribute('data-route', 'login');
@@ -361,6 +390,7 @@ function render(){
     bind();
     return;
   }
+
   if(firebaseConfigured() && !cloudUser){
     document.body.setAttribute('data-route', 'login');
     app.setAttribute('data-route', 'login');
@@ -369,6 +399,7 @@ function render(){
     bind();
     return;
   }
+
   document.body.setAttribute('data-route', route);
   app.setAttribute('data-route', route);
   app.className = `app-shell ${route}-screen`;
@@ -1447,7 +1478,7 @@ function cobrancas(){
           <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.0 Google Login Obrigatório</small>
+        <small class="clean-note">Versão v10.1 Login Gate Corrigido</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1722,7 +1753,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.0 Google Login Obrigatório</small>
+        <small class="clean-note">Versão v10.1 Login Gate Corrigido</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -2867,3 +2898,9 @@ function setMonthlyView(monthKey, mode){
 if('serviceWorker' in navigator && location.protocol !== 'file:'){ navigator.serviceWorker.register('service-worker.js').catch(()=>{}); }
 initFirebaseSync();
 render();
+
+function srTortinhasGlobalError(e){
+  if(String(e?.filename||'').includes('webpage_content_reporter')) return;
+  console.error('Sr Tortinhas error:', e.message, e.filename, e.lineno);
+}
+window.addEventListener('error', srTortinhasGlobalError);

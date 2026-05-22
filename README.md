@@ -2,7 +2,7 @@
 
 **Sr. Tortinhas Control** é um app/PWA simples e direto para controle de vendas, caixa, financeiro, clientes, estoque, produção e relatórios de uma operação artesanal de tortinhas.
 
-> Versão atual: **v9.9 — Firebase Google Sync**
+> Versão atual: **v10.1 — Login Gate Corrigido**
 
 ---
 
@@ -280,3 +280,46 @@ service cloud.firestore {
 }
 ```
 
+
+
+---
+
+## v10.0 — Google Login Obrigatório
+
+### O que mudou
+
+- O app agora pede **entrada com Google antes de liberar as abas principais**.
+- A navegação inferior fica escondida na tela de login.
+- Depois do login, o usuário acessa Venda, Financeiro, Estoque e Clientes.
+- Login usa popup e, se o navegador bloquear, tenta redirect automaticamente.
+- Ao sair da conta, o app volta para a tela de login.
+
+### Observação
+
+Para funcionar na Vercel, confira no Firebase:
+
+- Authentication > Settings > Authorized domains
+- Adicione seu domínio da Vercel, por exemplo:
+  - `seu-projeto.vercel.app`
+  - domínio personalizado, se houver
+
+
+---
+
+## v10.1 — Login Gate Corrigido
+
+### Correção
+
+- Se Firebase não estiver configurado, o app mostra tela de configuração pendente.
+- Se Firebase estiver configurado e usuário não estiver logado, o app mostra tela de entrada com Google.
+- A venda não deve mais abrir antes do login.
+- Cache do service worker foi atualizado para reduzir chance de versão antiga ficar presa.
+
+### Depois de subir na Vercel
+
+Faça um hard refresh no navegador:
+
+- Windows: `Ctrl + Shift + R`
+- Mac: `Cmd + Shift + R`
+
+Se ainda aparecer versão antiga, vá em DevTools > Application > Service Workers > Unregister e recarregue.
