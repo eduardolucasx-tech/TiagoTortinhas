@@ -1,5 +1,6 @@
-v10.7 — Chip com cores de sync
+v10.8.1 — Botões venda no final
 
 Data da versão: 2026-05-22
-Status: Chip do cabeçalho com estados visuais de sincronização
-Base: Sr. Tortinhas Control
+Status: Correção dos botões Limpar/Salvar na tela de venda
+Base: v10.8 — Conta visível e venda ajustada
+Observação: esta versão NÃO usa a base v10.9.

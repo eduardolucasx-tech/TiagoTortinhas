@@ -1,5 +1,21 @@
 # Changelog — Sr. Tortinhas Control
 
+## v10.8.1 — Botões venda no final
+
+### Corrigido
+- Botões Limpar/Salvar venda deixaram de ser flutuantes.
+- Substituída classe antiga `checkout-actions` por `sale-final-actions` na tela de venda.
+- CSS reforçado para impedir comportamento sticky antigo.
+
+
+## v10.8 — Conta visível e venda ajustada
+
+### Melhorado
+- Conta Google/local mais visível no cabeçalho.
+- Botões finais da venda não ficam mais flutuando sobre o conteúdo.
+- Feedback visual de botão pressionado/selecionado nos sabores.
+
+
 ## v10.7 — Chip com cores de sync
 
 ### Melhorado

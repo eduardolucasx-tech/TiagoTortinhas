@@ -6387,3 +6387,166 @@ body[data-route="login"] .header-sync-chip{
   background:#db7474 !important;
   box-shadow:0 0 0 3px rgba(219,116,116,.18) !important;
 }
+
+
+/* v10.8 — conta visível e venda sem barra flutuante */
+.app-header{
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+}
+.brand-meta{
+  min-width:0;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.app-header .brand-meta strong,
+.app-header .brand-meta small{
+  min-width:0;
+}
+.header-sync-chip{
+  position:static !important;
+  align-self:flex-start;
+  display:inline-flex !important;
+  width:auto !important;
+  max-width:100% !important;
+  min-height:38px !important;
+  padding:6px 10px 6px 6px !important;
+  margin-top:2px;
+  box-shadow:0 6px 14px rgba(96,65,45,.08) !important;
+}
+.header-sync-chip__text strong{
+  max-width:160px !important;
+}
+.header-sync-chip__text small{
+  white-space:nowrap;
+}
+@media (max-width:640px){
+  .app-header{
+    align-items:flex-start !important;
+    padding-top:12px !important;
+    padding-bottom:12px !important;
+  }
+  .brand-logo{
+    margin-top:2px;
+  }
+  .header-sync-chip{
+    max-width:calc(100vw - 120px) !important;
+  }
+  .header-sync-chip__text strong{
+    max-width:110px !important;
+  }
+}
+
+.checkout-actions{
+  position:static !important;
+  bottom:auto !important;
+  z-index:auto !important;
+  background:transparent !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  backdrop-filter:none !important;
+  box-shadow:none !important;
+  margin-top:14px !important;
+  margin-bottom:10px !important;
+}
+.checkout-actions .ghost,
+.checkout-actions .big-action{
+  min-height:54px;
+}
+
+.product-pick{
+  transition:transform .12s ease, box-shadow .16s ease, background-color .16s ease, border-color .16s ease, filter .16s ease;
+}
+.product-pick:active{
+  transform:translateY(1px) scale(.992);
+}
+.product-pick.selected,
+.product-pick.active{
+  transform:translateY(1px);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.04), 0 8px 20px rgba(95,76,58,.08) !important;
+  filter:saturate(1.08);
+}
+.product-pick.maracuja.selected,
+.product-pick.maracuja.active{background:#fff2b8 !important;border-color:#d9b84c !important;}
+.product-pick.limao.selected,
+.product-pick.limao.active{background:#e9f7c9 !important;border-color:#9ec15b !important;}
+.product-pick.chocolate.selected,
+.product-pick.chocolate.active{background:#f4dfd1 !important;border-color:#bb8d63 !important;}
+.product-pick .plus{
+  transition:transform .12s ease, background-color .16s ease, color .16s ease, box-shadow .16s ease;
+}
+.product-pick:active .plus{
+  transform:scale(.96);
+}
+.product-pick .plus.count{
+  background:rgba(255,255,255,.96) !important;
+  color:var(--brand-text) !important;
+  box-shadow:0 4px 12px rgba(84,64,48,.10);
+  min-width:28px;
+  padding:0 6px;
+  font-size:14px !important;
+}
+.product-pick.selected .plus.count,
+.product-pick.active .plus.count{
+  background:#fff !important;
+}
+
+
+/* v10.8.1 — Botões Limpar/Salvar definitivamente no final da página */
+.venda-screen .checkout-actions,
+[data-route="venda"] .checkout-actions,
+.checkout-actions{
+  position:static !important;
+  bottom:auto !important;
+  top:auto !important;
+  left:auto !important;
+  right:auto !important;
+  z-index:auto !important;
+  transform:none !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+
+.sale-final-actions{
+  position:static !important;
+  display:grid;
+  grid-template-columns:1fr 1.4fr;
+  gap:10px;
+  margin:16px 0 calc(var(--navH) + 22px + env(safe-area-inset-bottom)) !important;
+  padding:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  z-index:auto !important;
+}
+
+.sale-final-actions .ghost,
+.sale-final-actions .big-action{
+  min-height:56px;
+  border-radius:18px;
+}
+
+.sale-final-actions .big-action{
+  background:linear-gradient(180deg,#84a84a 0%,#668f37 100%);
+  box-shadow:0 10px 22px rgba(102,143,55,.18);
+}
+
+.sale-final-actions .ghost{
+  background:linear-gradient(180deg,#fffefa 0%,#fff8ef 100%);
+  border:1px solid #ead8c3;
+  color:#6a4c32;
+}
+
+@media(max-width:430px){
+  .sale-final-actions{
+    grid-template-columns:1fr;
+    margin-bottom:calc(var(--navH) + 28px + env(safe-area-inset-bottom)) !important;
+  }
+}

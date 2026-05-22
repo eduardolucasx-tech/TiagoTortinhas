@@ -1,4 +1,4 @@
-const STORE_KEY = 'sr_tortinhas_control_v10_8_chip_visivel_venda_fix';
+const STORE_KEY = 'sr_tortinhas_control_v10_8_1_botoes_venda_no_final';
 const PIX_INFO = { nome: 'TIAGO DUARTE SIERRA', chave: '13 99621-4064', qrImage: 'pix_qr_sr_tortinhas.png' };
 const PRODUCTS = { 'Maracujá': 7, 'Limão': 7, 'Chocolate': 9 };
 const PRODUCT_LABELS = { 'Maracujá': 'Maracujá', 'Limão': 'Limão', 'Chocolate': 'Chocolate' };
@@ -759,7 +759,7 @@ function venda(){
         </div>
       </section>
 
-      <div class="action-row checkout-actions">
+      <div class="action-row sale-final-actions">
         <button type="button" class="ghost" onclick="clearCurrentSale()">${saleDraft.editingTicketId ? 'Cancelar edição' : 'Limpar'}</button>
         <button class="big-action">${saleDraft.editingTicketId ? 'Atualizar venda' : 'Salvar venda'}</button>
       </div>
@@ -1571,7 +1571,7 @@ function cobrancas(){
           <button class="ghost" onclick="exportBackup()">Exportar backup</button>
           <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
           <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8 Conta visível e venda ajustada</small>
+        <small class="clean-note">Versão v10.8.1 Botões venda no final</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
@@ -1846,7 +1846,7 @@ function dinheiroDadosBlock(){
         <button class="ghost" onclick="exportBackup()">Exportar backup</button>
         <label class="ghost upload-btn"><input type="file" id="importFile" accept="application/json" hidden>Importar backup</label>
         <button class="danger" onclick="resetBase()">Restaurar base</button>
-        <small class="clean-note">Versão v10.8 Conta visível e venda ajustada</small>
+        <small class="clean-note">Versão v10.8.1 Botões venda no final</small>
         <details class="inner-drawer final-guide">
           <summary>Checklist de uso</summary>
           <div class="final-guide-list">
